@@ -105,7 +105,11 @@ const directCompareRows = [
 ];
 
 const directModal = document.getElementById("directCompareModal");
-const directSelect = document.getElementById("directCompareSelect");
+const directDropdown = document.getElementById("solutionDropdown");
+const directCompareButton = document.getElementById("directCompareButton");
+const directCompareLabel = document.getElementById("directCompareLabel");
+const directCompareMenu = document.getElementById("directCompareMenu");
+let selectedDirectSolution = "";
 const directOutput = document.getElementById("directCompareOutput");
 
 function directValueClass(value){
@@ -116,8 +120,8 @@ function directValueClass(value){
 }
 
 function renderDirectComparison(){
-  if(!directSelect || !directOutput) return;
-  const competitorName = directSelect.value;
+  if(!directOutput) return;
+  const competitorName = selectedDirectSolution;
 
   if(!competitorName){
     directOutput.innerHTML = `
@@ -154,16 +158,22 @@ function renderDirectComparison(){
 
 function openDirectCompare(){
   if(!directModal) return;
-  if(directSelect) directSelect.value = "";
+  selectedDirectSolution = "";
+  if(directCompareLabel) directCompareLabel.textContent = "Selecciona tu solución";
+  if(directDropdown) directDropdown.classList.remove("open");
+  if(directCompareButton) directCompareButton.setAttribute("aria-expanded","false");
+  directCompareMenu?.querySelectorAll("[data-solution]").forEach(item=>item.removeAttribute("aria-selected"));
   renderDirectComparison();
   directModal.classList.add("open");
   directModal.setAttribute("aria-hidden","false");
   document.body.classList.add("direct-compare-lock");
-  setTimeout(()=>directSelect?.focus(),50);
+  setTimeout(()=>directCompareButton?.focus(),50);
 }
 
 function closeDirectCompare(){
   if(!directModal) return;
+  directDropdown?.classList.remove("open");
+  directCompareButton?.setAttribute("aria-expanded","false");
   directModal.classList.remove("open");
   directModal.setAttribute("aria-hidden","true");
   document.body.classList.remove("direct-compare-lock");
@@ -175,7 +185,30 @@ document.querySelectorAll("[data-open-direct-compare]").forEach(el=>{
 document.querySelectorAll("[data-close-direct-compare]").forEach(el=>{
   el.addEventListener("click",closeDirectCompare);
 });
-directSelect?.addEventListener("change",renderDirectComparison);
+directCompareButton?.addEventListener("click",()=>{
+  const isOpen = directDropdown?.classList.toggle("open");
+  directCompareButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+});
+
+directCompareMenu?.querySelectorAll("[data-solution]").forEach(item=>{
+  item.addEventListener("click",()=>{
+    selectedDirectSolution = item.dataset.solution || "";
+    if(directCompareLabel) directCompareLabel.textContent = selectedDirectSolution;
+    directCompareMenu.querySelectorAll("[data-solution]").forEach(opt=>{
+      opt.setAttribute("aria-selected", opt === item ? "true" : "false");
+    });
+    directDropdown?.classList.remove("open");
+    directCompareButton?.setAttribute("aria-expanded","false");
+    renderDirectComparison();
+  });
+});
+
+document.addEventListener("click",(event)=>{
+  if(directDropdown && !directDropdown.contains(event.target)){
+    directDropdown.classList.remove("open");
+    directCompareButton?.setAttribute("aria-expanded","false");
+  }
+});
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape" && directModal?.classList.contains("open")) closeDirectCompare();
 });

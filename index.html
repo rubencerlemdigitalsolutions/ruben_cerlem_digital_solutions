@@ -246,26 +246,38 @@
       </div>
 
       <div class="direct-compare-controls">
-        <label class="solution-picker">
+        <div class="solution-picker">
           <span>Solución que utilizas actualmente</span>
-          <select id="directCompareSelect">
-            <option value="" selected disabled>Selecciona tu solución</option>
-            <option value="Viafirma">Viafirma</option>
-            <option value="EverSign">EverSign</option>
-            <option value="Logalty">Logalty</option>
-            <option value="Signaturit">Signaturit</option>
-            <option value="Firmafy">Firmafy</option>
-            <option value="Docusign">Docusign</option>
-            <option value="Click & Sign">Click &amp; Sign</option>
-            <option value="Evicertia">Evicertia</option>
-            <option value="Tecalis">Tecalis</option>
-            <option value="YouSign">YouSign</option>
-            <option value="PandaDoc">PandaDoc</option>
-            <option value="CocoSign">CocoSign</option>
-            <option value="SignHost">SignHost</option>
-            <option value="Xodo Sign">Xodo Sign</option>
-          </select>
-        </label>
+          <div class="solution-dropdown" id="solutionDropdown">
+            <button
+              class="solution-dropdown-button"
+              id="directCompareButton"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              <span id="directCompareLabel">Selecciona tu solución</span>
+              <span class="solution-dropdown-arrow" aria-hidden="true">⌄</span>
+            </button>
+
+            <div class="solution-dropdown-menu" id="directCompareMenu" role="listbox" aria-label="Soluciones disponibles">
+              <button type="button" role="option" data-solution="Viafirma">Viafirma</button>
+              <button type="button" role="option" data-solution="EverSign">EverSign</button>
+              <button type="button" role="option" data-solution="Logalty">Logalty</button>
+              <button type="button" role="option" data-solution="Signaturit">Signaturit</button>
+              <button type="button" role="option" data-solution="Firmafy">Firmafy</button>
+              <button type="button" role="option" data-solution="Docusign">Docusign</button>
+              <button type="button" role="option" data-solution="Click & Sign">Click &amp; Sign</button>
+              <button type="button" role="option" data-solution="Evicertia">Evicertia</button>
+              <button type="button" role="option" data-solution="Tecalis">Tecalis</button>
+              <button type="button" role="option" data-solution="YouSign">YouSign</button>
+              <button type="button" role="option" data-solution="PandaDoc">PandaDoc</button>
+              <button type="button" role="option" data-solution="CocoSign">CocoSign</button>
+              <button type="button" role="option" data-solution="SignHost">SignHost</button>
+              <button type="button" role="option" data-solution="Xodo Sign">Xodo Sign</button>
+            </div>
+          </div>
+        </div>
         <div class="fixed-product">
           <span>Producto con el que se compara</span>
           <strong>eFirma GO</strong>

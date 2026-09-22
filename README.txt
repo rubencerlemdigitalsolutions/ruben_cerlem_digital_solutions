@@ -67,3 +67,10 @@ AJUSTE COMPARATIVA SIN PRESELECCIÓN:
 - Al abrir la comparativa aparece 'Selecciona tu solución'.
 - La comparativa solo se genera cuando el usuario elige una solución del listado.
 - Cada vez que se abre la ventana de comparativa vuelve a empezar sin selección.
+
+
+AJUSTE DESPLEGABLE COMPARATIVA:
+- Se sustituye el select nativo por un desplegable personalizado.
+- El listado de soluciones se abre siempre hacia abajo.
+- Funciona igual en interfaz clara y oscura mediante las variables de tema existentes.
+- Al abrir la comparativa sigue sin haber ninguna solución preseleccionada.
