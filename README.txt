@@ -16,3 +16,9 @@ Para volver a mostrarlo en el futuro:
 
 La comparativa se despliega pulsando sobre "Comparativa de soluciones de firma electrónica".
 El modo claro/oscuro conserva la preferencia del usuario mediante localStorage.
+
+
+ACTUALIZACIÓN FIRMA:
+- Se ha sustituido el texto 'Rubén' del teléfono por la firma manuscrita facilitada.
+- La firma usa fondo transparente: tinta oscura en modo claro y blanca en modo oscuro.
+- No se han modificado el resto del diseño ni el comportamiento claro/oscuro.
