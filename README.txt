@@ -32,3 +32,10 @@ ACTUALIZACIÓN COMPARATIVA DIRECTA:
 - La comparación usa exactamente los datos de la tabla facilitada.
 - La tabla completa sigue disponible en la página.
 - El catálogo anterior Cegid Informática 3 permanece oculto y sin ocupar espacio.
+
+
+ACTUALIZACIÓN NAVEGACIÓN:
+- Barra superior simplificada a: Inicio, Comparativa, Precios y Contratar.
+- Se oculta la pestaña eFirma GO de la navegación, sin eliminar el contenido principal de la página.
+- Contratar enlaza directamente a la sección de contacto/contratación.
+- La futura navegación por catálogo (eFirma GO, Gesco3, Conta3, Terven3) queda pendiente para cuando esos productos se hagan visibles.
