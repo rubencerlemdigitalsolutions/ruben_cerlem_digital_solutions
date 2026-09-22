@@ -39,3 +39,8 @@ ACTUALIZACIÓN NAVEGACIÓN:
 - Se oculta la pestaña eFirma GO de la navegación, sin eliminar el contenido principal de la página.
 - Contratar enlaza directamente a la sección de contacto/contratación.
 - La futura navegación por catálogo (eFirma GO, Gesco3, Conta3, Terven3) queda pendiente para cuando esos productos se hagan visibles.
+
+
+ACTUALIZACIÓN CONTACTO:
+- Se elimina el enfoque de orientación entre planes/productos.
+- El bloque de contacto se centra ahora en resolver dudas previas a la contratación de eFirma GO.
