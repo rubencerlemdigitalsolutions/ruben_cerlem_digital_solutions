@@ -44,3 +44,19 @@ ACTUALIZACIÓN NAVEGACIÓN:
 ACTUALIZACIÓN CONTACTO:
 - Se elimina el enfoque de orientación entre planes/productos.
 - El bloque de contacto se centra ahora en resolver dudas previas a la contratación de eFirma GO.
+
+
+ACTUALIZACIÓN FORMULARIO DE CONTACTO:
+- Se ha sustituido el botón mailto por un formulario integrado en la propia web.
+- Campos: nombre, correo electrónico y consulta.
+- Los mensajes se envían a rubencerlemdigitalsolutions@gmail.com mediante FormSubmit.
+- La primera vez hay que enviar una prueba desde la web y confirmar el correo de activación que llegará a Gmail.
+- Después de esa confirmación, los siguientes mensajes se reenvían automáticamente al correo configurado.
+- El formulario mantiene al usuario dentro de la página y muestra confirmación de envío.
+
+
+AJUSTE FORMULARIO VERTICAL:
+- Nombre, correo electrónico y consulta aparecen en vertical.
+- Los tres campos ocupan el mismo ancho.
+- El campo de consulta tiene mayor altura para escribir mensajes largos.
+- El botón final se llama Contactar.

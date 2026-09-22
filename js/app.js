@@ -169,3 +169,51 @@ directSelect?.addEventListener("change",renderDirectComparison);
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape" && directModal?.classList.contains("open")) closeDirectCompare();
 });
+
+
+// === Envío del formulario de contacto a rubencerlemdigitalsolutions@gmail.com ===
+const efirmaContactForm = document.getElementById('efirmaContactForm');
+const contactFormStatus = document.getElementById('contactFormStatus');
+
+if (efirmaContactForm) {
+  efirmaContactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    if (!efirmaContactForm.reportValidity()) return;
+
+    const honeypot = efirmaContactForm.querySelector('[name="_honey"]');
+    if (honeypot && honeypot.value) return;
+
+    const submitButton = efirmaContactForm.querySelector('.contact-submit');
+    efirmaContactForm.classList.add('is-sending');
+    if (submitButton) submitButton.innerHTML = 'Enviando…';
+
+    contactFormStatus.className = 'contact-form-status';
+    contactFormStatus.textContent = 'Enviando tu consulta…';
+
+    const formData = new FormData(efirmaContactForm);
+
+    try {
+      const response = await fetch(
+        'https://formsubmit.co/ajax/rubencerlemdigitalsolutions@gmail.com',
+        {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        }
+      );
+
+      if (!response.ok) throw new Error('No se pudo enviar el formulario');
+
+      contactFormStatus.className = 'contact-form-status success';
+      contactFormStatus.textContent = 'Consulta enviada correctamente. Te responderé por correo electrónico.';
+      efirmaContactForm.reset();
+    } catch (error) {
+      contactFormStatus.className = 'contact-form-status error';
+      contactFormStatus.textContent = 'No se ha podido enviar la consulta. Inténtalo de nuevo dentro de unos minutos.';
+    } finally {
+      efirmaContactForm.classList.remove('is-sending');
+      if (submitButton) submitButton.innerHTML = 'Contactar <span>→</span>';
+    }
+  });
+}

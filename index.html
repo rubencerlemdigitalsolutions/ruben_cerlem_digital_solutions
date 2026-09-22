@@ -47,7 +47,7 @@
         </ul>
         <div class="hero-actions">
           <a class="btn primary" href="#contacto">Contratar ahora <span>→</span></a>
-          <a class="btn secondary" href="#producto">Solicitar información</a>
+          <a class="btn secondary" href="#contacto">Solicitar información</a>
         </div>
       </div>
 
@@ -178,9 +178,45 @@
   </section>
 
   <section id="contacto" class="contact-section soft">
-    <div class="container contact-card">
-      <div><span class="eyebrow">CONTACTO</span><h2>¿Quieres incorporar eFirma GO a tu negocio?</h2><p>¿Tienes alguna duda antes de contratar? Cuéntamela y te ayudaré con la información que necesites sobre eFirma GO, sus usuarios, contratación o puesta en marcha.</p></div>
-      <a class="btn primary" href="mailto:contacto@rubencerlemdigitalsolutions.es">Solicitar información <span>→</span></a>
+    <div class="container contact-card contact-card-form">
+      <div class="contact-copy">
+        <span class="eyebrow">SOLICITAR INFORMACIÓN</span>
+        <h2>¿Quieres incorporar eFirma GO a tu negocio?</h2>
+        <p>¿Tienes alguna duda antes de contratar? Escríbeme directamente desde este formulario y te responderé por correo electrónico.</p>
+        <div class="contact-mail-note">
+          <span>Primer contacto</span>
+          <strong>Por correo electrónico</strong>
+          <small>Si después necesitas hablar por teléfono, podremos coordinarlo en la respuesta.</small>
+        </div>
+      </div>
+
+      <form class="contact-form" id="efirmaContactForm" autocomplete="on">
+        <label>
+          <span>Nombre</span>
+          <input type="text" name="name" id="contactName" autocomplete="name" placeholder="Tu nombre" required>
+        </label>
+
+        <label>
+          <span>Correo electrónico</span>
+          <input type="email" name="email" id="contactEmail" autocomplete="email" placeholder="tu@correo.com" required>
+        </label>
+
+        <label>
+          <span>Tu consulta</span>
+          <textarea name="message" id="contactMessage" rows="6" placeholder="Cuéntame qué duda tienes sobre eFirma GO..." required></textarea>
+        </label>
+
+        <input type="text" name="_honey" class="contact-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_subject" value="Nueva consulta desde Rubén Cerlem Digital Solutions · eFirma GO">
+        <input type="hidden" name="_template" value="table">
+
+        <button class="btn primary contact-submit" type="submit">
+          Contactar <span>→</span>
+        </button>
+
+        <p class="contact-privacy">Los datos introducidos se utilizarán únicamente para responder a tu consulta.</p>
+        <div class="contact-form-status" id="contactFormStatus" role="status" aria-live="polite"></div>
+      </form>
     </div>
   </section>
 
