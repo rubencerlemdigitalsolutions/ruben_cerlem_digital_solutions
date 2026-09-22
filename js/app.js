@@ -24,3 +24,148 @@ const observer=new IntersectionObserver(entries=>{
   navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+visible.target.id));
 },{threshold:[.2,.5],rootMargin:'-20% 0px -55%'});
 sections.forEach(s=>observer.observe(s));
+
+
+// === Comparativa directa: solución del cliente vs eFirma GO ===
+const directCompareData = {
+  "eFirma GO": {
+    trial:"Sí", initial:"60", annual:"108 €", from:"1,8 €", to:"0,158 €",
+    api:"Gratuita", weight:"25 Mb", custody:"5 años", app:"Sí", editable:"Sí", inperson:"Sí"
+  },
+  "Logalty": {
+    trial:"Sí", initial:"Recarga saldo", annual:"Recarga saldo", from:"Recarga saldo", to:"3 €",
+    api:"—", weight:"1 Mb", custody:"2 años", app:"Sí", editable:"—", inperson:"No"
+  },
+  "Signaturit": {
+    trial:"Sí", initial:"60", annual:"396 €", from:"6,6 €", to:"2,75 €",
+    api:"Pago", weight:"15 Mb", custody:"5 años", app:"Sí", editable:"Sí", inperson:"No"
+  },
+  "Firmafy": {
+    trial:"Sí", initial:"300", annual:"360 €", from:"1,2 €", to:"0,72 €",
+    api:"Gratuita", weight:"—", custody:"10 años", app:"Sí", editable:"Sí", inperson:"Sí"
+  },
+  "Docusign": {
+    trial:"Sí", initial:"60", annual:"108 €", from:"1,8 €", to:"4,56 €",
+    api:"Pago", weight:"23,8 Mb", custody:"—", app:"Sí", editable:"Sí", inperson:"Sí"
+  },
+  "Click & Sign": {
+    trial:"No", initial:"Recarga saldo", annual:"Recarga saldo", from:"1,43 €", to:"1,43 €",
+    api:"Gratuita", weight:"25 Mb", custody:"5 años", app:"No", editable:"—", inperson:"No"
+  },
+  "Viafirma": {
+    trial:"Sí", initial:"60", annual:"54 €", from:"0,9 €", to:"—",
+    api:"Pago", weight:"—", custody:"—", app:"Sí", editable:"—", inperson:"—"
+  },
+  "Evicertia": {
+    trial:"No", initial:"—", annual:"—", from:"—", to:"—",
+    api:"Pago", weight:"3 Mb", custody:"1 año", app:"No", editable:"Sí", inperson:"Sí"
+  },
+  "Tecalis": {
+    trial:"Sí", initial:"50", annual:"240 €", from:"4,8 €", to:"1,6 €",
+    api:"Pago", weight:"25 Mb", custody:"5 años", app:"Sí", editable:"No", inperson:"No"
+  },
+  "YouSign": {
+    trial:"Sí", initial:"—", annual:"300 €", from:"—", to:"—",
+    api:"Pago", weight:"—", custody:"—", app:"Sí", editable:"Sí", inperson:"Sí"
+  },
+  "PandaDoc": {
+    trial:"Sí", initial:"—", annual:"533 €", from:"—", to:"—",
+    api:"Pago", weight:"—", custody:"—", app:"Sí", editable:"Sí", inperson:"Sí"
+  },
+  "EverSign": {
+    trial:"Sí", initial:"—", annual:"460 €", from:"—", to:"—",
+    api:"Pago", weight:"—", custody:"—", app:"Sí", editable:"Sí", inperson:"Sí"
+  },
+  "CocoSign": {
+    trial:"Sí", initial:"—", annual:"180 €", from:"—", to:"—",
+    api:"—", weight:"—", custody:"—", app:"Sí", editable:"No", inperson:"No"
+  },
+  "SignHost": {
+    trial:"Sí", initial:"100", annual:"95 €", from:"—", to:"—",
+    api:"Pago", weight:"—", custody:"—", app:"Sí", editable:"Sí", inperson:"Sí"
+  },
+  "Xodo Sign": {
+    trial:"Sí", initial:"—", annual:"460 €", from:"—", to:"—",
+    api:"Pago", weight:"—", custody:"—", app:"Sí", editable:"Sí", inperson:"Sí"
+  }
+};
+
+const directCompareRows = [
+  ["Prueba gratis","trial"],
+  ["Firmas paquete inicial","initial"],
+  ["Coste anual más bajo","annual"],
+  ["Precio/doc. (desde)*","from"],
+  ["Precio/doc. (hasta)*","to"],
+  ["API","api"],
+  ["Peso del envío","weight"],
+  ["Custodia documental","custody"],
+  ["App móvil","app"],
+  ["Campos editables","editable"],
+  ["Firma presencial","inperson"]
+];
+
+const directModal = document.getElementById("directCompareModal");
+const directSelect = document.getElementById("directCompareSelect");
+const directOutput = document.getElementById("directCompareOutput");
+
+function directValueClass(value){
+  if(value==="Sí" || value==="Gratuita") return "yes";
+  if(value==="No") return "no";
+  if(value==="—") return "unknown";
+  return "";
+}
+
+function renderDirectComparison(){
+  if(!directSelect || !directOutput) return;
+  const competitorName = directSelect.value;
+  const competitor = directCompareData[competitorName];
+  const efirma = directCompareData["eFirma GO"];
+  if(!competitor) return;
+
+  directOutput.innerHTML = `
+    <table class="direct-compare-table">
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th>${competitorName}</th>
+          <th class="efirma-col">eFirma GO</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${directCompareRows.map(([label,key]) => `
+          <tr>
+            <td>${label}</td>
+            <td><span class="direct-compare-value ${directValueClass(competitor[key])}">${competitor[key]}</span></td>
+            <td class="efirma-col"><span class="direct-compare-value ${directValueClass(efirma[key])}">${efirma[key]}</span></td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>`;
+}
+
+function openDirectCompare(){
+  if(!directModal) return;
+  renderDirectComparison();
+  directModal.classList.add("open");
+  directModal.setAttribute("aria-hidden","false");
+  document.body.classList.add("direct-compare-lock");
+  setTimeout(()=>directSelect?.focus(),50);
+}
+
+function closeDirectCompare(){
+  if(!directModal) return;
+  directModal.classList.remove("open");
+  directModal.setAttribute("aria-hidden","true");
+  document.body.classList.remove("direct-compare-lock");
+}
+
+document.querySelectorAll("[data-open-direct-compare]").forEach(el=>{
+  el.addEventListener("click",openDirectCompare);
+});
+document.querySelectorAll("[data-close-direct-compare]").forEach(el=>{
+  el.addEventListener("click",closeDirectCompare);
+});
+directSelect?.addEventListener("change",renderDirectComparison);
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && directModal?.classList.contains("open")) closeDirectCompare();
+});

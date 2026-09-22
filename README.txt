@@ -22,3 +22,13 @@ ACTUALIZACIÓN FIRMA:
 - Se ha sustituido el texto 'Rubén' del teléfono por la firma manuscrita facilitada.
 - La firma usa fondo transparente: tinta oscura en modo claro y blanca en modo oscuro.
 - No se han modificado el resto del diseño ni el comportamiento claro/oscuro.
+
+
+ACTUALIZACIÓN COMPARATIVA DIRECTA:
+- Navegación simplificada: Inicio, eFirma GO, Comparativa y Precios.
+- La pestaña Comparativa abre una ventana funcional.
+- El cliente selecciona únicamente la solución que utiliza actualmente.
+- eFirma GO queda fija en la columna derecha.
+- La comparación usa exactamente los datos de la tabla facilitada.
+- La tabla completa sigue disponible en la página.
+- El catálogo anterior Cegid Informática 3 permanece oculto y sin ocupar espacio.
