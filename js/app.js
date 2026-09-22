@@ -118,6 +118,15 @@ function directValueClass(value){
 function renderDirectComparison(){
   if(!directSelect || !directOutput) return;
   const competitorName = directSelect.value;
+
+  if(!competitorName){
+    directOutput.innerHTML = `
+      <div class="compare-empty-state">
+        Selecciona la solución que utilizas actualmente para ver la comparativa directa con eFirma GO.
+      </div>`;
+    return;
+  }
+
   const competitor = directCompareData[competitorName];
   const efirma = directCompareData["eFirma GO"];
   if(!competitor) return;
@@ -145,6 +154,7 @@ function renderDirectComparison(){
 
 function openDirectCompare(){
   if(!directModal) return;
+  if(directSelect) directSelect.value = "";
   renderDirectComparison();
   directModal.classList.add("open");
   directModal.setAttribute("aria-hidden","false");

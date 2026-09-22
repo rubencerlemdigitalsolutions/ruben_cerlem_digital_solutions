@@ -231,3 +231,15 @@ body.direct-compare-lock{overflow:hidden}
 .contact-submit{
   width:100%;
 }
+
+
+.compare-empty-state{
+  padding:28px 20px;
+  border:1px dashed var(--line);
+  border-radius:16px;
+  background:var(--surface2);
+  color:var(--muted);
+  text-align:center;
+  font-size:12px;
+  line-height:1.55;
+}

@@ -60,3 +60,10 @@ AJUSTE FORMULARIO VERTICAL:
 - Los tres campos ocupan el mismo ancho.
 - El campo de consulta tiene mayor altura para escribir mensajes largos.
 - El botón final se llama Contactar.
+
+
+AJUSTE COMPARATIVA SIN PRESELECCIÓN:
+- El desplegable ya no muestra una solución seleccionada por defecto.
+- Al abrir la comparativa aparece 'Selecciona tu solución'.
+- La comparativa solo se genera cuando el usuario elige una solución del listado.
+- Cada vez que se abre la ventana de comparativa vuelve a empezar sin selección.
