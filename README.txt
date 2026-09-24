@@ -116,3 +116,13 @@ ACTUALIZACIÓN CONTACTO + ADMIN PASSWORD V2:
 - Después del primer cambio, la contraseña elegida queda como contraseña válida para accesos posteriores.
 - Ya no se vuelve a mostrar Nueva contraseña / Confirmar contraseña salvo al pulsar Restablecer contraseña.
 - Se añade Restablecer contraseña dentro del panel Admin una vez iniciada la sesión.
+
+
+LOGIN ADMIN V3 CORREGIDO:
+- Usuario: rubencerlem
+- Nueva contraseña temporal alfanumérica sin símbolos especiales.
+- Primer acceso: usuario + contraseña temporal -> obliga a definir contraseña propia.
+- Después de guardar la contraseña propia, se vuelve al login.
+- Accesos posteriores: usuario + contraseña propia -> entra directamente al panel Admin.
+- Nueva contraseña / Confirmación solo vuelven a aparecer al pulsar Restablecer contraseña.
+- El parte de venta no se puede abrir sin sesión Admin iniciada.
