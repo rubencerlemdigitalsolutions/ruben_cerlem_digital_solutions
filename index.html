@@ -338,10 +338,15 @@
         <div class="admin-dashboard-top">
           <div>
             <strong>Sesión de administrador activa</strong>
-            <small>Las herramientas de venta solo se muestran mientras esta sesión esté abierta.</small>
+            <small>Desde aquí puedes abrir el parte de venta o cerrar tu sesión.</small>
           </div>
-          <button class="btn secondary compact" id="adminOpenSaleButton" type="button">Abrir parte de venta</button>
         </div>
+
+        <div class="admin-dashboard-actions">
+          <button class="btn primary" id="adminOpenSaleButton" type="button">Abrir parte de venta</button>
+          <button class="btn secondary" id="adminLogoutButton" type="button">Cerrar sesión</button>
+        </div>
+
         <div class="admin-warning">
           Esta versión usa acceso local del navegador. Para proteger realmente datos de clientes en producción,
           habrá que mover el acceso a autenticación de servidor/Cloudflare Access.
@@ -349,14 +354,7 @@
       </div>
     </section>
   </div>
-
-  <div class="admin-toolbar" id="adminToolbar" hidden>
-    <span>Admin</span>
-    <button type="button" id="adminToolbarSale">Abrir parte de venta</button>
-    <button type="button" id="adminLogoutButton">Salir</button>
-  </div>
-
-  <div class="sale-modal" id="saleModal" aria-hidden="true">
+<div class="sale-modal" id="saleModal" aria-hidden="true">
     <div class="sale-backdrop" data-close-sale></div>
     <section class="sale-dialog" role="dialog" aria-modal="true" aria-labelledby="saleTitle">
       <div class="sale-head">
@@ -498,7 +496,7 @@
 <footer>
   <div class="container footer-grid">
     <div class="footer-brand">Rubén Cerlem Digital Solutions<small>Soluciones digitales para autónomos, pymes y empresas.</small></div>
-    <div class="footer-links"><a href="#inicio">Inicio</a><button type="button" data-open-direct-compare>Comparativa</button><a href="#precios">Precios</a><a href="#contacto">Contratar</a><button class="admin-footer-link" type="button" data-open-admin>Admin</button></div>
+    <div class="footer-admin-only"><button class="admin-footer-link" type="button" data-open-admin>Admin</button></div>
   </div>
 </footer>
 <script src="js/app.js"></script>

@@ -449,3 +449,35 @@ body.admin-lock,body.sale-lock{overflow:hidden}
   .sale-body{padding:12px}
   .admin-toolbar{left:10px;right:10px;justify-content:center}
 }
+
+
+/* === Admin discreto y sin barra inferior === */
+.footer-admin-only{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+}
+.admin-footer-link{
+  opacity:.30;
+  font-size:9px!important;
+  padding:2px 4px!important;
+  border:0!important;
+  background:transparent!important;
+  color:var(--muted)!important;
+  box-shadow:none!important;
+}
+.admin-footer-link:hover{
+  opacity:.82;
+  color:var(--text)!important;
+}
+.admin-toolbar{
+  display:none!important;
+}
+.admin-dashboard-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.admin-dashboard-actions .btn{
+  flex:1 1 190px;
+}

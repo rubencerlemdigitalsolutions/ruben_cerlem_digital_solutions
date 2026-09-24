@@ -87,3 +87,12 @@ ADMINISTRACIÓN Y PARTE DE VENTA:
 - El apartado de envío queda preparado pero desactivado hasta configurar correos/servicio seguro.
 - IMPORTANTE: esta autenticación es local al navegador y NO sustituye una autenticación de servidor.
   Para datos reales de clientes, configurar Cloudflare Access/Worker antes de usarlo en producción.
+
+
+AJUSTE ADMIN SOLICITADO:
+- Se eliminan del pie los enlaces repetidos Inicio / Comparativa / Precios / Contratar.
+- Solo queda Admin, muy discreto.
+- No existe ya la barra inferior larga con Admin / Abrir parte de venta / Salir.
+- Abrir parte de venta y Cerrar sesión solo aparecen dentro de Admin tras iniciar sesión.
+- Para cerrar sesión se vuelve a pulsar Admin y se usa Cerrar sesión.
+- Se mantienen exactamente las mismas credenciales temporales.

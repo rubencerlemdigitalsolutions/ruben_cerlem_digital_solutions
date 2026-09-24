@@ -273,7 +273,6 @@ const adminModal = document.getElementById("adminModal");
 const adminLoginView = document.getElementById("adminLoginView");
 const adminChangePasswordView = document.getElementById("adminChangePasswordView");
 const adminDashboardView = document.getElementById("adminDashboardView");
-const adminToolbar = document.getElementById("adminToolbar");
 const adminLoginStatus = document.getElementById("adminLoginStatus");
 const adminPasswordStatus = document.getElementById("adminPasswordStatus");
 
@@ -292,7 +291,6 @@ function showAdminLoggedInUI(){
   if(adminLoginView) adminLoginView.hidden = true;
   if(adminChangePasswordView) adminChangePasswordView.hidden = true;
   if(adminDashboardView) adminDashboardView.hidden = false;
-  if(adminToolbar) adminToolbar.hidden = false;
 }
 
 function resetAdminViews(){
@@ -370,11 +368,13 @@ document.getElementById("adminSavePasswordButton")?.addEventListener("click",asy
 
 document.getElementById("adminLogoutButton")?.addEventListener("click",()=>{
   sessionStorage.removeItem(ADMIN_SESSION_KEY);
-  if(adminToolbar) adminToolbar.hidden = true;
   closeSale();
-  closeAdmin();
+  resetAdminViews();
+  if(adminLoginStatus){
+    adminLoginStatus.textContent = "Sesión cerrada.";
+    adminLoginStatus.className = "admin-status success";
+  }
 });
-if(adminSessionActive() && adminToolbar) adminToolbar.hidden = false;
 
 // === Parte de venta ===
 const saleModal = document.getElementById("saleModal");
@@ -391,7 +391,6 @@ function closeSale(){
 }
 
 document.getElementById("adminOpenSaleButton")?.addEventListener("click",()=>{ closeAdmin(); openSale(); });
-document.getElementById("adminToolbarSale")?.addEventListener("click",openSale);
 document.querySelectorAll("[data-close-sale]").forEach(el=>el.addEventListener("click",closeSale));
 
 document.querySelectorAll(".sale-tab").forEach(tab=>tab.addEventListener("click",()=>{
