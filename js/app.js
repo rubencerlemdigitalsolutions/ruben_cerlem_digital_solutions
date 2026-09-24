@@ -398,7 +398,14 @@ document.querySelectorAll(".sale-tab").forEach(tab=>tab.addEventListener("click"
   tab.classList.add("active");
   const key = tab.dataset.saleTab;
   document.querySelectorAll(".sale-pane").forEach(p=>p.classList.remove("active"));
-  const map = {form:"salePaneForm",implant:"salePaneImplant",original:"salePaneOriginal",send:"salePaneSend"};
+  const map = {
+    form:"salePaneForm",
+    implant:"salePaneImplant",
+    original:"salePaneOriginal",
+    extract:"salePaneExtract",
+    client:"salePaneClient",
+    cegid:"salePaneCegid"
+  };
   document.getElementById(map[key])?.classList.add("active");
 }));
 
@@ -437,3 +444,289 @@ document.addEventListener("keydown",e=>{
     else if(adminModal?.classList.contains("open")) closeAdmin();
   }
 });
+
+
+// === PDF cumplimentado, numeración interna y flujo Cliente -> CEGID ===
+let filledPdfBytes = null;
+let filledPdfUrl = null;
+let signedPdfBytes = null;
+let signedPdfName = "";
+let currentClientNumber = null;
+
+const clientCounterKey = "rcds_sale_client_counter_v1";
+const clientRegistryKey = "rcds_sale_client_registry_v1";
+
+function getNextClientNumber(){
+  let current = Number(localStorage.getItem(clientCounterKey) || "0");
+  current += 1;
+  localStorage.setItem(clientCounterKey, String(current));
+  return current;
+}
+
+function getClientRegistry(){
+  try { return JSON.parse(localStorage.getItem(clientRegistryKey) || "[]"); }
+  catch { return []; }
+}
+
+function saveClientRegistryEntry(entry){
+  const registry = getClientRegistry();
+  const existing = registry.findIndex(x => x.number === entry.number);
+  if(existing >= 0) registry[existing] = entry;
+  else registry.push(entry);
+  localStorage.setItem(clientRegistryKey, JSON.stringify(registry));
+}
+
+function ensureClientNumber(){
+  if(currentClientNumber) return currentClientNumber;
+  currentClientNumber = getNextClientNumber();
+  const el = document.getElementById("saleClientNumber");
+  if(el) el.textContent = `Cliente nº ${currentClientNumber}`;
+  return currentClientNumber;
+}
+
+function saleFormValues(){
+  const form = document.getElementById("saleForm");
+  return Object.fromEntries(new FormData(form).entries());
+}
+
+function collectTableValues(tbodyId){
+  const rows = [...document.querySelectorAll(`#${tbodyId} tr`)];
+  return rows.map(row => [...row.querySelectorAll("input")].map(input => input.value.trim()));
+}
+
+function truncateText(text, max=34){
+  text = String(text || "");
+  return text.length > max ? text.slice(0,max-1) + "…" : text;
+}
+
+function drawField(page, font, text, x, y, size=8, maxWidth=200){
+  text = String(text || "").trim();
+  if(!text) return;
+  let s = size;
+  while(s > 5 && font.widthOfTextAtSize(text,s) > maxWidth) s -= .25;
+  page.drawText(text,{x,y,size:s,font,color:PDFLib.rgb(0.08,0.11,0.16)});
+}
+
+function drawMultiline(page, font, text, x, y, maxWidth, lineHeight=11, maxLines=7, size=8){
+  text = String(text || "").trim();
+  if(!text) return;
+  const words = text.split(/\s+/);
+  const lines = [];
+  let line = "";
+  for(const word of words){
+    const test = line ? `${line} ${word}` : word;
+    if(font.widthOfTextAtSize(test,size) <= maxWidth) line = test;
+    else {
+      if(line) lines.push(line);
+      line = word;
+      if(lines.length >= maxLines-1) break;
+    }
+  }
+  if(line && lines.length < maxLines) lines.push(line);
+  lines.slice(0,maxLines).forEach((ln,i)=>page.drawText(ln,{
+    x,y:y-(i*lineHeight),size,font,color:PDFLib.rgb(0.08,0.11,0.16)
+  }));
+}
+
+async function buildFilledPdf(){
+  if(!window.PDFLib) throw new Error("No se ha podido cargar el motor PDF.");
+  const response = await fetch("assets/admin/parte-venta-completo.pdf");
+  if(!response.ok) throw new Error("No se pudo cargar el PDF original.");
+  const source = await response.arrayBuffer();
+
+  const pdfDoc = await PDFLib.PDFDocument.load(source,{ignoreEncryption:true});
+  try { pdfDoc.getForm().flatten(); } catch(e) {}
+  const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+  const pages = pdfDoc.getPages();
+  const p1 = pages[0];
+  const p3 = pages[2];
+  const v = saleFormValues();
+
+  // Hoja 1 - Datos cliente
+  drawField(p1,font,v.cod_empresa,461,726,8,82);
+  drawField(p1,font,v.cliente_nombre,181,712,8,191);
+  drawField(p1,font,v.cliente_nif,422,712,8,121);
+  drawField(p1,font,v.cliente_domicilio,112,698,8,430);
+  drawField(p1,font,v.cliente_cp,135,684,8,57);
+  drawField(p1,font,v.cliente_poblacion,260,684,8,112);
+  drawField(p1,font,v.cliente_provincia,431,684,8,112);
+  drawField(p1,font,v.cliente_telefonos,115,670,8,257);
+  drawField(p1,font,v.cliente_email,412,670,8,131);
+  drawField(p1,font,v.representante_nombre,142,655,8,230);
+  drawField(p1,font,v.representante_nif,403,655,8,140);
+  drawField(p1,font,v.firma_movil,92,613,8,135);
+  drawField(p1,font,v.firma_email,272,613,8,270);
+
+  // Tabla licencia/mantenimiento
+  const saleRows = collectTableValues("saleLines");
+  const yRows = [552,538,524,510,496,482];
+  saleRows.slice(0,6).forEach((r,i)=>{
+    const y=yRows[i];
+    drawField(p1,font,r[0],52,y,7,106);
+    drawField(p1,font,r[1],165,y,7,130);
+    drawField(p1,font,r[2],302,y,7,61);
+    drawField(p1,font,r[3],369,y,7,63);
+    drawField(p1,font,r[4],438,y,7,74);
+    drawField(p1,font,r[5],516,y,6.5,28);
+  });
+  drawField(p1,font,v.importe_total,165,436,8,130);
+  drawMultiline(p1,font,v.notas,104,371,438,14,7,8);
+  drawMultiline(p1,font,v.forma_pago,163,253,378,14,3,8);
+  drawMultiline(p1,font,v.domicilio_pago,163,195,378,14,2,8);
+  drawField(p1,font,v.fecha,399,148,8,143);
+
+  // Hoja 3 - Implantación
+  const implantRows = collectTableValues("implantLines");
+  const iy = [739,724,709,694,679,664];
+  implantRows.slice(0,6).forEach((r,i)=>{
+    const y=iy[i];
+    drawField(p3,font,r[0],34,y,7,88);
+    drawField(p3,font,r[1],128,y,7,129);
+    drawField(p3,font,r[2],262,y,7,63);
+    drawField(p3,font,r[3],331,y,7,100);
+    drawField(p3,font,r[4],437,y,7,84);
+  });
+
+  const modRows = collectTableValues("modificationLines");
+  const my = [266,251,236,221,206,191];
+  modRows.slice(0,6).forEach((r,i)=>{
+    const y=my[i];
+    drawField(p3,font,r[0],31,y,7,107);
+    drawField(p3,font,r[1],141,y,7,380);
+  });
+
+  return await pdfDoc.save();
+}
+
+function setPdfButtonsEnabled(enabled){
+  [
+    "openFilledPdfButton","downloadFullPdfButton","downloadPage1Button",
+    "downloadPage2Button","downloadPage3Button","clientDownloadPdfButton","clientEmailDraftButton"
+  ].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.disabled=!enabled;
+  });
+}
+
+function makeBlobUrl(bytes, type="application/pdf"){
+  return URL.createObjectURL(new Blob([bytes],{type}));
+}
+
+function downloadBytes(bytes, filename){
+  const url=makeBlobUrl(bytes);
+  const a=document.createElement("a");
+  a.href=url; a.download=filename; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),3000);
+}
+
+async function extractSinglePage(pageIndex){
+  const srcDoc = await PDFLib.PDFDocument.load(filledPdfBytes);
+  const outDoc = await PDFLib.PDFDocument.create();
+  const [copied] = await outDoc.copyPages(srcDoc,[pageIndex]);
+  outDoc.addPage(copied);
+  return await outDoc.save();
+}
+
+document.getElementById("transferToPdfButton")?.addEventListener("click",async()=>{
+  const status=document.getElementById("transferPdfStatus");
+  try{
+    status.textContent="Generando documento cumplimentado…";
+    status.className="sale-action-status";
+    ensureClientNumber();
+    filledPdfBytes = await buildFilledPdf();
+    if(filledPdfUrl) URL.revokeObjectURL(filledPdfUrl);
+    filledPdfUrl = makeBlobUrl(filledPdfBytes);
+    setPdfButtonsEnabled(true);
+
+    const values=saleFormValues();
+    const clientEmail=document.getElementById("clientSendEmail");
+    if(clientEmail && !clientEmail.value) clientEmail.value=values.cliente_email||"";
+
+    saveClientRegistryEntry({
+      number: currentClientNumber,
+      client: values.cliente_nombre || "",
+      nif: values.cliente_nif || "",
+      email: values.cliente_email || "",
+      updatedAt: new Date().toISOString()
+    });
+
+    status.textContent=`Datos traspasados al PDF original. Cliente nº ${currentClientNumber}.`;
+    status.className="sale-action-status success";
+  }catch(err){
+    console.error(err);
+    status.textContent="No se pudo generar el PDF cumplimentado.";
+    status.className="sale-action-status error";
+  }
+});
+
+document.getElementById("openFilledPdfButton")?.addEventListener("click",()=>{
+  if(filledPdfUrl) window.open(filledPdfUrl,"_blank","noopener");
+});
+
+document.getElementById("downloadFullPdfButton")?.addEventListener("click",()=>{
+  if(!filledPdfBytes) return;
+  const n=currentClientNumber||"sin-numero";
+  downloadBytes(filledPdfBytes,`parte-venta-cliente-${n}.pdf`);
+});
+document.getElementById("clientDownloadPdfButton")?.addEventListener("click",()=>{
+  if(!filledPdfBytes) return;
+  const n=currentClientNumber||"sin-numero";
+  downloadBytes(filledPdfBytes,`parte-venta-cliente-${n}-para-firma.pdf`);
+});
+document.getElementById("downloadPage1Button")?.addEventListener("click",async()=>{
+  if(!filledPdfBytes) return; downloadBytes(await extractSinglePage(0),`parte-venta-hoja-1-cliente-${currentClientNumber}.pdf`);
+});
+document.getElementById("downloadPage2Button")?.addEventListener("click",async()=>{
+  if(!filledPdfBytes) return; downloadBytes(await extractSinglePage(1),`parte-venta-hoja-2-cliente-${currentClientNumber}.pdf`);
+});
+document.getElementById("downloadPage3Button")?.addEventListener("click",async()=>{
+  if(!filledPdfBytes) return; downloadBytes(await extractSinglePage(2),`parte-venta-hoja-3-cliente-${currentClientNumber}.pdf`);
+});
+
+document.getElementById("clientEmailDraftButton")?.addEventListener("click",()=>{
+  if(!filledPdfBytes) return;
+  const email=document.getElementById("clientSendEmail")?.value.trim()||"";
+  const subject=document.getElementById("clientSendSubject")?.value.trim()||"Documentación para firma";
+  const body="Adjunto la documentación correspondiente para su revisión y firma. Una vez firmada, por favor remítamela de vuelta.";
+  window.location.href=`mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
+document.getElementById("signedPdfInput")?.addEventListener("change",async(e)=>{
+  const file=e.target.files?.[0];
+  const status=document.getElementById("signedPdfStatus");
+  const confirm=document.getElementById("signedPdfConfirmed");
+  if(!file){
+    signedPdfBytes=null;signedPdfName="";confirm.disabled=true;confirm.checked=false;
+    if(status) status.textContent="";
+    return;
+  }
+  signedPdfBytes=new Uint8Array(await file.arrayBuffer());
+  signedPdfName=file.name;
+  confirm.disabled=false;
+  confirm.checked=false;
+  if(status) status.textContent=`Documento cargado: ${file.name}. Confirma que está firmado.`;
+});
+
+document.getElementById("signedPdfConfirmed")?.addEventListener("change",(e)=>{
+  const ok=Boolean(e.target.checked && signedPdfBytes);
+  document.getElementById("downloadSignedForCegidButton").disabled=!ok;
+  document.getElementById("cegidEmailDraftButton").disabled=!ok;
+  const status=document.getElementById("signedPdfStatus");
+  if(status && ok){
+    status.textContent="Documento firmado confirmado. Ya puedes preparar el envío a CEGID.";
+    status.className="sale-action-status success";
+  }
+});
+
+document.getElementById("downloadSignedForCegidButton")?.addEventListener("click",()=>{
+  if(!signedPdfBytes) return;
+  downloadBytes(signedPdfBytes,signedPdfName||`parte-venta-firmado-cliente-${currentClientNumber}.pdf`);
+});
+
+document.getElementById("cegidEmailDraftButton")?.addEventListener("click",()=>{
+  if(!signedPdfBytes) return;
+  const to=document.getElementById("cegidRecipientEmail")?.value.trim()||"";
+  const body=`Adjunto parte de venta firmado. Referencia interna: Cliente nº ${currentClientNumber||""}.`;
+  window.location.href=`mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent("Parte de venta firmado")}&body=${encodeURIComponent(body)}`;
+});
+
+setPdfButtonsEnabled(false);

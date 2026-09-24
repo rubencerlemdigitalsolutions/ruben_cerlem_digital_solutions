@@ -96,3 +96,14 @@ AJUSTE ADMIN SOLICITADO:
 - Abrir parte de venta y Cerrar sesión solo aparecen dentro de Admin tras iniciar sesión.
 - Para cerrar sesión se vuelve a pulsar Admin y se usa Cerrar sesión.
 - Se mantienen exactamente las mismas credenciales temporales.
+
+
+FLUJO PDF Y ENVÍOS:
+- El formulario Admin puede traspasar los datos al PDF original de 3 páginas.
+- Se asigna un número interno correlativo de cliente que NO se imprime en el PDF.
+- El PDF completo o cada hoja se pueden descargar desde Extraer.
+- Envío cliente: descarga el PDF y prepara un borrador de correo al cliente.
+- Se puede cargar después el PDF firmado devuelto por el cliente y confirmarlo.
+- Envío CEGID se habilita tras confirmar el documento firmado.
+- El envío directo con adjuntos queda pendiente de configurar un servicio de correo seguro.
+- Se usa pdf-lib en el navegador para escribir sobre el PDF original de Microdata.

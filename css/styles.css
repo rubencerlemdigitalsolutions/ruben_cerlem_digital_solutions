@@ -481,3 +481,26 @@ body.admin-lock,body.sale-lock{overflow:hidden}
 .admin-dashboard-actions .btn{
   flex:1 1 190px;
 }
+
+
+/* === Flujo PDF / Cliente / CEGID === */
+.sale-client-id{
+  margin-bottom:14px;padding:12px 14px;border:1px solid var(--line);border-radius:13px;
+  background:color-mix(in srgb,var(--blue) 5%,var(--surface2));display:flex;gap:12px;align-items:center;flex-wrap:wrap
+}
+.sale-client-id span{font-size:10px;font-weight:900;color:var(--muted)}
+.sale-client-id strong{color:var(--blue);font-size:16px}
+.sale-client-id small{width:100%;color:var(--muted);font-size:9px}
+.sale-transfer p{color:var(--muted);font-size:10px;line-height:1.5}
+.sale-action-status{min-height:18px;margin-top:9px;font-size:10px;font-weight:800}
+.sale-action-status.success{color:var(--success)}
+.sale-action-status.error{color:#d44}
+.pdf-filled-actions,.client-send-actions{display:flex;gap:10px;flex-wrap:wrap}
+.extract-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.signed-confirm{display:flex!important;grid-template-columns:none!important;flex-direction:row!important;align-items:center;gap:9px!important;margin-top:12px}
+.signed-confirm input{width:18px!important;height:18px!important;flex:0 0 auto}
+.signed-confirm span{font-size:10px;font-weight:800}
+@media(max-width:700px){
+  .extract-grid{grid-template-columns:1fr}
+  .pdf-filled-actions,.client-send-actions{flex-direction:column}
+}
