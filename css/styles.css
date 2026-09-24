@@ -521,3 +521,12 @@ body.admin-lock,body.sale-lock{overflow:hidden}
 @media(max-width:700px){
   .admin-dashboard-actions{grid-template-columns:1fr}
 }
+
+.admin-auth[hidden],.admin-dashboard[hidden]{display:none!important}
+.admin-dialog{max-height:90vh!important;overflow-y:scroll!important;scrollbar-gutter:stable}
+.sale-body{overflow-y:scroll!important;scrollbar-gutter:stable}
+.admin-reset-link{border:0;background:transparent;color:var(--muted);font:inherit;font-size:10px;font-weight:750;padding:2px 0;justify-self:start;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.admin-reset-link:hover{color:var(--blue)}
+.admin-dialog::-webkit-scrollbar,.sale-body::-webkit-scrollbar{width:10px}
+.admin-dialog::-webkit-scrollbar-track,.sale-body::-webkit-scrollbar-track{background:var(--surface2)}
+.admin-dialog::-webkit-scrollbar-thumb,.sale-body::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--muted) 50%,var(--surface2));border-radius:999px;border:2px solid var(--surface2)}

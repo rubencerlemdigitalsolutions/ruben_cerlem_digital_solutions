@@ -321,7 +321,18 @@
           <input id="adminPassword" type="password" autocomplete="current-password">
         </label>
         <button class="btn primary" id="adminLoginButton" type="button">Entrar <span>→</span></button>
+<button class="admin-reset-link" id="adminResetLink" type="button">Restablecer contraseña</button>
         <div class="admin-status" id="adminLoginStatus" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="admin-auth" id="adminResetAuthView" hidden>
+        <h3>Restablecer contraseña</h3>
+        <p>Confirma primero tu usuario y contraseña actual.</p>
+        <label><span>Usuario</span><input id="adminResetUsername" type="text" autocomplete="username"></label>
+        <label><span>Contraseña actual</span><input id="adminResetCurrentPassword" type="password" autocomplete="current-password"></label>
+        <button class="btn primary" id="adminResetVerifyButton" type="button">Continuar</button>
+        <button class="btn secondary" id="adminResetCancelButton" type="button">Cancelar</button>
+        <div class="admin-status" id="adminResetStatus"></div>
       </div>
 
       <div class="admin-auth" id="adminChangePasswordView" hidden>
