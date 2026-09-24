@@ -107,3 +107,12 @@ FLUJO PDF Y ENVÍOS:
 - Envío CEGID se habilita tras confirmar el documento firmado.
 - El envío directo con adjuntos queda pendiente de configurar un servicio de correo seguro.
 - Se usa pdf-lib en el navegador para escribir sobre el PDF original de Microdata.
+
+
+ACTUALIZACIÓN CONTACTO + ADMIN PASSWORD V2:
+- Formulario público: Nombre y apellidos, Empresa opcional, Correo electrónico y Consulta.
+- Los mensajes siguen enviándose a rubencerlemdigitalsolutions@gmail.com mediante FormSubmit.
+- Nueva contraseña temporal de primer acceso.
+- Después del primer cambio, la contraseña elegida queda como contraseña válida para accesos posteriores.
+- Ya no se vuelve a mostrar Nueva contraseña / Confirmar contraseña salvo al pulsar Restablecer contraseña.
+- Se añade Restablecer contraseña dentro del panel Admin una vez iniciada la sesión.

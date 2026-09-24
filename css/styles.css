@@ -504,3 +504,20 @@ body.admin-lock,body.sale-lock{overflow:hidden}
   .extract-grid{grid-template-columns:1fr}
   .pdf-filled-actions,.client-send-actions{flex-direction:column}
 }
+
+
+/* === Ajustes contacto y contraseña Admin V2 === */
+.contact-form label>span small{
+  color:var(--muted);
+  font-size:9px;
+  font-weight:700;
+}
+.contact-form textarea{
+  min-height:210px;
+}
+.admin-dashboard-actions{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+@media(max-width:700px){
+  .admin-dashboard-actions{grid-template-columns:1fr}
+}

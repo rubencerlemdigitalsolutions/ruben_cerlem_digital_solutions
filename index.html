@@ -192,8 +192,13 @@
 
       <form class="contact-form" id="efirmaContactForm" autocomplete="on">
         <label>
-          <span>Nombre</span>
-          <input type="text" name="name" id="contactName" autocomplete="name" placeholder="Tu nombre" required>
+          <span>Nombre y apellidos</span>
+          <input type="text" name="name" id="contactName" autocomplete="name" placeholder="Nombre y apellidos" required>
+        </label>
+
+        <label>
+          <span>Nombre de empresa <small>(opcional)</small></span>
+          <input type="text" name="company" id="contactCompany" autocomplete="organization" placeholder="Nombre de empresa">
         </label>
 
         <label>
@@ -203,11 +208,11 @@
 
         <label>
           <span>Tu consulta</span>
-          <textarea name="message" id="contactMessage" rows="6" placeholder="Cuéntame qué duda tienes sobre eFirma GO..." required></textarea>
+          <textarea name="message" id="contactMessage" rows="7" placeholder="Escribe aquí tu duda sobre eFirma GO..." required></textarea>
         </label>
 
         <input type="text" name="_honey" class="contact-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <input type="hidden" name="_subject" value="Nueva consulta desde Rubén Cerlem Digital Solutions · eFirma GO">
+        <input type="hidden" name="_subject" value="Nueva consulta sobre eFirma GO · Rubén Cerlem Digital Solutions">
         <input type="hidden" name="_template" value="table">
 
         <button class="btn primary contact-submit" type="submit">
@@ -320,8 +325,8 @@
       </div>
 
       <div class="admin-auth" id="adminChangePasswordView" hidden>
-        <h3>Cambia la contraseña temporal</h3>
-        <p>Esta contraseña sustituirá a la temporal en este navegador.</p>
+        <h3 id="adminPasswordChangeTitle">Cambia la contraseña temporal</h3>
+        <p id="adminPasswordChangeHelp">Esta contraseña sustituirá a la temporal en este navegador.</p>
         <label>
           <span>Nueva contraseña</span>
           <input id="adminNewPassword" type="password" autocomplete="new-password">
@@ -344,6 +349,7 @@
 
         <div class="admin-dashboard-actions">
           <button class="btn primary" id="adminOpenSaleButton" type="button">Abrir parte de venta</button>
+          <button class="btn secondary" id="adminResetPasswordButton" type="button">Restablecer contraseña</button>
           <button class="btn secondary" id="adminLogoutButton" type="button">Cerrar sesión</button>
         </div>
 
