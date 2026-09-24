@@ -330,3 +330,122 @@ html[data-theme="dark"] .solution-dropdown-menu{
   background:var(--surface);
   border-color:var(--line);
 }
+
+
+/* === Administración y Parte de Venta === */
+.admin-footer-link{opacity:.35;font-size:10px!important}
+.admin-footer-link:hover{opacity:.8}
+
+.admin-modal,.sale-modal{
+  position:fixed;inset:0;z-index:1600;display:none;align-items:center;justify-content:center;padding:22px
+}
+.admin-modal.open,.sale-modal.open{display:flex}
+.admin-backdrop,.sale-backdrop{
+  position:absolute;inset:0;background:rgba(2,8,16,.76);backdrop-filter:blur(10px)
+}
+.admin-dialog{
+  position:relative;width:min(560px,100%);border:1px solid var(--line);border-radius:26px;
+  background:var(--surface);box-shadow:0 40px 110px rgba(0,0,0,.45);overflow:hidden
+}
+.admin-head,.sale-head{
+  display:flex;justify-content:space-between;gap:18px;align-items:flex-start;
+  padding:24px 26px 18px;border-bottom:1px solid var(--line);background:var(--surface2)
+}
+.admin-head h2,.sale-head h2{margin:6px 0 4px;font-size:28px}
+.admin-head p,.sale-head p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
+.admin-close,.sale-close{
+  width:40px;height:40px;border:1px solid var(--line);border-radius:12px;background:var(--surface);
+  color:var(--text);font-size:22px;cursor:pointer
+}
+.admin-auth{padding:24px 26px;display:grid;gap:14px}
+.admin-auth label{display:grid;gap:7px}
+.admin-auth label span{font-size:11px;font-weight:850}
+.admin-auth input{
+  width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;
+  background:var(--bg);color:var(--text)
+}
+.admin-auth h3{margin:0}
+.admin-auth p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
+.admin-status{min-height:18px;font-size:11px;font-weight:800}
+.admin-status.error{color:#d44}.admin-status.success{color:var(--success)}
+.admin-dashboard{padding:22px 26px;display:grid;gap:14px}
+.admin-dashboard-top{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.admin-dashboard-top strong,.admin-dashboard-top small{display:block}
+.admin-dashboard-top small{margin-top:4px;color:var(--muted)}
+.admin-warning{
+  padding:12px 14px;border:1px solid color-mix(in srgb,#e4a11b 35%,var(--line));
+  border-radius:12px;background:color-mix(in srgb,#e4a11b 8%,var(--surface));font-size:10px;line-height:1.5
+}
+.admin-toolbar{
+  position:fixed;right:18px;bottom:18px;z-index:1450;display:flex;align-items:center;gap:8px;
+  padding:8px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  box-shadow:var(--shadow2)
+}
+.admin-toolbar span{padding:0 8px;font-size:10px;font-weight:900;color:var(--blue)}
+.admin-toolbar button{
+  border:0;border-radius:999px;padding:8px 11px;background:var(--surface2);color:var(--text);
+  font:inherit;font-size:10px;font-weight:800;cursor:pointer
+}
+.admin-toolbar button:hover{background:color-mix(in srgb,var(--blue) 10%,var(--surface2))}
+
+.sale-modal{z-index:1700;padding:12px}
+.sale-dialog{
+  position:relative;width:min(1220px,100%);height:min(94vh,980px);display:flex;flex-direction:column;
+  border:1px solid var(--line);border-radius:24px;background:var(--surface);
+  box-shadow:0 40px 120px rgba(0,0,0,.5);overflow:hidden
+}
+.sale-tabs{
+  display:flex;gap:8px;padding:10px 16px;border-bottom:1px solid var(--line);
+  background:var(--surface);overflow:auto
+}
+.sale-tab{
+  border:1px solid var(--line);border-radius:10px;background:var(--surface2);color:var(--muted);
+  padding:9px 12px;font:inherit;font-size:10px;font-weight:900;cursor:pointer;white-space:nowrap
+}
+.sale-tab.active{background:var(--blue);border-color:var(--blue);color:white}
+.sale-body{flex:1;overflow:auto;padding:20px}
+.sale-pane{display:none}.sale-pane.active{display:block}
+.sale-section{
+  margin-bottom:18px;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface2)
+}
+.sale-section h3{margin:0 0 14px;font-size:16px}
+.sale-section>small,.sale-muted{color:var(--muted);font-size:9px;line-height:1.5}
+.sale-grid{display:grid;gap:12px}
+.sale-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sale-grid label,.sale-section label{display:grid;gap:6px}
+.sale-grid label span,.sale-section label span{font-size:10px;font-weight:850}
+.sale-grid input,.sale-section input,.sale-section textarea{
+  width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:10px;
+  background:var(--surface);color:var(--text);outline:none
+}
+.sale-grid .full{grid-column:1/-1}
+.sale-section textarea{resize:vertical}
+.sale-table-wrap{overflow:auto}
+.sale-edit-table{width:100%;border-collapse:collapse;min-width:760px}
+.sale-edit-table th,.sale-edit-table td{border:1px solid var(--line);padding:7px}
+.sale-edit-table th{background:var(--surface);font-size:9px;text-align:left}
+.sale-edit-table input{
+  width:100%;min-width:95px;border:0;background:transparent;color:var(--text);padding:5px;outline:none
+}
+.sale-total{max-width:320px;margin-top:12px}
+.sale-reference-text p{font-size:10px;line-height:1.55;color:var(--muted)}
+.pdf-page-tabs{display:flex;gap:8px;margin-bottom:12px}
+.pdf-page-tabs button{
+  border:1px solid var(--line);border-radius:9px;background:var(--surface2);color:var(--text);
+  padding:8px 11px;font:inherit;font-size:10px;font-weight:850;cursor:pointer
+}
+.pdf-page-tabs button.active{background:var(--blue);color:white;border-color:var(--blue)}
+.pdf-preview{
+  background:#e9edf2;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:12px;text-align:center
+}
+.pdf-preview img{max-width:100%;height:auto;max-height:72vh;object-fit:contain;box-shadow:0 8px 28px rgba(0,0,0,.18)}
+body.admin-lock,body.sale-lock{overflow:hidden}
+
+@media(max-width:760px){
+  .admin-dashboard-top{align-items:flex-start;flex-direction:column}
+  .sale-grid.two{grid-template-columns:1fr}
+  .sale-grid .full{grid-column:auto}
+  .sale-head{padding:18px}
+  .sale-body{padding:12px}
+  .admin-toolbar{left:10px;right:10px;justify-content:center}
+}

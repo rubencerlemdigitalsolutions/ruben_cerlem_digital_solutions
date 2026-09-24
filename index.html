@@ -293,12 +293,212 @@
     </section>
   </div>
 
+  <!-- Acceso administrativo: oculto para navegación normal -->
+  <div class="admin-modal" id="adminModal" aria-hidden="true">
+    <div class="admin-backdrop" data-close-admin></div>
+    <section class="admin-dialog" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+      <div class="admin-head">
+        <div>
+          <span class="eyebrow">ACCESO RESTRINGIDO</span>
+          <h2 id="adminTitle">Administración</h2>
+          <p id="adminSubtitle">Introduce tus credenciales de administrador.</p>
+        </div>
+        <button class="admin-close" type="button" aria-label="Cerrar" data-close-admin>×</button>
+      </div>
+
+      <div class="admin-auth" id="adminLoginView">
+        <label>
+          <span>Usuario</span>
+          <input id="adminUsername" type="text" autocomplete="username" spellcheck="false">
+        </label>
+        <label>
+          <span>Contraseña</span>
+          <input id="adminPassword" type="password" autocomplete="current-password">
+        </label>
+        <button class="btn primary" id="adminLoginButton" type="button">Entrar <span>→</span></button>
+        <div class="admin-status" id="adminLoginStatus" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="admin-auth" id="adminChangePasswordView" hidden>
+        <h3>Cambia la contraseña temporal</h3>
+        <p>Esta contraseña sustituirá a la temporal en este navegador.</p>
+        <label>
+          <span>Nueva contraseña</span>
+          <input id="adminNewPassword" type="password" autocomplete="new-password">
+        </label>
+        <label>
+          <span>Confirmar contraseña</span>
+          <input id="adminConfirmPassword" type="password" autocomplete="new-password">
+        </label>
+        <button class="btn primary" id="adminSavePasswordButton" type="button">Guardar nueva contraseña</button>
+        <div class="admin-status" id="adminPasswordStatus" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="admin-dashboard" id="adminDashboardView" hidden>
+        <div class="admin-dashboard-top">
+          <div>
+            <strong>Sesión de administrador activa</strong>
+            <small>Las herramientas de venta solo se muestran mientras esta sesión esté abierta.</small>
+          </div>
+          <button class="btn secondary compact" id="adminOpenSaleButton" type="button">Abrir parte de venta</button>
+        </div>
+        <div class="admin-warning">
+          Esta versión usa acceso local del navegador. Para proteger realmente datos de clientes en producción,
+          habrá que mover el acceso a autenticación de servidor/Cloudflare Access.
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="admin-toolbar" id="adminToolbar" hidden>
+    <span>Admin</span>
+    <button type="button" id="adminToolbarSale">Abrir parte de venta</button>
+    <button type="button" id="adminLogoutButton">Salir</button>
+  </div>
+
+  <div class="sale-modal" id="saleModal" aria-hidden="true">
+    <div class="sale-backdrop" data-close-sale></div>
+    <section class="sale-dialog" role="dialog" aria-modal="true" aria-labelledby="saleTitle">
+      <div class="sale-head">
+        <div>
+          <span class="eyebrow">ADMIN · VENTA</span>
+          <h2 id="saleTitle">Parte de venta</h2>
+          <p>Formulario interno basado en las tres hojas del documento facilitado.</p>
+        </div>
+        <button class="sale-close" type="button" aria-label="Cerrar" data-close-sale>×</button>
+      </div>
+
+      <div class="sale-tabs" role="tablist">
+        <button class="sale-tab active" type="button" data-sale-tab="form">Parte de venta</button>
+        <button class="sale-tab" type="button" data-sale-tab="implant">Implantación</button>
+        <button class="sale-tab" type="button" data-sale-tab="original">Documento original</button>
+        <button class="sale-tab" type="button" data-sale-tab="send">Envío</button>
+      </div>
+
+      <div class="sale-body">
+        <section class="sale-pane active" id="salePaneForm">
+          <form id="saleForm">
+            <div class="sale-section">
+              <h3>Datos Cliente e instalación</h3>
+              <div class="sale-grid two">
+                <label><span>Nombre / Razón Social</span><input name="cliente_nombre"></label>
+                <label><span>NIF / CIF</span><input name="cliente_nif"></label>
+                <label class="full"><span>Domicilio</span><input name="cliente_domicilio"></label>
+                <label><span>Código Postal</span><input name="cliente_cp"></label>
+                <label><span>Población</span><input name="cliente_poblacion"></label>
+                <label><span>Provincia</span><input name="cliente_provincia"></label>
+                <label><span>Teléfonos</span><input name="cliente_telefonos"></label>
+                <label><span>Email</span><input type="email" name="cliente_email"></label>
+                <label><span>Representante</span><input name="representante_nombre"></label>
+                <label><span>NIF representante</span><input name="representante_nif"></label>
+              </div>
+            </div>
+
+            <div class="sale-section">
+              <h3>Datos Representante para la firma electrónica</h3>
+              <div class="sale-grid two">
+                <label><span>Móvil</span><input name="firma_movil"></label>
+                <label><span>Email</span><input type="email" name="firma_email"></label>
+              </div>
+            </div>
+
+            <div class="sale-section">
+              <h3>Licencia y mantenimiento</h3>
+              <div class="sale-table-wrap">
+                <table class="sale-edit-table">
+                  <thead>
+                    <tr>
+                      <th>Aplicación</th><th>Licencia · Importe</th><th>Fecha inicio</th>
+                      <th>Periodicidad</th><th>Importe anual</th><th>Obs.</th>
+                    </tr>
+                  </thead>
+                  <tbody id="saleLines"></tbody>
+                </table>
+              </div>
+              <label class="sale-total"><span>Importe Total</span><input name="importe_total"></label>
+              <small>Todas las cantidades se incrementarán con los impuestos correspondientes.</small>
+            </div>
+
+            <div class="sale-section">
+              <label><span>Notas</span><textarea name="notas" rows="5"></textarea></label>
+            </div>
+
+            <div class="sale-section">
+              <div class="sale-grid two">
+                <label><span>Forma de Pago</span><textarea name="forma_pago" rows="3"></textarea></label>
+                <label><span>Domicilio de Pago</span><textarea name="domicilio_pago" rows="3"></textarea></label>
+                <label><span>Fecha</span><input type="date" name="fecha"></label>
+                <label><span>Cod. Empresa</span><input name="cod_empresa"></label>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <section class="sale-pane" id="salePaneImplant">
+          <div class="sale-section">
+            <h3>Documento implantación</h3>
+            <div class="sale-table-wrap">
+              <table class="sale-edit-table">
+                <thead>
+                  <tr><th>Aplicación</th><th>Persona de contacto</th><th>Nº Teléfono</th><th>Email</th><th>Software Origen</th></tr>
+                </thead>
+                <tbody id="implantLines"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="sale-section sale-reference-text">
+            <h3>Información de implantación</h3>
+            <p><strong>Instalación:</strong> la fecha será fijada por el/la cliente junto con el personal técnico de Microdata.</p>
+            <p><strong>Paso de Datos:</strong> será fijado por el/la cliente junto con el personal técnico de Microdata y puede variar según el volumen de datos y el equipo.</p>
+            <p><strong>Formación:</strong> el número de sesiones depende de la aplicación y de las necesidades indicadas en el documento original.</p>
+          </div>
+
+          <div class="sale-section">
+            <h3>Notas / Modificación</h3>
+            <div class="sale-table-wrap">
+              <table class="sale-edit-table">
+                <thead><tr><th>Aplicación</th><th>Notas / Modificación</th></tr></thead>
+                <tbody id="modificationLines"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="sale-pane" id="salePaneOriginal">
+          <div class="pdf-page-tabs">
+            <button class="active" type="button" data-pdf-page="1">Hoja 1</button>
+            <button type="button" data-pdf-page="2">Hoja 2</button>
+            <button type="button" data-pdf-page="3">Hoja 3</button>
+          </div>
+          <div class="pdf-preview">
+            <img id="pdfPagePreview" src="assets/admin/parte-venta-pagina-1.png" alt="Página 1 del parte de venta original">
+          </div>
+          <a class="btn secondary" href="assets/admin/parte-venta-completo.pdf" target="_blank" rel="noopener">Abrir PDF completo</a>
+        </section>
+
+        <section class="sale-pane" id="salePaneSend">
+          <div class="sale-section">
+            <h3>Preparar envío</h3>
+            <p class="sale-muted">Los correos definitivos se configurarán cuando los tengas. La interfaz queda preparada para ello.</p>
+            <div class="sale-grid two">
+              <label><span>Correo remitente</span><input id="saleSenderEmail" type="email" placeholder="Pendiente de configurar"></label>
+              <label><span>Correo destinatario</span><input id="saleRecipientEmail" type="email" placeholder="Pendiente de configurar"></label>
+            </div>
+            <button class="btn primary" type="button" id="saleSendButton" disabled>Enviar parte de venta</button>
+            <div class="sale-muted">Envío desactivado hasta conectar un servicio de correo seguro.</div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+
 </main>
 
 <footer>
   <div class="container footer-grid">
     <div class="footer-brand">Rubén Cerlem Digital Solutions<small>Soluciones digitales para autónomos, pymes y empresas.</small></div>
-    <div class="footer-links"><a href="#inicio">Inicio</a><button type="button" data-open-direct-compare>Comparativa</button><a href="#precios">Precios</a><a href="#contacto">Contratar</a></div>
+    <div class="footer-links"><a href="#inicio">Inicio</a><button type="button" data-open-direct-compare>Comparativa</button><a href="#precios">Precios</a><a href="#contacto">Contratar</a><button class="admin-footer-link" type="button" data-open-admin>Admin</button></div>
   </div>
 </footer>
 <script src="js/app.js"></script>

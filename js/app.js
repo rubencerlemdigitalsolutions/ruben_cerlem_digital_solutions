@@ -260,3 +260,181 @@ if (efirmaContactForm) {
     }
   });
 }
+
+
+// === Administración local (prototipo visual) ===
+const ADMIN_USERNAME = "rubencerlem";
+const ADMIN_TEMP_HASH = "0d84b4b7af0c037af6afc02fca492725753d056e75de446ec8978642dc8fbed9";
+const ADMIN_PASSWORD_HASH_KEY = "rcds_admin_password_hash_v1";
+const ADMIN_PASSWORD_CHANGED_KEY = "rcds_admin_password_changed_v1";
+const ADMIN_SESSION_KEY = "rcds_admin_session_v1";
+
+const adminModal = document.getElementById("adminModal");
+const adminLoginView = document.getElementById("adminLoginView");
+const adminChangePasswordView = document.getElementById("adminChangePasswordView");
+const adminDashboardView = document.getElementById("adminDashboardView");
+const adminToolbar = document.getElementById("adminToolbar");
+const adminLoginStatus = document.getElementById("adminLoginStatus");
+const adminPasswordStatus = document.getElementById("adminPasswordStatus");
+
+async function adminHash(text){
+  const data = new TextEncoder().encode(text);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
+function adminSessionActive(){
+  return sessionStorage.getItem(ADMIN_SESSION_KEY) === "1";
+}
+
+function showAdminLoggedInUI(){
+  sessionStorage.setItem(ADMIN_SESSION_KEY,"1");
+  if(adminLoginView) adminLoginView.hidden = true;
+  if(adminChangePasswordView) adminChangePasswordView.hidden = true;
+  if(adminDashboardView) adminDashboardView.hidden = false;
+  if(adminToolbar) adminToolbar.hidden = false;
+}
+
+function resetAdminViews(){
+  if(adminLoginView) adminLoginView.hidden = false;
+  if(adminChangePasswordView) adminChangePasswordView.hidden = true;
+  if(adminDashboardView) adminDashboardView.hidden = true;
+  if(adminLoginStatus){ adminLoginStatus.textContent=""; adminLoginStatus.className="admin-status"; }
+}
+
+function openAdmin(){
+  if(!adminModal) return;
+  adminModal.classList.add("open");
+  adminModal.setAttribute("aria-hidden","false");
+  document.body.classList.add("admin-lock");
+  if(adminSessionActive()) showAdminLoggedInUI(); else resetAdminViews();
+  setTimeout(()=>document.getElementById("adminUsername")?.focus(),30);
+}
+function closeAdmin(){
+  adminModal?.classList.remove("open");
+  adminModal?.setAttribute("aria-hidden","true");
+  document.body.classList.remove("admin-lock");
+}
+
+document.querySelectorAll("[data-open-admin]").forEach(el=>el.addEventListener("click",openAdmin));
+document.querySelectorAll("[data-close-admin]").forEach(el=>el.addEventListener("click",closeAdmin));
+
+document.getElementById("adminLoginButton")?.addEventListener("click",async()=>{
+  const user = (document.getElementById("adminUsername")?.value || "").trim().toLowerCase();
+  const pass = document.getElementById("adminPassword")?.value || "";
+  const enteredHash = await adminHash(pass);
+  const changed = localStorage.getItem(ADMIN_PASSWORD_CHANGED_KEY) === "1";
+  const expectedHash = changed ? localStorage.getItem(ADMIN_PASSWORD_HASH_KEY) : ADMIN_TEMP_HASH;
+
+  if(user !== ADMIN_USERNAME || !expectedHash || enteredHash !== expectedHash){
+    adminLoginStatus.textContent = "Usuario o contraseña incorrectos.";
+    adminLoginStatus.className = "admin-status error";
+    return;
+  }
+
+  if(!changed){
+    adminLoginView.hidden = true;
+    adminChangePasswordView.hidden = false;
+    document.getElementById("adminNewPassword")?.focus();
+    return;
+  }
+
+  showAdminLoggedInUI();
+});
+
+["adminUsername","adminPassword"].forEach(id=>{
+  document.getElementById(id)?.addEventListener("keydown",e=>{
+    if(e.key==="Enter") document.getElementById("adminLoginButton")?.click();
+  });
+});
+
+document.getElementById("adminSavePasswordButton")?.addEventListener("click",async()=>{
+  const p1 = document.getElementById("adminNewPassword")?.value || "";
+  const p2 = document.getElementById("adminConfirmPassword")?.value || "";
+  if(p1.length < 10){
+    adminPasswordStatus.textContent = "La nueva contraseña debe tener al menos 10 caracteres.";
+    adminPasswordStatus.className = "admin-status error";
+    return;
+  }
+  if(p1 !== p2){
+    adminPasswordStatus.textContent = "Las contraseñas no coinciden.";
+    adminPasswordStatus.className = "admin-status error";
+    return;
+  }
+  localStorage.setItem(ADMIN_PASSWORD_HASH_KEY, await adminHash(p1));
+  localStorage.setItem(ADMIN_PASSWORD_CHANGED_KEY, "1");
+  adminPasswordStatus.textContent = "Contraseña actualizada.";
+  adminPasswordStatus.className = "admin-status success";
+  showAdminLoggedInUI();
+});
+
+document.getElementById("adminLogoutButton")?.addEventListener("click",()=>{
+  sessionStorage.removeItem(ADMIN_SESSION_KEY);
+  if(adminToolbar) adminToolbar.hidden = true;
+  closeSale();
+  closeAdmin();
+});
+if(adminSessionActive() && adminToolbar) adminToolbar.hidden = false;
+
+// === Parte de venta ===
+const saleModal = document.getElementById("saleModal");
+function openSale(){
+  if(!adminSessionActive()) return openAdmin();
+  saleModal?.classList.add("open");
+  saleModal?.setAttribute("aria-hidden","false");
+  document.body.classList.add("sale-lock");
+}
+function closeSale(){
+  saleModal?.classList.remove("open");
+  saleModal?.setAttribute("aria-hidden","true");
+  document.body.classList.remove("sale-lock");
+}
+
+document.getElementById("adminOpenSaleButton")?.addEventListener("click",()=>{ closeAdmin(); openSale(); });
+document.getElementById("adminToolbarSale")?.addEventListener("click",openSale);
+document.querySelectorAll("[data-close-sale]").forEach(el=>el.addEventListener("click",closeSale));
+
+document.querySelectorAll(".sale-tab").forEach(tab=>tab.addEventListener("click",()=>{
+  document.querySelectorAll(".sale-tab").forEach(t=>t.classList.remove("active"));
+  tab.classList.add("active");
+  const key = tab.dataset.saleTab;
+  document.querySelectorAll(".sale-pane").forEach(p=>p.classList.remove("active"));
+  const map = {form:"salePaneForm",implant:"salePaneImplant",original:"salePaneOriginal",send:"salePaneSend"};
+  document.getElementById(map[key])?.classList.add("active");
+}));
+
+function makeRows(targetId,count,cols,prefix){
+  const tbody = document.getElementById(targetId);
+  if(!tbody || tbody.children.length) return;
+  for(let r=0;r<count;r++){
+    const tr=document.createElement("tr");
+    for(let c=0;c<cols;c++){
+      const td=document.createElement("td");
+      const input=document.createElement("input");
+      input.name=`${prefix}_${r+1}_${c+1}`;
+      td.appendChild(input); tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+  }
+}
+makeRows("saleLines",6,6,"venta");
+makeRows("implantLines",6,5,"implantacion");
+makeRows("modificationLines",6,2,"modificacion");
+
+document.querySelectorAll("[data-pdf-page]").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll("[data-pdf-page]").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  const page=btn.dataset.pdfPage;
+  const img=document.getElementById("pdfPagePreview");
+  if(img){
+    img.src=`assets/admin/parte-venta-pagina-${page}.png`;
+    img.alt=`Página ${page} del parte de venta original`;
+  }
+}));
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    if(saleModal?.classList.contains("open")) closeSale();
+    else if(adminModal?.classList.contains("open")) closeAdmin();
+  }
+});

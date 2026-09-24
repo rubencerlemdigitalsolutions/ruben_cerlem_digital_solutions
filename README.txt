@@ -74,3 +74,16 @@ AJUSTE DESPLEGABLE COMPARATIVA:
 - El listado de soluciones se abre siempre hacia abajo.
 - Funciona igual en interfaz clara y oscura mediante las variables de tema existentes.
 - Al abrir la comparativa sigue sin haber ninguna solución preseleccionada.
+
+
+ADMINISTRACIÓN Y PARTE DE VENTA:
+- Usuario temporal: rubencerlem
+- La contraseña temporal se facilita en el mensaje de entrega, no en texto claro dentro del código.
+- El primer acceso obliga a cambiar la contraseña y guarda su hash en el navegador.
+- En el pie de página aparece un enlace Admin muy discreto.
+- Con sesión admin aparece una barra privada con 'Abrir parte de venta'.
+- Se incluyen las 3 hojas del PDF como referencia dentro del área admin.
+- Se ha creado un formulario digital para datos cliente, licencia/mantenimiento, implantación y modificaciones.
+- El apartado de envío queda preparado pero desactivado hasta configurar correos/servicio seguro.
+- IMPORTANTE: esta autenticación es local al navegador y NO sustituye una autenticación de servidor.
+  Para datos reales de clientes, configurar Cloudflare Access/Worker antes de usarlo en producción.
