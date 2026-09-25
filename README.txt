@@ -164,3 +164,23 @@ MULTISOLUCIÓN V4 - PÁGINAS DE PRODUCTO:
 - La comparativa Signaturit/DocuSign/Otros queda solo dentro de eFirma GO.
 - Demo se solicita dentro de cada página de producto.
 - Se mantienen los colores y la identidad visual en tema claro y oscuro.
+
+
+MULTISOLUCIÓN V5 - PORTADA SIMPLIFICADA:
+- Se elimina de la portada el resumen de métricas de eFirma GO (firma electrónica, 60 firmas, 108 €, etc.).
+- La portada queda más limpia: hero eFirma GO + Contasimple/eJornada.
+- Al pulsar Solicitar información en eFirma GO se mantiene la página específica efirma-go.html.
+- En efirma-go.html continúan las funcionalidades, planes, tarifas, comparativa y demo.
+
+
+MULTISOLUCIÓN V6 - VISUALES DE PRODUCTO:
+- Los pies de eFirma GO, Contasimple y eJornada muestran solo Admin.
+- Admin enlaza al acceso administrativo real de la portada.
+- Contasimple muestra 'by Cegid' integrado en la pastilla azul del título.
+- eJornada muestra Cegid junto al título, incluida la portada.
+- Se eliminan las tarjetas genéricas 'Información del producto'.
+- eFirma GO usa contrato + teléfono con firma + logo de Rubén Cerlem Digital Solutions.
+- Contasimple usa dashboard/factura + logo de Rubén Cerlem Digital Solutions.
+- eJornada usa dispositivo de fichaje/calendario + logo de Rubén Cerlem Digital Solutions.
+- Se elimina también el resumen de métricas de eFirma GO dentro de su página para simplificarla.
+- Cada página mantiene funcionalidades, productos/planes, tarifas, demo y contacto.

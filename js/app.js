@@ -962,3 +962,15 @@ renderAdminDemoList();
 otherSolutionName?.addEventListener("input",()=>{
   if(selectedDirectSolution === "Otros") renderDirectComparison();
 });
+
+
+// Abrir automáticamente Admin si se llega desde una página de producto.
+try{
+  const params = new URLSearchParams(window.location.search);
+  if(params.get("admin")==="1"){
+    setTimeout(()=>{
+      if(typeof openAdmin==="function") openAdmin();
+      history.replaceState({},document.title,window.location.pathname+window.location.hash);
+    },80);
+  }
+}catch(e){}
