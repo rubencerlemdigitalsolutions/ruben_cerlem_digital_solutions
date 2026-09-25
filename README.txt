@@ -153,3 +153,14 @@ MULTISOLUCIÓN V3 ORDENADA:
 - El comparador directo solo ofrece Signaturit, DocuSign y Otros.
 - En Otros se puede escribir otra solución; si existe en la base interna se recuperan sus datos.
 - Se ha mejorado la presentación visual del selector de soluciones y los bloques de producto.
+
+
+MULTISOLUCIÓN V4 - PÁGINAS DE PRODUCTO:
+- Portada: eFirma GO mantiene el hero principal.
+- Justo debajo aparecen Contasimple y eJornada en dos tarjetas visuales, una a cada lado.
+- Se elimina de la portada el bloque interno 'Tres soluciones, tres necesidades distintas'.
+- Se crean páginas independientes: efirma-go.html, contasimple.html y ejornada.html.
+- Cada página contiene únicamente producto, funcionalidades, tarifas, demo y contacto de esa solución.
+- La comparativa Signaturit/DocuSign/Otros queda solo dentro de eFirma GO.
+- Demo se solicita dentro de cada página de producto.
+- Se mantienen los colores y la identidad visual en tema claro y oscuro.
