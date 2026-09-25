@@ -1100,3 +1100,58 @@ html[data-theme="dark"] .visual-brand-logo.logo-dark{display:block}
   .jornada-side-plain .detail-time-device-plain{width:150px;height:235px;}
   .jornada-side-plain .detail-calendar-card-plain{width:118px;right:0;}
 }
+
+
+/* === V8 · Ajustes de separación y tamaño en Contasimple / eJornada === */
+.conta-side-plain,
+.jornada-side-plain{
+  justify-self:start;
+  align-items:center;
+}
+
+.conta-side-plain{
+  grid-template-columns:minmax(0,300px) 170px;
+  gap:22px;
+}
+.conta-side-plain .detail-plain-visual{
+  justify-items:start;
+  padding-left:4px;
+}
+.conta-side-plain .detail-dashboard-plain{
+  max-width:285px;
+}
+.conta-side-plain .mini-invoice{
+  width:122px;
+  right:-10px;
+  bottom:-12px;
+}
+
+.jornada-side-plain{
+  grid-template-columns:minmax(0,220px) 170px;
+  gap:22px;
+}
+.jornada-side-plain .detail-plain-visual{
+  justify-items:start;
+  transform:translateX(-8px);
+}
+.jornada-side-plain .detail-time-device-plain{
+  justify-self:start;
+}
+.jornada-side-plain .detail-calendar-card-plain{
+  right:2px;
+  bottom:8px;
+}
+
+@media(max-width:980px){
+  .conta-side-plain,
+  .jornada-side-plain{
+    grid-template-columns:1fr;
+    justify-items:center;
+  }
+  .conta-side-plain .detail-plain-visual,
+  .jornada-side-plain .detail-plain-visual{
+    justify-items:center;
+    padding-left:0;
+    transform:none;
+  }
+}

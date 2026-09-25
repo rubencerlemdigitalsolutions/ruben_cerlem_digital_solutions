@@ -190,3 +190,8 @@ MULTISOLUCIÓN V7 - VISUALES SEPARADOS:
 - Contasimple: en solicitar información, la derecha muestra solo la tablet/dashboard con la factura y, separado, el logo de Rubén Cerlem Digital Solutions.
 - eJornada: en solicitar información, la derecha muestra solo el dispositivo horario con el bloque de septiembre y, separado, el logo de Rubén Cerlem Digital Solutions.
 - Se elimina el recuadro unificado para ambos casos, siguiendo la lógica visual del menú principal de eFirma GO.
+
+
+V8 - AJUSTES FINOS DE VISUALES:
+- Contasimple: visual de tablet + factura ligeramente más grande, desplazado un poco a la izquierda y separado del logo.
+- eJornada: se mantiene el tamaño del visual, pero se desplaza ligeramente a la izquierda y se separa del logo para evitar que queden pegados.
