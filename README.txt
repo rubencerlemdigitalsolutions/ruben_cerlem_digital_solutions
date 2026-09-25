@@ -195,3 +195,10 @@ MULTISOLUCIÓN V7 - VISUALES SEPARADOS:
 V8 - AJUSTES FINOS DE VISUALES:
 - Contasimple: visual de tablet + factura ligeramente más grande, desplazado un poco a la izquierda y separado del logo.
 - eJornada: se mantiene el tamaño del visual, pero se desplaza ligeramente a la izquierda y se separa del logo para evitar que queden pegados.
+
+
+VERSIÓN 9 - CORRECCIÓN DE SEPARACIONES:
+- eJornada: se amplía el área derecha a 510 px para que tablet/calendario y logo no puedan tocarse.
+- eJornada: separación fija de 90 px entre el visual y el logo.
+- Contasimple: visual de dashboard/factura ampliado y separado 35 px del logo.
+- Portada: Contasimple muestra Cegid, no by Cegid.
