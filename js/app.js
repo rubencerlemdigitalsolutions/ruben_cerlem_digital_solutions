@@ -119,28 +119,96 @@ function directValueClass(value){
   return "";
 }
 
+
+
+// === Comparativa V3: Signaturit / DocuSign / Otros ===
+const otherSolutionField = document.getElementById("otherSolutionField");
+const otherSolutionName = document.getElementById("otherSolutionName");
+
+function resolveOtherSolutionName(){
+  return (otherSolutionName?.value || "").trim();
+}
+
+function updateOtherSolutionUI(){
+  const isOther = selectedDirectSolution === "Otros";
+  if(otherSolutionField) otherSolutionField.hidden = !isOther;
+  if(!isOther && otherSolutionName) otherSolutionName.value = "";
+}
+
 function renderDirectComparison(){
   if(!directOutput) return;
-  const competitorName = selectedDirectSolution;
+  let competitorName = selectedDirectSolution;
 
   if(!competitorName){
     directOutput.innerHTML = `
       <div class="compare-empty-state">
-        Selecciona la solución que utilizas actualmente para ver la comparativa directa con eFirma GO.
+        Selecciona Signaturit, DocuSign u Otros para ver la comparativa directa con eFirma GO.
       </div>`;
     return;
+  }
+
+  if(competitorName === "Otros"){
+    const typedName = resolveOtherSolutionName();
+
+    if(!typedName){
+      directOutput.innerHTML = `
+        <div class="compare-empty-state">
+          Escribe el nombre de la solución que utilizas actualmente.
+        </div>`;
+      return;
+    }
+
+    const knownKey = Object.keys(directCompareData).find(
+      key => key.toLowerCase() === typedName.toLowerCase()
+    );
+
+    if(knownKey){
+      competitorName = knownKey;
+    }else{
+      const efirma = directCompareData["eFirma GO"];
+      directOutput.innerHTML = `
+        <div class="compare-custom-name">
+          Comparando <strong>${typedName}</strong> con <strong>eFirma GO</strong>
+        </div>
+        <table class="direct-compare-table">
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>${typedName}</th>
+              <th class="efirma-col">eFirma GO</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${directCompareRows.map(([label,key]) => `
+              <tr>
+                <td>${label}</td>
+                <td><span class="direct-compare-value unknown">No indicado</span></td>
+                <td class="efirma-col">
+                  <span class="direct-compare-value ${directValueClass(efirma[key])}">${efirma[key]}</span>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+        <div class="compare-custom-note">
+          No tenemos todavía datos cargados para ${typedName}. Puedes enviarnos el nombre de la solución y revisaremos sus características.
+        </div>`;
+      return;
+    }
   }
 
   const competitor = directCompareData[competitorName];
   const efirma = directCompareData["eFirma GO"];
   if(!competitor) return;
 
+  const displayName = competitorName === "Docusign" ? "DocuSign" : competitorName;
+
   directOutput.innerHTML = `
     <table class="direct-compare-table">
       <thead>
         <tr>
           <th>Característica</th>
-          <th>${competitorName}</th>
+          <th>${displayName}</th>
           <th class="efirma-col">eFirma GO</th>
         </tr>
       </thead>
@@ -160,6 +228,8 @@ function openDirectCompare(){
   if(!directModal) return;
   selectedDirectSolution = "";
   if(directCompareLabel) directCompareLabel.textContent = "Selecciona tu solución";
+  if(otherSolutionField) otherSolutionField.hidden = true;
+  if(otherSolutionName) otherSolutionName.value = "";
   if(directDropdown) directDropdown.classList.remove("open");
   if(directCompareButton) directCompareButton.setAttribute("aria-expanded","false");
   directCompareMenu?.querySelectorAll("[data-solution]").forEach(item=>item.removeAttribute("aria-selected"));
@@ -193,7 +263,8 @@ directCompareButton?.addEventListener("click",()=>{
 directCompareMenu?.querySelectorAll("[data-solution]").forEach(item=>{
   item.addEventListener("click",()=>{
     selectedDirectSolution = item.dataset.solution || "";
-    if(directCompareLabel) directCompareLabel.textContent = selectedDirectSolution;
+    if(directCompareLabel) directCompareLabel.textContent = selectedDirectSolution === "Docusign" ? "DocuSign" : selectedDirectSolution;
+    updateOtherSolutionUI();
     directCompareMenu.querySelectorAll("[data-solution]").forEach(opt=>{
       opt.setAttribute("aria-selected", opt === item ? "true" : "false");
     });
@@ -887,3 +958,7 @@ adminAddDemoSlot?.addEventListener("click",()=>{
   renderAdminDemoList();renderDemoSlots();
 });
 renderAdminDemoList();
+
+otherSolutionName?.addEventListener("input",()=>{
+  if(selectedDirectSolution === "Otros") renderDirectComparison();
+});

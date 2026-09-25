@@ -143,3 +143,13 @@ DEMOS V2:
 - La solicitud se envía a rubencerlemdigitalsolutions@gmail.com mediante el mismo sistema del formulario de contacto.
 - En Admin se añade un gestor para publicar/eliminar disponibilidades de demo.
 - No se inventan fechas: hasta que Admin publique disponibilidad, el cliente verá que no hay fechas publicadas.
+
+
+MULTISOLUCIÓN V3 ORDENADA:
+- eFirma GO, Contasimple y eJornada quedan en bloques totalmente independientes.
+- Se conserva la paleta actual en tema claro y oscuro.
+- eFirma GO muestra Personal, Professional, Business y Business Plus.
+- La comparativa pública solo muestra eFirma GO, Signaturit y DocuSign.
+- El comparador directo solo ofrece Signaturit, DocuSign y Otros.
+- En Otros se puede escribir otra solución; si existe en la base interna se recuperan sus datos.
+- Se ha mejorado la presentación visual del selector de soluciones y los bloques de producto.

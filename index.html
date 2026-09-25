@@ -100,11 +100,29 @@
   
   <section id="soluciones-hub" class="solutions-hub">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">SOLUCIONES</span>
-        <h2>Una misma web, varias soluciones Cegid para cada necesidad.</h2>
-        <p>eFirma GO continúa como solución principal de firma electrónica. A partir de ahora se incorporan también Contasimple by Cegid y eJornada con sus funcionalidades y tarifas oficiales.</p>
+      <div class="solution-overview">
+        <div class="solution-overview-copy">
+          <span class="eyebrow">SOLUCIONES</span>
+          <h2>Tres soluciones, tres necesidades distintas.</h2>
+          <p>La web queda organizada por producto. eFirma GO, Contasimple by Cegid y eJornada tienen sus propias funcionalidades, tarifas y acciones, sin mezclar contenidos.</p>
+        </div>
+
+        <div class="solution-switcher" aria-label="Soluciones disponibles">
+          <a class="solution-switch active" href="#efirma-productos">
+            <span class="solution-switch-icon">01</span>
+            <span><strong>eFirma GO</strong><small>Firma electrónica</small></span>
+          </a>
+          <a class="solution-switch" href="#contasimple">
+            <span class="solution-switch-icon">02</span>
+            <span><strong>Contasimple</strong><small>Gestión y facturación</small></span>
+          </a>
+          <a class="solution-switch" href="#ejornada">
+            <span class="solution-switch-icon">03</span>
+            <span><strong>eJornada</strong><small>Control horario</small></span>
+          </a>
+        </div>
       </div>
+
       <div class="demo-intro-card">
         <div>
           <span class="eyebrow">DEMOSTRACIONES</span>
@@ -113,26 +131,80 @@
         </div>
         <button class="btn primary" type="button" data-request-demo data-demo-product="">Solicitar demo</button>
       </div>
+    </div>
+  </section>
 
-      <div class="solution-cards">
-        <article class="solution-card featured">
-          <span class="solution-tag">Firma electrónica</span>
-          <h3>eFirma GO</h3>
-          <p>Firma, custodia documental, API y firma presencial para empresas que quieren digitalizar contratos y documentos.</p>
-          <a class="btn secondary" href="#inicio">Ver eFirma GO</a>
+  <section id="efirma-productos" class="product-detail-section efirma-plans-section">
+    <div class="container">
+      <div class="product-detail-head">
+        <div>
+          <span class="eyebrow">EFIRMA GO</span>
+          <h2>Planes de firma electrónica para distintos equipos.</h2>
+          <p>eFirma GO mantiene su espacio independiente dentro de la web. Elige el plan según el número de usuarios y el volumen documental.</p>
+        </div>
+        <div class="product-detail-actions">
+          <div class="product-badge">Cegid</div>
+          <button class="btn primary" type="button" data-request-demo data-demo-product="eFirma GO">Solicitar demo</button>
+        </div>
+      </div>
+
+      <div class="pricing-grid four efirma-plan-grid">
+        <article class="price-card">
+          <span class="plan-name">Personal</span>
+          <strong>9 €/mes</strong>
+          <small>1 usuario · 60 documentos/año</small>
+          <ul>
+            <li>Aplicación móvil</li>
+            <li>Flujos de trabajo</li>
+            <li>Plantillas de firmantes</li>
+            <li>Firma presencial</li>
+          </ul>
         </article>
-        <article class="solution-card">
-          <span class="solution-tag">Gestión y facturación</span>
-          <h3>Contasimple by Cegid</h3>
-          <p>Facturación, impuestos, gastos, cobros, inventario, clientes y proveedores desde una única plataforma.</p>
-          <a class="btn secondary" href="#contasimple">Ver funcionalidades</a>
+
+        <article class="price-card">
+          <span class="plan-name">Professional</span>
+          <strong>19 €/mes</strong>
+          <small>3 usuarios · 360 documentos/año</small>
+          <ul>
+            <li>Firma masiva</li>
+            <li>Recordatorios</li>
+            <li>Personalización de marca</li>
+            <li>Campos de formulario</li>
+          </ul>
         </article>
-        <article class="solution-card">
-          <span class="solution-tag">Control horario</span>
-          <h3>eJornada</h3>
-          <p>Fichajes, control de presencia, horarios, centros de trabajo, ausencias, vacaciones e informes laborales.</p>
-          <a class="btn secondary" href="#ejornada">Ver funcionalidades</a>
+
+        <article class="price-card featured">
+          <span class="plan-name">Business</span>
+          <strong>29 €/mes</strong>
+          <small>5 usuarios · 1.200 documentos/año</small>
+          <ul>
+            <li>Redirección URL tras firma</li>
+            <li>Firma presencial</li>
+            <li>Listas de envío</li>
+            <li>Firma simple, avanzada y cualificada</li>
+          </ul>
         </article>
+
+        <article class="price-card">
+          <span class="plan-name">Business Plus</span>
+          <strong>57 €/mes</strong>
+          <small>8 usuarios · 3.000 documentos/año</small>
+          <ul>
+            <li>API incluida</li>
+            <li>Usuarios extra disponibles</li>
+            <li>Plantillas de destinatarios</li>
+            <li>Funciones Business incluidas</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="efirma-compare-strip">
+        <div>
+          <span class="eyebrow">COMPARATIVA</span>
+          <strong>¿Vienes de otra solución de firma electrónica?</strong>
+          <small>Compara eFirma GO directamente con Signaturit, DocuSign o indica otra solución.</small>
+        </div>
+        <button class="btn secondary" type="button" data-open-direct-compare>Comparar mi solución</button>
       </div>
     </div>
   </section>
@@ -256,7 +328,7 @@
       <div class="comparison-actions">
         <button class="comparison-toggle" type="button" aria-expanded="false" aria-controls="comparisonPanel">
           <span class="comparison-icon">▥</span>
-          <span><strong>Tabla completa de soluciones</strong><small>Consulta todos los datos de la comparativa general.</small></span>
+          <span><strong>Comparativa principal</strong><small>eFirma GO frente a Signaturit y DocuSign.</small></span>
           <span class="chevron">⌄</span>
         </button>
         <button class="btn primary direct-compare-launch" type="button" data-open-direct-compare>
@@ -269,21 +341,9 @@
             <thead><tr><th>Solución</th><th>Prueba gratis</th><th>Firmas iniciales</th><th>Coste anual</th><th>Precio/doc. desde</th><th>Precio/doc. hasta</th><th>API</th><th>Peso envío</th><th>Custodia</th><th>App móvil</th><th>Campos editables</th><th>Firma presencial</th></tr></thead>
             <tbody>
               <tr class="highlight"><td>eFirma GO</td><td>Sí</td><td>60</td><td>108 €</td><td>1,8 €</td><td>0,158 €</td><td>Gratuita</td><td>25 Mb</td><td>5 años</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
-              <tr><td>Logalty</td><td>Sí</td><td>Recarga saldo</td><td>Recarga saldo</td><td>Recarga saldo</td><td>3 €</td><td>—</td><td>1 Mb</td><td>2 años</td><td>Sí</td><td>—</td><td>No</td></tr>
               <tr><td>Signaturit</td><td>Sí</td><td>60</td><td>396 €</td><td>6,6 €</td><td>2,75 €</td><td>Pago</td><td>15 Mb</td><td>5 años</td><td>Sí</td><td>Sí</td><td>No</td></tr>
-              <tr><td>Firmafy</td><td>Sí</td><td>300</td><td>360 €</td><td>1,2 €</td><td>0,72 €</td><td>Gratuita</td><td>—</td><td>10 años</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
-              <tr><td>Docusign</td><td>Sí</td><td>60</td><td>108 €</td><td>1,8 €</td><td>4,56 €</td><td>Pago</td><td>23,8 Mb</td><td>—</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
-              <tr><td>Click & Sign</td><td>No</td><td>Recarga saldo</td><td>Recarga saldo</td><td>1,43 €</td><td>1,43 €</td><td>Gratuita</td><td>25 Mb</td><td>5 años</td><td>No</td><td>—</td><td>No</td></tr>
-              <tr><td>Viafirma</td><td>Sí</td><td>60</td><td>54 €</td><td>0,9 €</td><td>—</td><td>Pago</td><td>—</td><td>—</td><td>Sí</td><td>—</td><td>—</td></tr>
-              <tr><td>Evicertia</td><td>No</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Pago</td><td>3 Mb</td><td>1 año</td><td>No</td><td>Sí</td><td>Sí</td></tr>
-              <tr><td>Tecalis</td><td>Sí</td><td>50</td><td>240 €</td><td>4,8 €</td><td>1,6 €</td><td>Pago</td><td>25 Mb</td><td>5 años</td><td>Sí</td><td>No</td><td>No</td></tr>
-              <tr><td>YouSign</td><td>Sí</td><td>—</td><td>300 €</td><td>—</td><td>—</td><td>Pago</td><td>—</td><td>—</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
-              <tr><td>PandaDoc</td><td>Sí</td><td>—</td><td>533 €</td><td>—</td><td>—</td><td>Pago</td><td>—</td><td>—</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
-              <tr><td>EverSign</td><td>Sí</td><td>—</td><td>460 €</td><td>—</td><td>—</td><td>Pago</td><td>—</td><td>—</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
-              <tr><td>CocoSign</td><td>Sí</td><td>—</td><td>180 €</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Sí</td><td>No</td><td>No</td></tr>
-              <tr><td>SignHost</td><td>Sí</td><td>100</td><td>95 €</td><td>—</td><td>—</td><td>Pago</td><td>—</td><td>—</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
-              <tr><td>Xodo Sign</td><td>Sí</td><td>—</td><td>460 €</td><td>—</td><td>—</td><td>Pago</td><td>—</td><td>—</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
-            </tbody>
+              <tr><td>DocuSign</td><td>Sí</td><td>60</td><td>108 €</td><td>1,8 €</td><td>4,56 €</td><td>Pago</td><td>23,8 Mb</td><td>—</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+</tbody>
           </table>
         </div>
         <p class="source-note">Fuente: datos facilitados. “—” = no indicado. Se mantienen los encabezados «desde/hasta» del documento original.</p>
@@ -400,7 +460,7 @@
         <div>
           <span class="eyebrow">COMPARATIVA DIRECTA</span>
           <h2 id="directCompareTitle">Tu solución frente a eFirma GO</h2>
-          <p>Selecciona la solución que utilizas actualmente. eFirma GO permanece fija para que veas únicamente la comparación que te interesa.</p>
+          <p>Selecciona Signaturit, DocuSign u Otros. eFirma GO permanece fija para mostrar solo la comparación que te interesa.</p>
         </div>
         <button class="direct-compare-close" type="button" aria-label="Cerrar comparativa" data-close-direct-compare>×</button>
       </div>
@@ -421,22 +481,15 @@
             </button>
 
             <div class="solution-dropdown-menu" id="directCompareMenu" role="listbox" aria-label="Soluciones disponibles">
-              <button type="button" role="option" data-solution="Viafirma">Viafirma</button>
-              <button type="button" role="option" data-solution="EverSign">EverSign</button>
-              <button type="button" role="option" data-solution="Logalty">Logalty</button>
               <button type="button" role="option" data-solution="Signaturit">Signaturit</button>
-              <button type="button" role="option" data-solution="Firmafy">Firmafy</button>
-              <button type="button" role="option" data-solution="Docusign">Docusign</button>
-              <button type="button" role="option" data-solution="Click & Sign">Click &amp; Sign</button>
-              <button type="button" role="option" data-solution="Evicertia">Evicertia</button>
-              <button type="button" role="option" data-solution="Tecalis">Tecalis</button>
-              <button type="button" role="option" data-solution="YouSign">YouSign</button>
-              <button type="button" role="option" data-solution="PandaDoc">PandaDoc</button>
-              <button type="button" role="option" data-solution="CocoSign">CocoSign</button>
-              <button type="button" role="option" data-solution="SignHost">SignHost</button>
-              <button type="button" role="option" data-solution="Xodo Sign">Xodo Sign</button>
+              <button type="button" role="option" data-solution="Docusign">DocuSign</button>
+              <button type="button" role="option" data-solution="Otros">Otros</button>
             </div>
           </div>
+          <label class="other-solution-field" id="otherSolutionField" hidden>
+            <span>¿Qué solución utilizas?</span>
+            <input id="otherSolutionName" type="text" placeholder="Ej.: Firmafy">
+          </label>
         </div>
         <div class="fixed-product">
           <span>Producto con el que se compara</span>

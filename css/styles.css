@@ -674,3 +674,143 @@ body.demo-lock{overflow:hidden}
   .demo-slots{grid-template-columns:1fr}
   .admin-demo-grid{grid-template-columns:1fr}
 }
+
+
+/* === V3 · Organización visual por solución === */
+.solution-overview{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:42px;
+  align-items:center;
+}
+.solution-overview-copy p{
+  color:var(--muted);
+  line-height:1.65;
+  max-width:650px;
+}
+.solution-switcher{
+  display:grid;
+  gap:10px;
+}
+.solution-switch{
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:13px;
+  align-items:center;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--surface2);
+  transition:.22s;
+}
+.solution-switch:hover,
+.solution-switch.active{
+  border-color:color-mix(in srgb,var(--blue) 55%,var(--line));
+  transform:translateX(4px);
+  background:color-mix(in srgb,var(--blue) 5%,var(--surface2));
+}
+.solution-switch-icon{
+  width:38px;height:38px;border-radius:12px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--blue),#0c5aa7);
+  color:#fff;font-size:10px;font-weight:900;
+}
+.solution-switch strong,
+.solution-switch small{display:block}
+.solution-switch strong{font-size:13px}
+.solution-switch small{margin-top:3px;color:var(--muted);font-size:9px}
+
+.product-detail-section{
+  scroll-margin-top:92px;
+}
+.efirma-plans-section{
+  background:
+    radial-gradient(circle at 90% 12%,color-mix(in srgb,var(--blue) 10%,transparent),transparent 34%),
+    var(--surface);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.pricing-grid.four{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.efirma-plan-grid{margin-top:28px}
+.efirma-compare-strip{
+  margin-top:18px;
+  padding:17px 19px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--surface2);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.efirma-compare-strip strong,
+.efirma-compare-strip small{display:block}
+.efirma-compare-strip strong{margin-top:4px;font-size:13px}
+.efirma-compare-strip small{margin-top:4px;color:var(--muted);font-size:9px}
+
+.other-solution-field{
+  display:grid;
+  gap:7px;
+  margin-top:10px;
+}
+.other-solution-field[hidden]{display:none!important}
+.other-solution-field span{
+  font-size:10px;
+  font-weight:900;
+}
+.other-solution-field input{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:var(--surface);
+  color:var(--text);
+}
+.compare-custom-name{
+  margin-bottom:12px;
+  padding:11px 13px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--surface2);
+  color:var(--muted);
+  font-size:11px;
+}
+.compare-custom-name strong{color:var(--text)}
+.compare-custom-note{
+  margin-top:12px;
+  padding:11px 13px;
+  border:1px dashed var(--line);
+  border-radius:12px;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+}
+
+html[data-theme="dark"] .solutions-hub,
+html[data-theme="dark"] .product-detail-section{
+  background:var(--bg);
+}
+html[data-theme="dark"] .efirma-plans-section{
+  background:
+    radial-gradient(circle at 88% 10%,rgba(61,168,255,.11),transparent 36%),
+    var(--bg);
+}
+html[data-theme="dark"] .solution-switch,
+html[data-theme="dark"] .efirma-compare-strip,
+html[data-theme="dark"] .product-function-grid article,
+html[data-theme="dark"] .price-card{
+  background:var(--surface);
+}
+
+@media(max-width:1050px){
+  .pricing-grid.four{grid-template-columns:1fr 1fr}
+}
+@media(max-width:820px){
+  .solution-overview{grid-template-columns:1fr}
+  .efirma-compare-strip{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:650px){
+  .pricing-grid.four{grid-template-columns:1fr}
+}
