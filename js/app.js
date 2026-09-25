@@ -744,3 +744,146 @@ document.getElementById("cegidEmailDraftButton")?.addEventListener("click",()=>{
 });
 
 setPdfButtonsEnabled(false);
+
+
+// === Solicitudes de demo y disponibilidad ===
+const DEMO_AVAILABILITY_KEY = "rcds_demo_availability_v1";
+const demoModal = document.getElementById("demoModal");
+const demoProduct = document.getElementById("demoProduct");
+const demoSlots = document.getElementById("demoSlots");
+const demoEmpty = document.getElementById("demoEmpty");
+const demoSelectedSlot = document.getElementById("demoSelectedSlot");
+const demoSubmitButton = document.getElementById("demoSubmitButton");
+const demoRequestForm = document.getElementById("demoRequestForm");
+const demoStatus = document.getElementById("demoStatus");
+
+function getDemoAvailability(){
+  try{return JSON.parse(localStorage.getItem(DEMO_AVAILABILITY_KEY)||"[]")}
+  catch{return []}
+}
+function setDemoAvailability(data){
+  localStorage.setItem(DEMO_AVAILABILITY_KEY,JSON.stringify(data));
+}
+function formatDemoSlot(slot){
+  const d=new Date(slot.date+"T"+slot.time);
+  if(Number.isNaN(d.getTime())) return `${slot.date} · ${slot.time}`;
+  return new Intl.DateTimeFormat("es-ES",{
+    weekday:"short",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"
+  }).format(d);
+}
+function renderDemoSlots(){
+  if(!demoProduct||!demoSlots) return;
+  const product=demoProduct.value;
+  const all=getDemoAvailability()
+    .filter(x=>!product||x.product===product)
+    .filter(x=>new Date(x.date+"T"+x.time)>=new Date())
+    .sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+
+  demoSlots.innerHTML="";
+  demoSelectedSlot.value="";
+  demoSubmitButton.disabled=true;
+  demoEmpty.style.display=all.length?"none":"block";
+
+  all.forEach(slot=>{
+    const b=document.createElement("button");
+    b.type="button";
+    b.className="demo-slot";
+    b.textContent=formatDemoSlot(slot);
+    b.addEventListener("click",()=>{
+      demoSlots.querySelectorAll(".demo-slot").forEach(x=>x.classList.remove("selected"));
+      b.classList.add("selected");
+      demoSelectedSlot.value=`${slot.product} | ${slot.date} | ${slot.time}`;
+      demoSubmitButton.disabled=false;
+    });
+    demoSlots.appendChild(b);
+  });
+}
+function openDemo(product=""){
+  if(!demoModal) return;
+  demoModal.classList.add("open");
+  demoModal.setAttribute("aria-hidden","false");
+  document.body.classList.add("demo-lock");
+  if(demoProduct){
+    demoProduct.value=product&&[...demoProduct.options].some(o=>o.value===product)?product:"";
+  }
+  renderDemoSlots();
+}
+function closeDemo(){
+  demoModal?.classList.remove("open");
+  demoModal?.setAttribute("aria-hidden","true");
+  document.body.classList.remove("demo-lock");
+}
+document.querySelectorAll("[data-request-demo]").forEach(btn=>btn.addEventListener("click",()=>openDemo(btn.dataset.demoProduct||"")));
+document.querySelectorAll("[data-close-demo]").forEach(el=>el.addEventListener("click",closeDemo));
+demoProduct?.addEventListener("change",renderDemoSlots);
+
+demoRequestForm?.addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!demoSelectedSlot.value){
+    demoStatus.textContent="Selecciona una fecha disponible.";
+    demoStatus.className="demo-status error";
+    return;
+  }
+  if(!demoRequestForm.reportValidity()) return;
+
+  demoSubmitButton.disabled=true;
+  demoStatus.textContent="Enviando solicitud…";
+  demoStatus.className="demo-status";
+
+  try{
+    const fd=new FormData(demoRequestForm);
+    const response=await fetch("https://formsubmit.co/ajax/rubencerlemdigitalsolutions@gmail.com",{
+      method:"POST",headers:{"Accept":"application/json"},body:fd
+    });
+    if(!response.ok) throw new Error();
+    demoStatus.textContent="Solicitud de demo enviada correctamente.";
+    demoStatus.className="demo-status success";
+    demoRequestForm.reset();
+    renderDemoSlots();
+  }catch{
+    demoStatus.textContent="No se pudo enviar la solicitud. Inténtalo de nuevo.";
+    demoStatus.className="demo-status error";
+    demoSubmitButton.disabled=false;
+  }
+});
+
+// Admin demo availability manager
+const adminDemoProduct=document.getElementById("adminDemoProduct");
+const adminDemoDate=document.getElementById("adminDemoDate");
+const adminDemoTime=document.getElementById("adminDemoTime");
+const adminAddDemoSlot=document.getElementById("adminAddDemoSlot");
+const adminDemoList=document.getElementById("adminDemoList");
+
+function renderAdminDemoList(){
+  if(!adminDemoList) return;
+  const data=getDemoAvailability().sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+  adminDemoList.innerHTML="";
+  data.forEach((slot,index)=>{
+    const row=document.createElement("div");
+    row.className="admin-demo-item";
+    row.innerHTML=`<span><b>${slot.product}</b> · ${formatDemoSlot(slot)}</span>`;
+    const del=document.createElement("button");
+    del.type="button";del.textContent="Eliminar";
+    del.addEventListener("click",()=>{
+      const next=getDemoAvailability();
+      next.splice(index,1);
+      setDemoAvailability(next);
+      renderAdminDemoList();renderDemoSlots();
+    });
+    row.appendChild(del);
+    adminDemoList.appendChild(row);
+  });
+}
+adminAddDemoSlot?.addEventListener("click",()=>{
+  const product=adminDemoProduct?.value||"";
+  const date=adminDemoDate?.value||"";
+  const time=adminDemoTime?.value||"";
+  if(!product||!date||!time) return;
+  const data=getDemoAvailability();
+  if(!data.some(x=>x.product===product&&x.date===date&&x.time===time)){
+    data.push({product,date,time});
+    setDemoAvailability(data);
+  }
+  renderAdminDemoList();renderDemoSlots();
+});
+renderAdminDemoList();

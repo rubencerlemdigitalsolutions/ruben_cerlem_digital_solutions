@@ -126,3 +126,20 @@ LOGIN ADMIN V3 CORREGIDO:
 - Accesos posteriores: usuario + contraseña propia -> entra directamente al panel Admin.
 - Nueva contraseña / Confirmación solo vuelven a aparecer al pulsar Restablecer contraseña.
 - El parte de venta no se puede abrir sin sesión Admin iniciada.
+
+
+MULTISOLUCIÓN V1:
+- Se añaden Contasimple by Cegid y eJornada manteniendo eFirma GO.
+- Se incorpora un hub de Soluciones.
+- Contasimple: funcionalidades y planes Básico, Profesional y Ultimate.
+- eJornada: funcionalidades y planes Solo fichajes / Fichajes + Ausencias.
+- Se mantiene el área Admin existente.
+- Demo no implementada todavía; esta versión corresponde a la estructura inicial solicitada.
+
+
+DEMOS V2:
+- Botón Solicitar demo para Contasimple y eJornada, más acceso general desde Soluciones.
+- El cliente selecciona una solución y solo ve las fechas/horas publicadas como disponibles.
+- La solicitud se envía a rubencerlemdigitalsolutions@gmail.com mediante el mismo sistema del formulario de contacto.
+- En Admin se añade un gestor para publicar/eliminar disponibilidades de demo.
+- No se inventan fechas: hasta que Admin publique disponibilidad, el cliente verá que no hay fechas publicadas.
