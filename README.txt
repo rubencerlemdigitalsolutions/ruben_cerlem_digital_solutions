@@ -214,3 +214,9 @@ V10 - PLANES Y CABECERA UNIFICADA:
 - Contasimple: se muestran los tres planes principales oficiales Básico, Profesional y Ultimate, más complementos.
 - eJornada: se muestran los dos planes oficiales actuales Solo fichajes y Fichajes + Ausencias.
 - eFirma GO: se muestran Personal, Professional, Business y Business Plus.
+
+
+V11 - BOTONES PORTADA:
+- Contasimple: Ver planes a la izquierda y Solicitar información a la derecha.
+- eJornada: Ver planes a la izquierda y Solicitar información a la derecha.
+- Se aumenta la separación entre ambos botones para que no queden pegados.

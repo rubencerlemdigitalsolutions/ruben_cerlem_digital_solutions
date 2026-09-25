@@ -1386,3 +1386,21 @@ html[data-theme="dark"] .visual-brand-logo.logo-dark{display:block}
   .product-info-actions .btn,.home-product-actions .btn,.efirma-strip-actions .btn{width:100%}
   .efirma-product-hero-visual{grid-template-columns:1fr;min-height:600px}
 }
+
+
+/* === V11 · Botones portada Contasimple/eJornada === */
+.home-product-actions{
+  display:flex;
+  gap:16px;
+  flex-wrap:nowrap;
+  align-items:center;
+  margin-top:20px;
+}
+.home-product-actions .btn{
+  min-width:158px;
+  justify-content:center;
+}
+@media(max-width:760px){
+  .home-product-actions{flex-direction:column;align-items:stretch;gap:10px}
+  .home-product-actions .btn{width:100%}
+}
