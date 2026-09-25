@@ -220,3 +220,9 @@ V11 - BOTONES PORTADA:
 - Contasimple: Ver planes a la izquierda y Solicitar información a la derecha.
 - eJornada: Ver planes a la izquierda y Solicitar información a la derecha.
 - Se aumenta la separación entre ambos botones para que no queden pegados.
+
+
+V12 - EJORNADA RESTAURADA:
+- Se restaura completamente el bloque de eJornada en la portada.
+- Contasimple vuelve a mostrar su propio visual y enlaces.
+- eJornada vuelve a mostrar su tarjeta independiente con Ver planes y Solicitar información.
