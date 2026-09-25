@@ -9,22 +9,24 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<header>
-  <div class="container nav">
-    <a class="header-brand" href="index.html" aria-label="Rubén Cerlem Digital Solutions">
-      <img class="header-logo logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
-      <img class="header-logo logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
+<header class="site-header">
+  <div class="container nav-shell">
+    <a class="brand-link" href="index.html" aria-label="Rubén Cerlem Digital Solutions">
+      <img class="brand-logo brand-logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
+      <img class="brand-logo brand-logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
     </a>
     <nav class="main-nav" aria-label="Navegación principal">
       <a href="index.html">Inicio</a>
       <a href="efirma-go.html">eFirma GO</a>
       <a href="contasimple.html">Contasimple</a>
       <a href="ejornada.html">eJornada</a>
-      <a href="#contacto-producto" class="nav-cta">Contactar</a>
     </nav>
-    <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
-      <span class="sun">☀</span><span class="moon">☾</span><i class="thumb"></i>
-    </button>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar tema" title="Claro / oscuro">
+        <span class="sun">☀</span><span class="moon">☾</span><i class="thumb"></i>
+      </button>
+      <a class="btn primary compact" href="#contacto-producto">Contactar</a>
+    </div>
   </div>
 </header>
 <main>
@@ -35,33 +37,36 @@
       <div class="title-row"><h1>eFirma GO</h1><span class="cegid-pill">Cegid</span></div>
       <p class="hero-lead">Firma documentos de forma rápida, segura y con validez legal.</p>
       <ul class="hero-points"><li>API gratuita incluida</li><li>Custodia documental</li><li>Firma presencial y móvil</li></ul>
-      <div class="hero-actions">
-        <a class="btn primary" href="#precios-producto">Ver tarifas <span>→</span></a>
-        <button class="btn secondary" type="button" data-request-demo data-demo-product="eFirma GO">Solicitar demo</button>
+      <div class="hero-actions product-info-actions">
+        <a class="btn primary" href="#precios-producto">Ver planes <span>→</span></a>
+        <a class="btn primary" href="#contacto-producto">Solicitar información</a>
       </div>
     </div>
     
-    <div class="product-visual-card efirma-detail-visual">
-      <div class="visual-logo-wrap">
-        <img class="visual-brand-logo logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
-        <img class="visual-brand-logo logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
-      </div>
-      <div class="efirma-doc">
-        <div class="efirma-doc-bar"></div>
-        <strong>Contrato de servicios</strong>
-        <span></span><span></span><span></span>
-        <div class="efirma-doc-signed">Documento firmado</div>
-      </div>
-      <div class="efirma-phone">
-        <div class="efirma-phone-top"></div>
-        <small>Firma</small>
-        <div class="signature-wrap mini-signature">
-          <img class="signature-img signature-img-light" src="assets/signature-light.png" alt="Firma manuscrita">
-          <img class="signature-img signature-img-dark" src="assets/signature-dark.png" alt="Firma manuscrita">
+    <div class="hero-visual efirma-product-hero-visual" aria-label="Vista de eFirma GO en portátil y móvil junto al logo de Rubén Cerlem Digital Solutions">
+        <div class="device-stage">
+          <div class="laptop">
+            <div class="laptop-screen">
+              <div class="doc-card">
+                <div class="doc-title">Contrato de servicios</div>
+                <span></span><span></span><span></span><span class="short"></span>
+                <div class="signed">✓ Firmado</div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-lines"><span></span><span></span><span></span></div>
+            <div class="signature-wrap" aria-label="Firma manuscrita"><img class="signature-img signature-img-light" src="assets/signature-light.png" alt="Firma manuscrita"><img class="signature-img signature-img-dark" src="assets/signature-dark.png" alt="Firma manuscrita"></div>
+            <div class="phone-btn">Firmar</div>
+          </div>
         </div>
-        <button type="button" tabindex="-1">Firmar</button>
+        <div class="hero-company-logo">
+          <img class="company-logo company-logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
+          <img class="company-logo company-logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
+        </div>
       </div>
-    </div>
   </div>
 </section>
 <section id="soluciones" class="info-section">
@@ -79,13 +84,11 @@
     <div class="container">
       <div class="product-detail-head">
         <div>
-          <span class="eyebrow">EFIRMA GO</span>
-          <h2>Planes de firma electrónica para distintos equipos.</h2>
-          <p>eFirma GO mantiene su espacio independiente dentro de la web. Elige el plan según el número de usuarios y el volumen documental.</p>
+          <span class="eyebrow">PLANES Y TARIFAS</span>
+          <h2>Todos los planes eFirma GO disponibles.</h2>
+          <p>Personal, Professional, Business y Business Plus, organizados por usuarios y volumen documental.</p>
         </div>
-        <div class="product-detail-actions">
-          <button class="btn primary" type="button" data-request-demo data-demo-product="eFirma GO">Solicitar demo</button>
-        </div>
+        
       </div>
 
       <div class="pricing-grid four efirma-plan-grid">
@@ -144,7 +147,7 @@
           <strong>¿Vienes de otra solución de firma electrónica?</strong>
           <small>Compara eFirma GO directamente con Signaturit, DocuSign o indica otra solución.</small>
         </div>
-        <button class="btn secondary" type="button" data-open-direct-compare>Comparar mi solución</button>
+        <div class="efirma-strip-actions"><button class="btn secondary" type="button" data-open-direct-compare>Comparar mi solución</button><button class="btn primary" type="button" data-request-demo data-demo-product="eFirma GO">Solicitar demo</button></div>
       </div>
     </div>
   </section><section id="recursos" class="comparison-section section-tight">

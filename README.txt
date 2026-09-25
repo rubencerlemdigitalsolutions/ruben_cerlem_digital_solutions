@@ -202,3 +202,15 @@ VERSIÓN 9 - CORRECCIÓN DE SEPARACIONES:
 - eJornada: separación fija de 90 px entre el visual y el logo.
 - Contasimple: visual de dashboard/factura ampliado y separado 35 px del logo.
 - Portada: Contasimple muestra Cegid, no by Cegid.
+
+
+V10 - PLANES Y CABECERA UNIFICADA:
+- Cabecera idéntica en portada, eFirma GO, Contasimple y eJornada: logo izquierda; Inicio/eFirma/Contasimple/eJornada; selector claro/oscuro; Contactar azul a la derecha.
+- Eliminado el Contactar duplicado dentro de la navegación textual.
+- Portada: Contasimple y eJornada añaden Ver planes + Solicitar información.
+- eFirma GO: Solicitar información ahora es azul como Ver planes.
+- eFirma GO: visual derecho reutiliza el diseño de portada con contrato, móvil, firma y logo separados.
+- eFirma GO: Comparar mi solución y Solicitar demo se agrupan en la franja inferior.
+- Contasimple: se muestran los tres planes principales oficiales Básico, Profesional y Ultimate, más complementos.
+- eJornada: se muestran los dos planes oficiales actuales Solo fichajes y Fichajes + Ausencias.
+- eFirma GO: se muestran Personal, Professional, Business y Business Plus.

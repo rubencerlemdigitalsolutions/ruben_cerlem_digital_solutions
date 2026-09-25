@@ -9,22 +9,24 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<header>
-  <div class="container nav">
-    <a class="header-brand" href="index.html" aria-label="Rubén Cerlem Digital Solutions">
-      <img class="header-logo logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
-      <img class="header-logo logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
+<header class="site-header">
+  <div class="container nav-shell">
+    <a class="brand-link" href="index.html" aria-label="Rubén Cerlem Digital Solutions">
+      <img class="brand-logo brand-logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
+      <img class="brand-logo brand-logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
     </a>
     <nav class="main-nav" aria-label="Navegación principal">
       <a href="index.html">Inicio</a>
       <a href="efirma-go.html">eFirma GO</a>
       <a href="contasimple.html">Contasimple</a>
       <a href="ejornada.html">eJornada</a>
-      <a href="#contacto-producto" class="nav-cta">Contactar</a>
     </nav>
-    <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
-      <span class="sun">☀</span><span class="moon">☾</span><i class="thumb"></i>
-    </button>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar tema" title="Claro / oscuro">
+        <span class="sun">☀</span><span class="moon">☾</span><i class="thumb"></i>
+      </button>
+      <a class="btn primary compact" href="#contacto-producto">Contactar</a>
+    </div>
   </div>
 </header>
 <main>
@@ -35,9 +37,9 @@
       <div class="title-row"><h1>Contasimple</h1><span class="cegid-pill">Cegid</span></div>
       <p class="hero-lead">Facturación, impuestos, gastos, tesorería, inventario y clientes desde una única plataforma.</p>
       <ul class="hero-points"><li>Facturación y Verifactu</li><li>Impuestos y OCR</li><li>Bancos, TPV e inventario</li></ul>
-      <div class="hero-actions">
-        <a class="btn primary" href="#precios-producto">Ver tarifas <span>→</span></a>
-        <button class="btn secondary" type="button" data-request-demo data-demo-product="Contasimple by Cegid">Solicitar demo</button>
+      <div class="hero-actions product-info-actions">
+        <a class="btn primary" href="#precios-producto">Ver planes <span>→</span></a>
+        <a class="btn primary" href="#contacto-producto">Solicitar información</a>
       </div>
     </div>
     
@@ -84,32 +86,32 @@
 
       <div class="pricing-block">
         <div class="pricing-title">
-          <span class="eyebrow">TARIFAS</span>
-          <h3>Planes Contasimple</h3>
-          <p>Precios oficiales consultados en Contasimple. IVA no incluido en los planes de pago.</p>
+          <span class="eyebrow">PLANES Y TARIFAS</span>
+          <h3>Todos los planes principales de Contasimple</h3>
+          <p>Tres planes principales: Básico, Profesional y Ultimate. IVA no incluido en los planes de pago.</p>
         </div>
         <div class="pricing-grid three">
           <article class="price-card">
             <span class="plan-name">Básico</span>
             <strong>0 €/mes</strong>
             <small>Gratis de por vida</small>
-            <ul><li>1 usuario</li><li>12 documentos/año</li><li>5 productos</li><li>1 remesa</li><li>Factura electrónica</li><li>Presentación de impuestos</li></ul>
+            <ul><li>1 usuario</li><li>App móvil</li><li>Gestión de cobros y pagos</li><li>12 documentos/año</li><li>5 productos</li><li>1 remesa</li><li>Factura electrónica</li><li>Presentación de impuestos</li></ul>
           </article>
           <article class="price-card featured">
             <span class="plan-name">Profesional</span>
             <strong>10,95 €/mes</strong>
             <small>Pago anual · 12,95 €/mes con pago trimestral</small>
-            <ul><li>1 usuario</li><li>500 documentos/año</li><li>50 productos</li><li>12 remesas</li><li>Factura electrónica (FACe)</li><li>Presentación de impuestos</li></ul>
+            <ul><li>1 usuario</li><li>App móvil</li><li>Gestión de cobros y pagos</li><li>500 documentos/año</li><li>50 productos</li><li>12 remesas</li><li>Factura electrónica (FACe)</li><li>Presentación de impuestos</li></ul>
           </article>
           <article class="price-card">
             <span class="plan-name">Ultimate</span>
             <strong>15,95 €/mes</strong>
             <small>Pago anual · 19,95 €/mes con pago trimestral</small>
-            <ul><li>1 usuario</li><li>Facturas ilimitadas</li><li>Productos ilimitados</li><li>Remesas ilimitadas</li><li>Factura electrónica avanzada</li><li>Presentación de impuestos</li></ul>
+            <ul><li>1 usuario</li><li>App móvil</li><li>Gestión de cobros y pagos</li><li>Facturas ilimitadas</li><li>Productos ilimitados</li><li>Remesas ilimitadas</li><li>Factura electrónica avanzada</li><li>Presentación de impuestos</li></ul>
           </article>
         </div>
         <div class="product-extras">
-          <span>Ampliaciones disponibles:</span>
+          <span>Complementos disponibles:</span>
           <b>OCR</b><b>Conexión bancaria</b><b>TPV</b><b>Control de stock</b>
         </div>
       </div>

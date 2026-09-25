@@ -9,22 +9,24 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<header>
-  <div class="container nav">
-    <a class="header-brand" href="index.html" aria-label="Rubén Cerlem Digital Solutions">
-      <img class="header-logo logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
-      <img class="header-logo logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
+<header class="site-header">
+  <div class="container nav-shell">
+    <a class="brand-link" href="index.html" aria-label="Rubén Cerlem Digital Solutions">
+      <img class="brand-logo brand-logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
+      <img class="brand-logo brand-logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
     </a>
     <nav class="main-nav" aria-label="Navegación principal">
       <a href="index.html">Inicio</a>
       <a href="efirma-go.html">eFirma GO</a>
       <a href="contasimple.html">Contasimple</a>
       <a href="ejornada.html">eJornada</a>
-      <a href="#contacto-producto" class="nav-cta">Contactar</a>
     </nav>
-    <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
-      <span class="sun">☀</span><span class="moon">☾</span><i class="thumb"></i>
-    </button>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar tema" title="Claro / oscuro">
+        <span class="sun">☀</span><span class="moon">☾</span><i class="thumb"></i>
+      </button>
+      <a class="btn primary compact" href="#contacto-producto">Contactar</a>
+    </div>
   </div>
 </header>
 <main>
@@ -35,9 +37,9 @@
       <div class="title-row"><h1>eJornada</h1><span class="cegid-pill">Cegid</span></div>
       <p class="hero-lead">Control horario, presencia, ausencias y vacaciones desde móvil, ordenador y tablet.</p>
       <ul class="hero-points"><li>Fichajes y geolocalización</li><li>Horarios y centros</li><li>Ausencias, vacaciones e informes</li></ul>
-      <div class="hero-actions">
-        <a class="btn primary" href="#precios-producto">Ver tarifas <span>→</span></a>
-        <button class="btn secondary" type="button" data-request-demo data-demo-product="eJornada">Solicitar demo</button>
+      <div class="hero-actions product-info-actions">
+        <a class="btn primary" href="#precios-producto">Ver planes <span>→</span></a>
+        <a class="btn primary" href="#contacto-producto">Solicitar información</a>
       </div>
     </div>
     
@@ -92,16 +94,16 @@
 
       <div class="pricing-block">
         <div class="pricing-title">
-          <span class="eyebrow">TARIFAS</span>
-          <h3>Planes eJornada</h3>
-          <p>Prueba gratuita de 1 mes. Precios oficiales desde, sin impuestos.</p>
+          <span class="eyebrow">PLANES Y TARIFAS</span>
+          <h3>Todos los planes eJornada</h3>
+          <p>Actualmente se publican dos planes: Solo fichajes y Fichajes + Ausencias. Prueba gratuita de 1 mes. Precios sin impuestos.</p>
         </div>
         <div class="pricing-grid two">
           <article class="price-card featured">
             <span class="plan-name">Solo fichajes</span>
             <strong>Desde 195 €/año</strong>
             <small>o desde 18 €/mes</small>
-            <ul><li>Calendarios</li><li>Horarios</li><li>Centros de trabajo</li><li>Trabajadores</li><li>Avisos</li><li>App en la nube</li><li>Soporte telefónico y online</li></ul>
+            <ul><li>Calendarios</li><li>Horarios</li><li>Departamentos (opcional)</li><li>Centros de trabajo</li><li>Trabajadores</li><li>Avisos</li><li>App en la nube</li><li>Horas extras y complementarias</li><li>Soporte telefónico y online</li></ul>
           </article>
           <article class="price-card">
             <span class="plan-name">Fichajes + Ausencias</span>
