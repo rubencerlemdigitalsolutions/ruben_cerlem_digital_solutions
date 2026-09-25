@@ -1189,3 +1189,45 @@ html[data-theme="dark"] .visual-brand-logo.logo-dark{display:block}
     margin-left:0;
   }
 }
+
+
+/* === V8c · eJornada: separación mucho más marcada entre tablet y logo === */
+.jornada-side-plain{
+  grid-template-columns:minmax(0,205px) 185px;
+  gap:64px;
+  align-items:center;
+}
+.jornada-side-plain .detail-plain-visual{
+  justify-items:start;
+  transform:translateX(-20px);
+}
+.jornada-side-plain .detail-time-device-plain{
+  width:165px;
+  height:255px;
+  justify-self:start;
+}
+.jornada-side-plain .detail-calendar-card-plain{
+  right:0;
+  bottom:8px;
+  width:130px;
+}
+.jornada-side-plain .side-company-logo{
+  margin-left:0;
+  justify-self:start;
+}
+.jornada-side-plain .side-company-logo .company-logo{
+  width:170px;
+}
+@media(max-width:980px){
+  .jornada-side-plain{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .jornada-side-plain .detail-plain-visual{
+    transform:none;
+    justify-items:center;
+  }
+  .jornada-side-plain .side-company-logo{
+    justify-self:center;
+  }
+}
