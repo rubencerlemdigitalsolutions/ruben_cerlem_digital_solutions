@@ -1064,3 +1064,39 @@ html[data-theme="dark"] .visual-brand-logo.logo-dark{display:block}
   .detail-dashboard{width:82%}
   .detail-calendar-card{width:118px}
 }
+
+
+/* === V7 · Visuales separados para Contasimple y eJornada === */
+.product-page-side-plain{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 170px;
+  gap:18px;
+  align-items:center;
+}
+.detail-plain-visual{
+  min-height:300px;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+.detail-dashboard-plain{max-width:270px;width:100%;}
+.side-company-logo{
+  padding:0;
+  display:grid;
+  place-items:center;
+}
+.side-company-logo .company-logo{width:170px;max-width:100%;}
+.conta-side-plain .mini-invoice{right:-14px;bottom:-14px;}
+.jornada-side-plain .detail-time-device-plain{width:165px;height:255px;}
+.jornada-side-plain .detail-calendar-card-plain{right:6px;bottom:8px;width:130px;}
+
+@media(max-width:980px){
+  .product-page-side-plain{grid-template-columns:1fr;justify-items:center;}
+  .side-company-logo{margin-top:8px;}
+}
+@media(max-width:700px){
+  .detail-plain-visual{min-height:260px;}
+  .side-company-logo .company-logo{width:150px;}
+  .jornada-side-plain .detail-time-device-plain{width:150px;height:235px;}
+  .jornada-side-plain .detail-calendar-card-plain{width:118px;right:0;}
+}

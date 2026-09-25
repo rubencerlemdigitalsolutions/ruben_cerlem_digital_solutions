@@ -184,3 +184,9 @@ MULTISOLUCIÓN V6 - VISUALES DE PRODUCTO:
 - eJornada usa dispositivo de fichaje/calendario + logo de Rubén Cerlem Digital Solutions.
 - Se elimina también el resumen de métricas de eFirma GO dentro de su página para simplificarla.
 - Cada página mantiene funcionalidades, productos/planes, tarifas, demo y contacto.
+
+
+MULTISOLUCIÓN V7 - VISUALES SEPARADOS:
+- Contasimple: en solicitar información, la derecha muestra solo la tablet/dashboard con la factura y, separado, el logo de Rubén Cerlem Digital Solutions.
+- eJornada: en solicitar información, la derecha muestra solo el dispositivo horario con el bloque de septiembre y, separado, el logo de Rubén Cerlem Digital Solutions.
+- Se elimina el recuadro unificado para ambos casos, siguiendo la lógica visual del menú principal de eFirma GO.
