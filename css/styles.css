@@ -1578,3 +1578,70 @@ html[data-theme="dark"] .v16-contact-section::before{background:radial-gradient(
 .v16-footer{padding:8px 0;border-top:0;background:transparent}
 .v16-footer-inner{display:flex;justify-content:flex-end}
 @media(max-width:900px){.v16-bottom-nav-inner{justify-content:flex-start}.v16-contact-link{margin-left:0}}
+
+
+/* === V17 · navegación superior y feedback visual === */
+.v17-top-nav{
+  position:relative;
+  top:auto;
+  border-top:0;
+  border-bottom:1px solid var(--line);
+  box-shadow:0 6px 22px rgba(15,53,94,.06);
+}
+.v17-top-nav .v16-bottom-nav-inner{
+  min-height:74px;
+  justify-content:flex-end;
+}
+.v17-top-nav .v16-nav-link,
+.v17-top-nav .v16-contact-link,
+.v17-top-nav .theme-toggle{
+  position:relative;
+  z-index:2;
+}
+.v15-hotspot{
+  transition:transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease;
+}
+.v15-hotspot:hover,
+.v15-hotspot:focus-visible{
+  background:rgba(0,132,255,.10);
+  box-shadow:0 0 0 2px rgba(0,141,255,.42),0 8px 24px rgba(0,104,218,.22);
+  transform:translateY(-1px) scale(1.015);
+}
+html[data-theme="dark"] .v15-hotspot:hover,
+html[data-theme="dark"] .v15-hotspot:focus-visible{
+  background:rgba(0,169,255,.13);
+  box-shadow:0 0 0 2px rgba(0,190,255,.56),0 0 24px rgba(0,159,255,.36);
+}
+.hs-efirma-plans:hover,.hs-conta-plans:hover,.hs-jornada-plans:hover{
+  background:rgba(0,132,255,.18);
+}
+.hs-efirma-info:hover,.hs-conta-info:hover,.hs-jornada-info:hover{
+  background:rgba(255,255,255,.10);
+}
+.v16-contact-section{
+  background:
+    radial-gradient(circle at 77% 18%,rgba(29,137,255,.18),transparent 29%),
+    radial-gradient(circle at 24% 86%,rgba(83,174,255,.11),transparent 36%),
+    linear-gradient(145deg,#f8fbff 0%,#edf6ff 52%,#f8fbff 100%);
+}
+.v16-contact-section::before{
+  inset:-18% -8%;
+  background:
+    radial-gradient(ellipse at 76% 38%,rgba(79,174,255,.16),transparent 28%),
+    linear-gradient(132deg,transparent 0 37%,rgba(87,174,255,.08) 37% 48%,transparent 48% 100%);
+  transform:none;
+}
+html[data-theme="dark"] .v16-contact-section{
+  background:
+    radial-gradient(circle at 76% 18%,rgba(0,152,255,.22),transparent 31%),
+    radial-gradient(circle at 18% 83%,rgba(0,100,190,.18),transparent 38%),
+    linear-gradient(145deg,#03111f 0%,#061d33 52%,#03111f 100%);
+}
+html[data-theme="dark"] .v16-contact-section::before{
+  background:
+    radial-gradient(ellipse at 76% 38%,rgba(0,159,255,.18),transparent 29%),
+    linear-gradient(132deg,transparent 0 35%,rgba(0,126,220,.10) 35% 48%,transparent 48% 100%);
+}
+@media(max-width:900px){
+  .v17-top-nav .v16-bottom-nav-inner{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
+}
