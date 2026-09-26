@@ -279,3 +279,11 @@ V23 - FUNCIONALIDAD RESTAURADA:
 - Contactar ahora vuelve a ser un botón real con sobre y texto centrado.
 - Se mantienen los enlaces a planes, páginas de producto, contacto y selector claro/oscuro.
 - Se impide visualmente que el móvil de eFirma GO sobresalga por debajo de su rectángulo.
+
+
+V24 - Ajustes precisos:
+- Botones Ver planes / Solicitar información alineados exactamente con los campos dibujados.
+- Contactar ahora alineado exactamente con su campo visible.
+- Hotspots superiores centrados sobre eFirma GO, Contasimple, eJornada, tema y Contacto.
+- Selector claro/oscuro funcional sin recuadros extra.
+- Móvil de eFirma GO movido dentro del rectángulo sin franja de parche.

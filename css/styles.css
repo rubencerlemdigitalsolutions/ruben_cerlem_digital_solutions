@@ -2081,3 +2081,55 @@ html[data-theme="dark"] .v15-stage::before{
   .v22-hotspots .v23-action{font-size:11px;padding:0 8px!important}
   .v22-hotspots .v23-contact{font-size:10px;gap:5px}
 }
+
+
+/* === V24 · alineación exacta de controles sobre la interfaz rasterizada === */
+/* Top navigation: hover/focus boxes coincide with the visible labels and controls. */
+.v22-hotspots .hs-top-efirma{left:56.52%;top:1.59%;width:5.20%;height:3.40%;}
+.v22-hotspots .hs-top-conta{left:62.62%;top:1.59%;width:5.92%;height:3.40%;}
+.v22-hotspots .hs-top-jornada{left:69.20%;top:1.59%;width:4.49%;height:3.40%;}
+.v22-hotspots .hs-top-theme{left:79.25%;top:1.38%;width:4.49%;height:3.83%;}
+.v22-hotspots .hs-top-contact{left:86.24%;top:1.27%;width:5.50%;height:4.04%;}
+
+/* Theme selector remains functional but does not draw a stray extra rectangle. */
+.v22-hotspots .hs-top-theme:hover,
+.v22-hotspots .hs-top-theme:focus-visible{
+  background:transparent!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+
+/* Product buttons: exact bounds of the buttons already present in the image. */
+.v22-hotspots .hs-efirma-plans{left:9.51%;top:39.43%;width:15.67%;height:3.19%;}
+.v22-hotspots .hs-efirma-info{left:9.51%;top:43.15%;width:15.67%;height:3.19%;}
+.v22-hotspots .hs-conta-plans{left:9.51%;top:61.11%;width:15.67%;height:3.29%;}
+.v22-hotspots .hs-conta-info{left:9.51%;top:64.93%;width:15.67%;height:3.19%;}
+.v22-hotspots .hs-jornada-plans{left:9.51%;top:82.78%;width:15.67%;height:3.29%;}
+.v22-hotspots .hs-jornada-info{left:9.51%;top:86.72%;width:15.67%;height:3.19%;}
+
+/* Bottom Contactar ahora: exact visible blue pill, away from eJornada device. */
+.v22-hotspots .hs-contact-bottom{left:79.37%;top:92.14%;width:11.42%;height:3.72%;}
+
+/* Center content perfectly both horizontally and vertically. */
+.v22-hotspots .v23-action{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  padding:0 10px!important;
+  line-height:1!important;
+}
+.v22-hotspots .v23-action > span{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  height:100%!important;
+  line-height:1!important;
+  margin:0!important;
+  padding:0!important;
+}
+.v22-hotspots .v23-contact{gap:6px;white-space:nowrap;font-size:clamp(10px,.76vw,12px);}
+.v22-hotspots .v23-contact .v23-envelope{display:inline-flex;align-items:center;justify-content:center;height:100%;}
+
+/* Remove the old V23 masking strip under the eFirma phone: the raster itself is now corrected. */
+.v15-stage::before{display:none!important;content:none!important;}
