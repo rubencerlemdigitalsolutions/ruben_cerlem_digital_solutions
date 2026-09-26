@@ -974,3 +974,12 @@ try{
     },80);
   }
 }catch(e){}
+
+
+// V15: el icono de búsqueda visible en la interfaz aprobada actúa como selector claro/oscuro.
+document.getElementById('v15ThemeToggle')?.addEventListener('click',()=>{
+  const root=document.documentElement;
+  const next=root.dataset.theme==='dark'?'light':'dark';
+  root.dataset.theme=next;
+  localStorage.setItem('rc-theme',next);
+});

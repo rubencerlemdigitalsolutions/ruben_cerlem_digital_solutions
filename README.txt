@@ -237,9 +237,8 @@ V13 - PORTADA APROBADA IMPLEMENTADA:
 - Se mantienen los temas claro y oscuro.
 
 
-V14 - INTERFAZ APROBADA:
-- Rediseño de la portada basado en las interfaces clara y oscura aprobadas.
-- Sin plantas ni elementos decorativos vegetales en ninguno de los temas.
-- Se mantiene el selector claro/oscuro funcional en la cabecera.
-- Se conservan todas las funciones existentes de la V13, incluido contacto, Admin, demos, comparativas y catálogo oculto.
-- No se vuelve visible el catálogo Cegid Informática 3 que permanece oculto.
+V15 - INTERFAZ EXACTA APROBADA:
+- Portada renderizada exactamente con las imágenes clara/oscura aprobadas.
+- Se mantienen hotspots funcionales sobre navegación, planes, información, contacto y cambio de tema.
+- Formularios, Admin, comparativas, demos y páginas internas se conservan desde V13.
+- El selector de tema utiliza el icono situado entre eJornada y Contacto sin alterar el diseño visual.
