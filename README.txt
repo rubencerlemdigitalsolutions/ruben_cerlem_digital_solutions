@@ -242,3 +242,17 @@ V15 - INTERFAZ EXACTA APROBADA:
 - Se mantienen hotspots funcionales sobre navegación, planes, información, contacto y cambio de tema.
 - Formularios, Admin, comparativas, demos y páginas internas se conservan desde V13.
 - El selector de tema utiliza el icono situado entre eJornada y Contacto sin alterar el diseño visual.
+
+
+V18 - BOTONES VIVOS Y CONTACTAR AHORA:
+- Botones reales visibles sobre Ver planes y Solicitar información en eFirma GO, Contasimple y eJornada.
+- Botón Contactar ahora real, azul, con sobre blanco, texto y flecha.
+- Aplicado en claro y oscuro manteniendo todos los enlaces funcionales.
+
+
+Actualización V19:
+- Visuales de eFirma GO, Contasimple y eJornada actualizados.
+- Fechas renovadas a 2026.
+- Calendario real de abril 2026 con el día 12 marcado.
+- Ajuste del móvil de eFirma GO para mantenerlo dentro del marco visual.
+- Mayor nitidez en los mockups de producto.

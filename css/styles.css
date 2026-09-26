@@ -1645,3 +1645,124 @@ html[data-theme="dark"] .v16-contact-section::before{
 @media(max-width:900px){
   .v17-top-nav .v16-bottom-nav-inner{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
 }
+\n\n/* === V18 · botones reales visibles e interactivos sobre la interfaz aprobada === */
+.v15-hotspot.v18-action{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  padding:0 12px;text-decoration:none;font-weight:850;
+  font-size:clamp(11px,1vw,15px);line-height:1;border-radius:8px;
+  overflow:hidden;white-space:nowrap;
+  transition:transform .16s ease,box-shadow .16s ease,filter .16s ease,background .16s ease,border-color .16s ease;
+}
+.v15-hotspot.v18-action b{font-size:1.08em;transition:transform .16s ease}
+.v15-hotspot.v18-primary{
+  color:#fff;border:1px solid #0c7ff5;
+  background:linear-gradient(180deg,#1f97ff 0%,#0877ed 100%);
+  box-shadow:0 5px 14px rgba(3,116,235,.24);
+}
+.v15-hotspot.v18-secondary{
+  color:#0877ed;border:1px solid #0b82f6;
+  background:#fff;box-shadow:0 4px 12px rgba(3,116,235,.10);
+}
+.v15-hotspot.v18-contact{
+  color:#fff;border:1px solid #0c88ff;
+  background:linear-gradient(180deg,#1597ff 0%,#0876ed 100%);
+  box-shadow:0 6px 18px rgba(0,116,238,.26);
+}
+.v15-hotspot.v18-action:hover,.v15-hotspot.v18-action:focus-visible{
+  transform:translateY(-2px) scale(1.02);outline:none;filter:brightness(1.05);
+}
+.v15-hotspot.v18-primary:hover,.v15-hotspot.v18-primary:focus-visible,
+.v15-hotspot.v18-contact:hover,.v15-hotspot.v18-contact:focus-visible{
+  background:linear-gradient(180deg,#35a7ff 0%,#006fe8 100%);
+  box-shadow:0 8px 21px rgba(0,126,255,.34),0 0 0 2px rgba(49,160,255,.18);
+}
+.v15-hotspot.v18-secondary:hover,.v15-hotspot.v18-secondary:focus-visible{
+  color:#005fc8;background:#f7fbff;border-color:#0877ed;
+  box-shadow:0 7px 18px rgba(0,119,238,.20),0 0 0 2px rgba(49,160,255,.12);
+}
+.v15-hotspot.v18-action:hover b,.v15-hotspot.v18-action:focus-visible b{transform:translateX(3px)}
+.v18-envelope{font-size:1.05em;line-height:1;color:#fff}
+
+html[data-theme="dark"] .v15-hotspot.v18-primary{
+  color:#fff;border-color:#14a9ff;
+  background:linear-gradient(180deg,#119cff 0%,#006fe9 100%);
+  box-shadow:0 0 14px rgba(0,159,255,.24);
+}
+html[data-theme="dark"] .v15-hotspot.v18-secondary{
+  color:#fff;border-color:#12a5ff;background:#061a2a;
+  box-shadow:0 0 10px rgba(0,150,255,.13);
+}
+html[data-theme="dark"] .v15-hotspot.v18-contact{
+  color:#fff;border-color:#19a9ff;
+  background:linear-gradient(180deg,#159dff 0%,#0573e7 100%);
+  box-shadow:0 0 16px rgba(0,159,255,.26);
+}
+html[data-theme="dark"] .v15-hotspot.v18-primary:hover,
+html[data-theme="dark"] .v15-hotspot.v18-primary:focus-visible,
+html[data-theme="dark"] .v15-hotspot.v18-contact:hover,
+html[data-theme="dark"] .v15-hotspot.v18-contact:focus-visible{
+  background:linear-gradient(180deg,#21b1ff 0%,#047df6 100%);
+  box-shadow:0 0 22px rgba(0,176,255,.45);
+}
+html[data-theme="dark"] .v15-hotspot.v18-secondary:hover,
+html[data-theme="dark"] .v15-hotspot.v18-secondary:focus-visible{
+  color:#fff;border-color:#42c4ff;background:#08263e;
+  box-shadow:0 0 18px rgba(0,174,255,.34);
+}
+/* Anula el halo rectangular adicional de V17: el botón visible es el único feedback */
+.v15-hotspot.v18-action:hover,.v15-hotspot.v18-action:focus-visible{outline:0}
+@media(max-width:1100px){.v15-hotspot.v18-action{font-size:11px;gap:5px;padding:0 8px}}
+
+
+/* === V19 · Visuales actualizados y mayor nitidez === */
+.efirma-device-stage{min-height:390px;}
+.efirma-product-hero-visual .laptop{top:26px;width:min(530px,100%)}
+.doc-card-efirma{width:72%;height:74%;padding:24px 24px 20px;display:flex;flex-direction:column;justify-content:flex-start}
+.doc-card-efirma .doc-title{font-size:16px;letter-spacing:-.01em}
+.doc-card-efirma > span{height:9px;margin:10px 0;background:color-mix(in srgb,var(--muted) 24%,transparent)}
+.signed-rich{position:relative;right:auto;bottom:auto;margin-top:14px;padding:10px 12px 12px;border-radius:12px;background:linear-gradient(180deg,rgba(66,187,123,.16),rgba(66,187,123,.11));color:#0d4615;display:grid;gap:6px;box-shadow:0 8px 16px rgba(0,0,0,.06)}
+html[data-theme="dark"] .signed-rich{background:linear-gradient(180deg,rgba(81,201,126,.20),rgba(81,201,126,.12));color:#c7ffd1}
+.signed-label{font-size:10px;font-weight:800;letter-spacing:.02em;text-transform:uppercase}
+.signed-signature{height:44px;display:flex;align-items:center}
+.signed-signature .signature-img{width:92px;max-height:42px}
+.signed-check{font-size:11px;font-weight:900}
+.phone-efirma{right:10px;top:102px;width:128px;height:228px;padding-top:28px}
+.phone-efirma .signature-wrap{height:96px;margin-top:10px}
+.phone-efirma .phone-btn{bottom:12px}
+
+.sharp-dashboard{max-width:300px;width:100%;padding:16px;border-radius:18px;box-shadow:0 20px 42px rgba(0,0,0,.16)}
+.text-topbar{display:flex;align-items:center;font-size:11px;font-weight:800;color:var(--muted);padding:0 10px}
+.text-metrics span{display:grid;align-content:center;padding:6px 8px;background:color-mix(in srgb,var(--blue) 8%,var(--surface2));border-radius:8px;min-height:44px}
+.text-metrics span b{display:block;font-size:8px;line-height:1.15;margin-bottom:4px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.text-metrics span small{display:block;font-size:11px;font-weight:800;color:var(--text);line-height:1.1}
+.text-invoice{width:148px;right:-10px;bottom:-12px;padding:12px 12px 10px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,.16)}
+.text-invoice b{display:block;font-size:12px;line-height:1.1;color:var(--text);margin-bottom:6px}
+.text-invoice small{display:block;font-size:9px;font-weight:700;color:var(--muted);margin-bottom:7px}
+.text-invoice span{display:block;height:auto;margin-top:5px;border-radius:0;background:none;font-size:8.5px;font-weight:700;color:var(--text);line-height:1.25}
+.conta-side-plain .mini-chart{height:82px;margin-top:12px}
+.conta-side-plain .mini-chart i{min-width:16px}
+
+.sharp-time-device{box-shadow:0 24px 44px rgba(0,0,0,.20);padding-top:24px}
+.sharp-time-device .time-clock{font-size:34px}
+.sharp-time-device .time-date{font-size:10px;line-height:1.35;padding:0 6px;margin-top:6px}
+.sharp-time-device .time-status{font-size:11px}
+.sharp-time-device .time-buttons span{font-size:8.5px;padding:10px 4px}
+.real-calendar-card{width:162px;right:-8px;bottom:0;padding:12px 10px 11px;border-radius:16px;box-shadow:0 16px 30px rgba(0,0,0,.18)}
+.real-calendar-card b{display:block;font-size:10px;line-height:1.2}
+.calendar-weekdays,.calendar-dates{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.calendar-weekdays{margin-top:8px}
+.calendar-weekdays span{font-size:8px;font-weight:800;color:var(--muted);text-align:center}
+.calendar-dates{margin-top:6px}
+.calendar-dates span{aspect-ratio:1;border-radius:6px;background:var(--surface2);display:grid;place-items:center;font-size:8px;font-weight:800;color:var(--text)}
+.calendar-dates span.empty{background:transparent;color:transparent}
+.calendar-dates span.active{background:var(--blue);color:#fff;box-shadow:0 0 0 2px color-mix(in srgb,var(--blue) 22%,transparent)}
+.jornada-side-plain .detail-time-device-plain{width:172px;height:262px}
+.jornada-side-plain .detail-calendar-card-plain{width:162px;right:-8px;bottom:0}
+
+@media(max-width:700px){
+  .efirma-device-stage{min-height:360px}
+  .phone-efirma{right:0;top:110px;width:120px;height:214px}
+  .doc-card-efirma{width:76%}
+  .text-invoice{position:absolute;width:138px;right:-4px}
+  .real-calendar-card,.jornada-side-plain .detail-calendar-card-plain{width:150px;right:0}
+}
