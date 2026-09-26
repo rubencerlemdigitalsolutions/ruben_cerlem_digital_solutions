@@ -235,3 +235,11 @@ V13 - PORTADA APROBADA IMPLEMENTADA:
 - Se elimina el logo corporativo dentro de cada tarjeta de producto.
 - Se conserva la sección de contacto existente, además del Admin y funcionalidades previas.
 - Se mantienen los temas claro y oscuro.
+
+
+V14 - INTERFAZ APROBADA:
+- Rediseño de la portada basado en las interfaces clara y oscura aprobadas.
+- Sin plantas ni elementos decorativos vegetales en ninguno de los temas.
+- Se mantiene el selector claro/oscuro funcional en la cabecera.
+- Se conservan todas las funciones existentes de la V13, incluido contacto, Admin, demos, comparativas y catálogo oculto.
+- No se vuelve visible el catálogo Cegid Informática 3 que permanece oculto.
