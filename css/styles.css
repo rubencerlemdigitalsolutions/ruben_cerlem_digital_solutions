@@ -1818,3 +1818,66 @@ html[data-theme="dark"] .signed-check-signature .signature-img-dark{display:inli
 .hs-efirma-plans,.hs-efirma-info,.hs-conta-plans,.hs-conta-info,.hs-jornada-plans,.hs-jornada-info,.hs-contact-bottom{
   letter-spacing:0;
 }
+
+
+/* === V21 · centrado exacto, texto más vivo y fechas 2026 === */
+/* Coordenadas ajustadas al botón visual real del lienzo 1672×853. */
+.hs-efirma-plans{left:9.57%;top:36.46%;width:15.55%;height:3.52%}
+.hs-efirma-info{left:9.57%;top:40.45%;width:15.55%;height:3.64%}
+.hs-conta-plans{left:9.57%;top:60.49%;width:15.55%;height:3.52%}
+.hs-conta-info{left:9.57%;top:64.48%;width:15.55%;height:3.64%}
+.hs-jornada-plans{left:9.57%;top:84.29%;width:15.55%;height:3.64%}
+.hs-jornada-info{left:9.57%;top:88.28%;width:15.55%;height:3.75%}
+.hs-contact-bottom{left:79.37%;top:94.72%;width:11.42%;height:3.99%}
+
+.v15-hotspot.v18-action{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  padding:0 10px!important;
+  line-height:1!important;
+}
+.v15-hotspot.v18-action > span{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  height:100%!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1!important;
+}
+.v15-hotspot.v18-contact{
+  gap:7px!important;
+}
+.v15-hotspot.v18-contact .v18-envelope{
+  height:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:0!important;
+}
+
+/* Refuerzo tipográfico en páginas de producto, manteniendo el estilo existente. */
+.product-page-hero .title-row h1{
+  font-weight:900;
+  text-rendering:geometricPrecision;
+  -webkit-font-smoothing:antialiased;
+}
+.product-page-hero .hero-lead,
+.product-page-hero .hero-points li{
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:600;
+  letter-spacing:.005em;
+  color:color-mix(in srgb,var(--text) 84%,var(--muted));
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+html[data-theme="dark"] .product-page-hero .title-row h1{
+  color:#f8fbff;
+  text-shadow:0 0 14px rgba(80,181,255,.10);
+}
+html[data-theme="dark"] .product-page-hero .hero-lead,
+html[data-theme="dark"] .product-page-hero .hero-points li{
+  color:#e4eef8;
+}

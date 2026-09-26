@@ -256,3 +256,11 @@ Actualización V19:
 - Calendario real de abril 2026 con el día 12 marcado.
 - Ajuste del móvil de eFirma GO para mantenerlo dentro del marco visual.
 - Mayor nitidez en los mockups de producto.
+
+
+V21:
+- Ver planes, Solicitar información y Contactar ahora centrados horizontal y verticalmente.
+- Mayor nitidez general en las interfaces clara y oscura.
+- Contasimple actualizado a FAC-2026-001 y 12/09/2026.
+- eJornada actualizado a 12 de abril de 2026 / Abril 2026.
+- Refuerzo tipográfico en los textos de producto.
