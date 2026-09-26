@@ -264,3 +264,11 @@ V21:
 - Contasimple actualizado a FAC-2026-001 y 12/09/2026.
 - eJornada actualizado a 12 de abril de 2026 / Abril 2026.
 - Refuerzo tipográfico en los textos de producto.
+
+
+V22:
+- Portada sustituida por las dos interfaces aprobadas sin plantas.
+- Tema claro/oscuro funcional mediante zona clicable sobre el selector visible.
+- Ver planes, solicitar información y contactar ahora mantienen enlaces funcionales sin textos duplicados ni superpuestos.
+- Eliminado el copyright inferior de la interfaz.
+- El móvil de eFirma GO queda contenido dentro de su bloque en las imágenes aprobadas.

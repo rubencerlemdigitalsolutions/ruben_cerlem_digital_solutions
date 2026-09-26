@@ -1881,3 +1881,60 @@ html[data-theme="dark"] .product-page-hero .hero-lead,
 html[data-theme="dark"] .product-page-hero .hero-points li{
   color:#e4eef8;
 }
+
+
+/* === V22 · interfaz aprobada exacta + funcionalidad sin superposiciones === */
+.v17-top-nav{display:none!important}
+.v15-stage{max-width:1672px;background:transparent}
+.v15-home-img{width:100%;height:auto;image-rendering:auto;filter:none}
+.v22-hotspots{position:absolute;inset:0;z-index:20;pointer-events:none}
+.v22-hit{
+  position:absolute;display:block;pointer-events:auto;cursor:pointer;
+  border:0;background:transparent;border-radius:12px;padding:0;
+  box-shadow:none;outline:none;transition:box-shadow .16s ease,transform .16s ease,background-color .16s ease;
+}
+.v22-hit:hover,.v22-hit:focus-visible{
+  background:rgba(18,139,255,.045);
+  box-shadow:0 0 0 2px rgba(18,139,255,.35),0 8px 24px rgba(0,111,225,.16);
+  transform:translateY(-1px);
+  outline:none;
+}
+html[data-theme="dark"] .v22-hit:hover,
+html[data-theme="dark"] .v22-hit:focus-visible{
+  background:rgba(0,176,255,.035);
+  box-shadow:0 0 0 2px rgba(0,185,255,.38),0 0 22px rgba(0,156,255,.18);
+}
+/* navegación superior dibujada en la propia interfaz */
+.hs-top-efirma{left:56.3%;top:1.3%;width:5.2%;height:4.6%}
+.hs-top-conta{left:62.1%;top:1.3%;width:5.9%;height:4.6%}
+.hs-top-jornada{left:68.6%;top:1.3%;width:5.6%;height:4.6%}
+.hs-top-theme{left:78.0%;top:.7%;width:4.7%;height:5.0%}
+.hs-top-contact{left:84.0%;top:.7%;width:7.6%;height:5.2%}
+/* botones de producto: solo zona clicable, sin texto superpuesto */
+.hs-efirma-plans{left:9.4%;top:38.8%;width:15.5%;height:3.5%}
+.hs-efirma-info{left:9.4%;top:42.5%;width:15.5%;height:3.4%}
+.hs-conta-plans{left:9.4%;top:60.2%;width:15.5%;height:3.5%}
+.hs-conta-info{left:9.4%;top:63.9%;width:15.5%;height:3.4%}
+.hs-jornada-plans{left:9.4%;top:81.6%;width:15.5%;height:3.5%}
+.hs-jornada-info{left:9.4%;top:85.3%;width:15.5%;height:3.4%}
+.hs-contact-bottom{left:78.1%;top:90.7%;width:12.2%;height:4.4%}
+.v22-button-hit:hover,.v22-button-hit:focus-visible,
+.v22-contact-hit:hover,.v22-contact-hit:focus-visible{
+  background:transparent;
+  box-shadow:0 0 0 2px rgba(20,145,255,.44),0 0 18px rgba(0,124,255,.18);
+  transform:translateY(-1px) scale(1.01);
+}
+html[data-theme="dark"] .v22-button-hit:hover,
+html[data-theme="dark"] .v22-button-hit:focus-visible,
+html[data-theme="dark"] .v22-contact-hit:hover,
+html[data-theme="dark"] .v22-contact-hit:focus-visible{
+  background:transparent;
+  box-shadow:0 0 0 2px rgba(0,195,255,.46),0 0 20px rgba(0,174,255,.22);
+}
+/* evita mostrar la botonera V18 sobre el diseño rasterizado */
+.v22-hotspots .v18-action{display:none!important}
+/* el copyright ya no forma parte de las imágenes V22 */
+@media(max-width:900px){
+  .v15-stage{min-width:900px}
+  .v15-home{overflow-x:auto}
+}
