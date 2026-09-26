@@ -1766,3 +1766,55 @@ html[data-theme="dark"] .signed-rich{background:linear-gradient(180deg,rgba(81,2
   .text-invoice{position:absolute;width:138px;right:-4px}
   .real-calendar-card,.jornada-side-plain .detail-calendar-card-plain{width:150px;right:0}
 }
+
+
+/* === V20 · ajustes finales de centrado y visuales === */
+.v15-hotspot.v18-action{
+  justify-content:center;
+  text-align:center;
+  padding-inline:12px;
+}
+.v15-hotspot.v18-action span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.v15-hotspot.v18-action b{display:none !important;}
+.v15-hotspot.v18-action:hover,
+.v15-hotspot.v18-action:focus-visible{
+  outline:none;
+}
+.v18-contact .v18-envelope{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-right:2px;
+}
+
+.phone-efirma{
+  right:14px;
+  top:108px;
+  width:114px;
+  height:204px;
+  padding-top:24px;
+}
+.phone-efirma .signature-wrap{height:82px;margin-top:8px;}
+.phone-efirma .signature-img{max-width:76px;max-height:34px;}
+.phone-efirma .phone-btn{bottom:10px;padding:7px 10px;font-size:11px;}
+.signed-check-signature{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  min-height:26px;
+  padding-top:2px;
+}
+.signed-check-signature .signature-img{width:70px;max-height:26px;}
+.signed-check-signature .signature-img-dark{display:none;}
+html[data-theme="dark"] .signed-check-signature .signature-img-light{display:none;}
+html[data-theme="dark"] .signed-check-signature .signature-img-dark{display:inline-block;}
+
+/* refuerzo de nitidez y centrado en la botonera principal */
+.hs-efirma-plans,.hs-efirma-info,.hs-conta-plans,.hs-conta-info,.hs-jornada-plans,.hs-jornada-info,.hs-contact-bottom{
+  letter-spacing:0;
+}
