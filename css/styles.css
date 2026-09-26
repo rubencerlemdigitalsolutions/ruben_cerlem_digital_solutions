@@ -1546,3 +1546,35 @@ html[data-theme="dark"] .v15-stage{background:#02111f}
   .v15-stage{min-width:900px;transform-origin:top left}
   .v15-home{overflow-x:auto}
 }
+
+
+/* === V16 · correcciones solicitadas sobre V15 === */
+.site-header{display:none!important}
+.v15-stage{max-width:1648px}
+/* Hotspots recalculados sobre el lienzo V16 recortado (1648 × 840 aprox.) */
+.hs-efirma-plans{left:9.5%;top:36.4%;width:15.7%;height:4.1%}
+.hs-efirma-info{left:9.5%;top:40.7%;width:15.7%;height:4.0%}
+.hs-conta-plans{left:9.5%;top:60.5%;width:15.7%;height:4.1%}
+.hs-conta-info{left:9.5%;top:64.8%;width:15.7%;height:4.0%}
+.hs-jornada-plans{left:9.5%;top:84.4%;width:15.7%;height:4.0%}
+.hs-jornada-info{left:9.5%;top:88.6%;width:15.7%;height:4.0%}
+.hs-contact-bottom{left:79.3%;top:94.0%;width:12.8%;height:5.3%}
+
+.v16-bottom-nav{position:relative;z-index:15;background:color-mix(in srgb,var(--card) 96%,transparent);border-top:1px solid var(--line);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.v16-bottom-nav-inner{min-height:78px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:10px 18px}
+.v16-nav-link{display:inline-flex;align-items:center;gap:8px;padding:11px 15px;border-radius:13px;color:var(--ink);text-decoration:none;font-weight:800;border:1px solid transparent;transition:.18s ease}
+.v16-nav-link:hover,.v16-nav-link:focus-visible,.v16-nav-link.active{border-color:color-mix(in srgb,var(--blue) 48%,transparent);background:color-mix(in srgb,var(--blue) 11%,transparent);box-shadow:0 7px 24px color-mix(in srgb,var(--blue) 17%,transparent);transform:translateY(-1px)}
+.v16-nav-link span{font-size:18px;color:var(--blue)}
+.v16-theme-toggle{margin-left:6px}
+.v16-contact-link{margin-left:4px;transition:.18s ease}
+.v16-contact-link:hover,.v16-contact-link:focus-visible{transform:translateY(-2px) scale(1.025);box-shadow:0 8px 26px color-mix(in srgb,var(--blue) 30%,transparent)}
+html[data-theme="dark"] .v16-bottom-nav{background:rgba(3,17,31,.94)}
+
+.v16-contact-section{position:relative;overflow:hidden;background:linear-gradient(135deg,#f7fbff 0%,#eef7ff 48%,#f9fcff 100%)}
+.v16-contact-section::before{content:"";position:absolute;inset:-20% -10%;pointer-events:none;background:radial-gradient(circle at 78% 28%,rgba(35,145,255,.16),transparent 26%),radial-gradient(circle at 15% 75%,rgba(65,170,255,.10),transparent 32%),linear-gradient(125deg,transparent 36%,rgba(79,166,255,.08) 36%,rgba(79,166,255,.08) 48%,transparent 48%);transform:skewY(-3deg)}
+.v16-contact-section .container{position:relative;z-index:1}
+html[data-theme="dark"] .v16-contact-section{background:linear-gradient(135deg,#03111f 0%,#061d33 50%,#03101d 100%)}
+html[data-theme="dark"] .v16-contact-section::before{background:radial-gradient(circle at 78% 28%,rgba(0,154,255,.20),transparent 27%),radial-gradient(circle at 16% 76%,rgba(0,111,203,.15),transparent 34%),linear-gradient(125deg,transparent 34%,rgba(0,126,220,.11) 34%,rgba(0,126,220,.11) 48%,transparent 48%)}
+.v16-footer{padding:8px 0;border-top:0;background:transparent}
+.v16-footer-inner{display:flex;justify-content:flex-end}
+@media(max-width:900px){.v16-bottom-nav-inner{justify-content:flex-start}.v16-contact-link{margin-left:0}}

@@ -9,42 +9,15 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container nav-shell">
-    <a class="brand-link" href="index.html" aria-label="Rubén Cerlem Digital Solutions">
-      <img class="brand-logo brand-logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
-      <img class="brand-logo brand-logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
-    </a>
-    <nav class="main-nav" aria-label="Navegación principal">
-      <a href="index.html">Inicio</a>
-      <a href="efirma-go.html">eFirma GO</a>
-      <a href="contasimple.html">Contasimple</a>
-      <a href="ejornada.html">eJornada</a>
-    </nav>
-    <div class="nav-actions">
-      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar tema" title="Claro / oscuro">
-        <span class="sun">☀</span><span class="moon">☾</span><i class="thumb"></i>
-      </button>
-      <a class="btn primary compact" href="#contacto">Contactar</a>
-    </div>
-  </div>
-</header>
-
 <main>
 <section class="v15-home" id="inicio" aria-label="Rubén Cerlem Digital Solutions">
   <div class="v15-stage">
     <picture class="v15-picture">
-      <img class="v15-home-img v15-light" src="assets/home-light-v15.png" alt="Rubén Cerlem Digital Solutions - soluciones Cegid">
-      <img class="v15-home-img v15-dark" src="assets/home-dark-v15.png" alt="Rubén Cerlem Digital Solutions - soluciones Cegid en modo oscuro">
+      <img class="v15-home-img v15-light" src="assets/home-light-v16.png" alt="Rubén Cerlem Digital Solutions - soluciones Cegid">
+      <img class="v15-home-img v15-dark" src="assets/home-dark-v16.png" alt="Rubén Cerlem Digital Solutions - soluciones Cegid en modo oscuro">
     </picture>
 
     <nav class="v15-hotspots" aria-label="Navegación principal">
-      <a class="v15-hotspot hs-efirma-nav" href="efirma-go.html" aria-label="eFirma GO"></a>
-      <a class="v15-hotspot hs-conta-nav" href="contasimple.html" aria-label="Contasimple"></a>
-      <a class="v15-hotspot hs-jornada-nav" href="ejornada.html" aria-label="eJornada"></a>
-      <button class="v15-hotspot hs-theme" id="v15ThemeToggle" type="button" aria-label="Cambiar entre interfaz clara y oscura"></button>
-      <a class="v15-hotspot hs-contact-nav" href="#contacto" aria-label="Contacto"></a>
-
       <a class="v15-hotspot hs-efirma-plans" href="efirma-go.html#precios-producto" aria-label="Ver planes eFirma GO"></a>
       <a class="v15-hotspot hs-efirma-info" href="efirma-go.html" aria-label="Solicitar información eFirma GO"></a>
       <a class="v15-hotspot hs-conta-plans" href="contasimple.html#precios-producto" aria-label="Ver planes Contasimple"></a>
@@ -56,7 +29,20 @@
   </div>
 </section>
 
-<section id="contacto" class="contact-section soft v15-contact-fallback">
+<nav class="v16-bottom-nav" aria-label="Navegación principal de la portada">
+  <div class="container v16-bottom-nav-inner">
+    <a class="v16-nav-link active" href="index.html#inicio"><span>⌂</span>Inicio</a>
+    <a class="v16-nav-link" href="efirma-go.html"><span>✎</span>eFirma GO</a>
+    <a class="v16-nav-link" href="contasimple.html"><span>▥</span>Contasimple</a>
+    <a class="v16-nav-link" href="ejornada.html"><span>◷</span>eJornada</a>
+    <button id="themeToggle" class="theme-toggle v16-theme-toggle" type="button" aria-label="Cambiar tema" title="Claro / oscuro">
+      <span class="sun">☀</span><span class="moon">☾</span><i class="thumb"></i>
+    </button>
+    <a class="btn primary compact v16-contact-link" href="#contacto">Contactar</a>
+  </div>
+</nav>
+
+<section id="contacto" class="contact-section soft v15-contact-fallback v16-contact-section">
   <div class="container contact-card contact-card-form">
     <div class="contact-copy">
       <span class="eyebrow">SOLICITAR INFORMACIÓN</span>
@@ -486,7 +472,7 @@
 
 </main>
 
-<footer class="v15-footer"><div class="container footer-grid"><div class="footer-brand">Rubén Cerlem Digital Solutions<small>Soluciones digitales para empresas.</small></div><div class="footer-admin-only"><button class="admin-footer-link" type="button" data-open-admin>Admin</button></div></div></footer>
+<footer class="v15-footer v16-footer"><div class="container v16-footer-inner"><button class="admin-footer-link" type="button" data-open-admin>Admin</button></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script src="js/app.js"></script>
 </body>
