@@ -1938,3 +1938,146 @@ html[data-theme="dark"] .v22-contact-hit:focus-visible{
   .v15-stage{min-width:900px}
   .v15-home{overflow-x:auto}
 }
+
+
+/* === V23 · funcionalidad visual restaurada sobre la interfaz V22 === */
+/* Botones reales: cubren el dibujo rasterizado y recuperan el feedback de V20/V21. */
+.v22-hotspots .v23-action{
+  position:absolute;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  pointer-events:auto;
+  cursor:pointer;
+  box-sizing:border-box;
+  padding:0 12px!important;
+  margin:0;
+  border-radius:10px;
+  text-decoration:none;
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:850;
+  font-size:clamp(11px,.9vw,14px);
+  line-height:1;
+  white-space:nowrap;
+  overflow:hidden;
+  z-index:30;
+  transition:transform .16s ease,box-shadow .16s ease,filter .16s ease,background .16s ease,border-color .16s ease;
+}
+.v22-hotspots .v23-action > span{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  height:100%!important;
+  line-height:1!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:center!important;
+}
+.v22-hotspots .v23-primary{
+  color:#fff;
+  border:1px solid #0b82f6;
+  background:linear-gradient(180deg,#209cff 0%,#0878ed 100%);
+  box-shadow:0 5px 14px rgba(3,116,235,.22);
+}
+.v22-hotspots .v23-secondary{
+  color:#0877ed;
+  border:1px solid #0b82f6;
+  background:rgba(255,255,255,.985);
+  box-shadow:0 4px 12px rgba(3,116,235,.08);
+}
+.v22-hotspots .v23-contact{
+  color:#fff;
+  border:1px solid #138dff;
+  background:linear-gradient(180deg,#159cff 0%,#0876ed 100%);
+  box-shadow:0 6px 18px rgba(0,116,238,.24);
+  gap:7px;
+  font-size:clamp(10px,.82vw,13px);
+}
+.v23-envelope{font-size:1.04em;line-height:1;color:#fff}
+.v22-hotspots .v23-action:hover,
+.v22-hotspots .v23-action:focus-visible{
+  transform:translateY(-2px) scale(1.015);
+  outline:none;
+  filter:brightness(1.05);
+}
+.v22-hotspots .v23-primary:hover,
+.v22-hotspots .v23-primary:focus-visible,
+.v22-hotspots .v23-contact:hover,
+.v22-hotspots .v23-contact:focus-visible{
+  background:linear-gradient(180deg,#35a7ff 0%,#006fe8 100%);
+  box-shadow:0 8px 21px rgba(0,126,255,.32),0 0 0 2px rgba(49,160,255,.15);
+}
+.v22-hotspots .v23-secondary:hover,
+.v22-hotspots .v23-secondary:focus-visible{
+  color:#005fc8;
+  background:#f7fbff;
+  border-color:#0877ed;
+  box-shadow:0 7px 18px rgba(0,119,238,.18),0 0 0 2px rgba(49,160,255,.10);
+}
+html[data-theme="dark"] .v22-hotspots .v23-primary{
+  color:#fff;border-color:#14a9ff;
+  background:linear-gradient(180deg,#119cff 0%,#006fe9 100%);
+  box-shadow:0 0 14px rgba(0,159,255,.22);
+}
+html[data-theme="dark"] .v22-hotspots .v23-secondary{
+  color:#fff;border-color:#12a5ff;background:#061a2a;
+  box-shadow:0 0 10px rgba(0,150,255,.11);
+}
+html[data-theme="dark"] .v22-hotspots .v23-contact{
+  color:#fff;border-color:#19a9ff;
+  background:linear-gradient(180deg,#159dff 0%,#0573e7 100%);
+  box-shadow:0 0 16px rgba(0,159,255,.24);
+}
+html[data-theme="dark"] .v22-hotspots .v23-primary:hover,
+html[data-theme="dark"] .v22-hotspots .v23-primary:focus-visible,
+html[data-theme="dark"] .v22-hotspots .v23-contact:hover,
+html[data-theme="dark"] .v22-hotspots .v23-contact:focus-visible{
+  background:linear-gradient(180deg,#21b1ff 0%,#047df6 100%);
+  box-shadow:0 0 22px rgba(0,176,255,.42);
+}
+html[data-theme="dark"] .v22-hotspots .v23-secondary:hover,
+html[data-theme="dark"] .v22-hotspots .v23-secondary:focus-visible{
+  color:#fff;border-color:#42c4ff;background:#08263e;
+  box-shadow:0 0 18px rgba(0,174,255,.30);
+}
+
+/* Coordenadas afinadas para cubrir exactamente los botones dibujados en V22. */
+.hs-efirma-plans{left:9.46%;top:38.75%;width:15.55%;height:3.55%}
+.hs-efirma-info{left:9.46%;top:42.47%;width:15.55%;height:3.45%}
+.hs-conta-plans{left:9.46%;top:60.18%;width:15.55%;height:3.55%}
+.hs-conta-info{left:9.46%;top:63.91%;width:15.55%;height:3.45%}
+.hs-jornada-plans{left:9.46%;top:81.57%;width:15.55%;height:3.55%}
+.hs-jornada-info{left:9.46%;top:85.29%;width:15.55%;height:3.45%}
+.hs-contact-bottom{left:78.00%;top:90.62%;width:12.75%;height:4.58%}
+
+/* Mantiene la navegación superior y el selector de tema como hotspots funcionales invisibles. */
+.v22-hotspots .hs-top-efirma,
+.v22-hotspots .hs-top-conta,
+.v22-hotspots .hs-top-jornada,
+.v22-hotspots .hs-top-theme,
+.v22-hotspots .hs-top-contact{z-index:31}
+
+/* El móvil de eFirma GO no puede invadir la franja inferior del rectángulo. 
+   Se ocultan únicamente los pocos píxeles que sobresalen y se recompone el borde del bloque. */
+.v15-stage::before{
+  content:"";
+  position:absolute;
+  left:70.85%;
+  top:46.80%;
+  width:8.25%;
+  height:1.20%;
+  z-index:12;
+  pointer-events:none;
+  background:rgba(248,252,255,.99);
+  border-top:1px solid rgba(115,181,236,.55);
+}
+html[data-theme="dark"] .v15-stage::before{
+  background:#02111f;
+  border-top-color:rgba(0,146,225,.52);
+}
+
+@media(max-width:1100px){
+  .v22-hotspots .v23-action{font-size:11px;padding:0 8px!important}
+  .v22-hotspots .v23-contact{font-size:10px;gap:5px}
+}

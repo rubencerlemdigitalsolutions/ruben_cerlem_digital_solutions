@@ -272,3 +272,10 @@ V22:
 - Ver planes, solicitar información y contactar ahora mantienen enlaces funcionales sin textos duplicados ni superpuestos.
 - Eliminado el copyright inferior de la interfaz.
 - El móvil de eFirma GO queda contenido dentro de su bloque en las imágenes aprobadas.
+
+
+V23 - FUNCIONALIDAD RESTAURADA:
+- Ver planes y Solicitar información vuelven a ser botones reales, visibles y con hover.
+- Contactar ahora vuelve a ser un botón real con sobre y texto centrado.
+- Se mantienen los enlaces a planes, páginas de producto, contacto y selector claro/oscuro.
+- Se impide visualmente que el móvil de eFirma GO sobresalga por debajo de su rectángulo.
