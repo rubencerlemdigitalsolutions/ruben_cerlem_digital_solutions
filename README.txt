@@ -226,3 +226,12 @@ V12 - EJORNADA RESTAURADA:
 - Se restaura completamente el bloque de eJornada en la portada.
 - Contasimple vuelve a mostrar su propio visual y enlaces.
 - eJornada vuelve a mostrar su tarjeta independiente con Ver planes y Solicitar información.
+
+
+V13 - PORTADA APROBADA IMPLEMENTADA:
+- Se añade un bloque superior de marca con mensaje corporativo y logo a la derecha.
+- eFirma GO, Contasimple y eJornada aparecen en tres campos completos, uno debajo de otro y con el mismo ancho.
+- Cada solución muestra Ver planes, Solicitar información y el precio mínimo visible.
+- Se elimina el logo corporativo dentro de cada tarjeta de producto.
+- Se conserva la sección de contacto existente, además del Admin y funcionalidades previas.
+- Se mantienen los temas claro y oscuro.
