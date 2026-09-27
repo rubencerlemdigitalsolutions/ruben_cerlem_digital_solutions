@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-comparator="efirma">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f8fc">
+  <title>Comparador eFirma GO | Rubén Cerlem Digital Solutions</title>
+  <meta name="description" content="Comparador de eFirma GO con soluciones similares.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-header comparator-header">
+  <div class="container nav-shell">
+    <a class="brand-link" href="index.html" aria-label="Rubén Cerlem Digital Solutions">
+      <img class="brand-logo brand-logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
+      <img class="brand-logo brand-logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a><a href="efirma-go.html">eFirma GO</a><a href="contasimple.html">Contasimple</a><a href="ejornada.html">eJornada</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar tema" title="Claro / oscuro"><span class="sun">☀</span><span class="moon">☾</span><i class="thumb"></i></button>
+      <a class="btn primary compact" href="efirma-go.html">Volver</a>
+    </div>
+  </div>
+</header>
+<main class="comparator-main">
+  <section class="comparator-hero">
+    <div class="container comparator-hero-grid">
+      <div>
+        <span class="eyebrow-pill">COMPARADOR</span>
+        <h1>Compara eFirma GO</h1>
+        <p>Compara la solución de firma electrónica que utilizas con eFirma GO. La comparación se muestra característica por característica.</p>
+      </div>
+      <div class="comparator-product-badge"><span>Producto de referencia</span><strong>eFirma GO</strong><small>Cegid</small></div>
+    </div>
+  </section>
+
+  <section class="comparator-workspace">
+    <div class="container">
+      <div class="comparator-picker-card">
+        <div class="comparator-picker-head"><div><span class="eyebrow">TU SOLUCIÓN ACTUAL</span><h2>Selecciona solución</h2><p>Elige una de las alternativas principales o selecciona «Otros».</p></div></div>
+        <div class="comparator-form-grid">
+          <label><span>Solución</span><select id="compareSolution"><option value="">Seleccionar solución</option></select></label>
+          <label id="knownPriceField"><span>¿Cuánto pagas actualmente? <small>(opcional)</small></span><div class="money-field"><input id="comparePrice" type="number" min="0" step="0.01" placeholder="Ej.: 15"><span>€/mes</span></div></label>
+          <label id="otherCompanyField" hidden><span>Empresa / solución</span><input id="otherCompany" type="text" placeholder="Escribe el nombre de la empresa"></label>
+          <label id="otherPriceField" hidden><span>¿Cuánto pagas?</span><div class="money-field"><input id="otherPrice" type="number" min="0" step="0.01" placeholder="Ej.: 24.90"><span>€/mes</span></div></label>
+        </div>
+        <div class="comparator-picker-actions"><button id="compareButton" class="btn primary" type="button">Comparar ahora <span>→</span></button></div>
+      </div>
+      <div id="compareResult" class="compare-result" aria-live="polite">
+        <div class="compare-empty"><strong>Selecciona una solución para comenzar.</strong><span>La comparativa aparecerá aquí en formato vertical.</span></div>
+      </div>
+      <p class="comparator-note">Los precios y funciones son referencias públicas o datos de la comparativa facilitada y pueden cambiar. Cuando un dato no está publicado, se muestra como «No indicado» en lugar de estimarlo.</p>
+    </div>
+  </section>
+</main>
+<footer><div class="container footer-grid"><div class="footer-brand">Rubén Cerlem Digital Solutions<small>Comparativa informativa de soluciones.</small></div><div><a href="efirma-go.html">Volver a eFirma GO</a></div></div></footer>
+<script src="js/comparators.js"></script>
+</body></html>

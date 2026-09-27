@@ -235,3 +235,16 @@ V13 - PORTADA APROBADA IMPLEMENTADA:
 - Se elimina el logo corporativo dentro de cada tarjeta de producto.
 - Se conserva la sección de contacto existente, además del Admin y funcionalidades previas.
 - Se mantienen los temas claro y oscuro.
+
+
+V13.1: Ajuste exclusivo de precios mínimos en portada. "desde" más pequeño y precio €/mes en la misma línea para eFirma GO, Contasimple y eJornada.
+
+
+V13.2 - COMPARADORES:
+- eFirma GO: elimina la comparativa duplicada y abre comparador propio.
+- Contasimple y eJornada: añade acceso a comparador desde su página de producto.
+- Los comparadores usan selector, opción Otros + empresa/precio y comparativa vertical por característica.
+
+
+V13.3:
+- Único cambio sobre V13.2: “Soluciones de hoy para un negocio más sencillo.” usa el mismo azul corporativo de “SOLUCIONES DIGITALES PARA EMPRESAS” en modo claro y oscuro.

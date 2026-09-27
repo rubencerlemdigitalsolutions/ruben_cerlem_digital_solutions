@@ -1422,7 +1422,7 @@ html[data-theme="dark"] .visual-brand-logo.logo-dark{display:block}
 }
 .brand-kicker{display:block;font-size:10px;letter-spacing:.18em;font-weight:900;color:var(--blue);margin-bottom:11px}
 .brand-intro h1{margin:0;font-size:clamp(36px,4.5vw,58px);line-height:1.05;font-style:italic;letter-spacing:-.04em}
-.brand-intro-lead{margin:7px 0 10px;font-size:clamp(22px,3vw,34px);font-weight:850;font-style:italic;color:var(--text)}
+.brand-intro-lead{margin:7px 0 10px;font-size:clamp(22px,3vw,34px);font-weight:850;font-style:italic;color:var(--blue)}
 .brand-intro-text{margin:0;max-width:780px;color:var(--muted);font-size:15px;line-height:1.6}
 .brand-intro-logo{display:grid;place-items:center}
 .intro-logo{width:min(390px,100%);max-height:230px;object-fit:contain}
@@ -1512,3 +1512,56 @@ html[data-theme="dark"] .brand-intro{
   .large-time-device{width:175px;height:260px;transform:none}
   .large-calendar-card{right:0;width:120px}
 }
+
+
+/* === V13.1 · precios en una sola línea === */
+.solution-min-price .price-inline{
+  display:flex;
+  align-items:baseline;
+  gap:7px;
+  white-space:nowrap;
+  line-height:1;
+  letter-spacing:0;
+}
+.solution-min-price .price-prefix{
+  font-size:14px;
+  font-weight:700;
+  color:var(--muted);
+  letter-spacing:0;
+}
+.solution-min-price .price-value{
+  font-size:26px;
+  font-weight:900;
+  color:var(--blue);
+  letter-spacing:-.03em;
+}
+html[data-theme="dark"] .solution-min-price .price-prefix{
+  color:#fff;
+}
+@media(max-width:680px){
+  .solution-min-price .price-inline{gap:6px;}
+  .solution-min-price .price-prefix{font-size:13px;}
+  .solution-min-price .price-value{font-size:24px;}
+}
+
+
+/* === V13.2 · Comparadores por producto === */
+.product-compare-entry{padding:0 0 72px;background:var(--surface)}
+.product-compare-entry.soft{background:var(--bg)}
+.product-compare-strip{margin-top:0}
+.comparator-main{min-height:70vh}
+.comparator-hero{padding:64px 0 42px;background:radial-gradient(circle at 80% 18%,color-mix(in srgb,var(--blue) 16%,transparent),transparent 32%),linear-gradient(135deg,var(--hero1),var(--hero2));border-bottom:1px solid var(--line)}
+.comparator-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:center}
+.comparator-hero h1{font-size:clamp(42px,6vw,70px);letter-spacing:-.05em;margin:14px 0 12px}.comparator-hero p{max-width:720px;color:var(--muted);font-size:16px;line-height:1.65}
+.comparator-product-badge{padding:24px;border:1px solid var(--line);border-radius:22px;background:var(--surface);box-shadow:var(--shadow);display:grid;gap:5px}.comparator-product-badge span{font-size:9px;color:var(--blue);font-weight:900;text-transform:uppercase;letter-spacing:.08em}.comparator-product-badge strong{font-size:26px}.comparator-product-badge small{color:var(--muted)}
+.comparator-workspace{padding:62px 0 82px;background:var(--bg)}
+.comparator-picker-card{padding:26px;border:1px solid var(--line);border-radius:24px;background:var(--surface);box-shadow:var(--shadow2)}
+.comparator-picker-head h2{margin:7px 0 5px;font-size:30px}.comparator-picker-head p{color:var(--muted);margin:0}
+.comparator-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}.comparator-form-grid label{display:grid;gap:7px}.comparator-form-grid label>span{font-size:11px;font-weight:850}.comparator-form-grid input,.comparator-form-grid select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:11px;background:var(--surface2);color:var(--text);outline:none;font:inherit}.comparator-form-grid input:focus,.comparator-form-grid select:focus{border-color:var(--blue);box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 12%,transparent)}
+.money-field{display:grid;grid-template-columns:1fr auto;align-items:center;border:1px solid var(--line);border-radius:11px;background:var(--surface2);overflow:hidden}.money-field input{border:0;border-radius:0;background:transparent;box-shadow:none!important}.money-field span{padding-right:14px;color:var(--muted);font-weight:800;font-size:11px}
+.comparator-picker-actions{display:flex;justify-content:flex-end;margin-top:20px}.compare-result{margin-top:26px}.compare-empty{min-height:150px;border:1px dashed var(--line);border-radius:20px;display:grid;place-items:center;align-content:center;gap:7px;color:var(--muted);background:var(--surface)}.compare-empty strong{color:var(--text);font-size:18px}.compare-empty.error strong{color:#c84040}
+.compare-alert{margin-bottom:14px;padding:14px 16px;border:1px solid #e5bd68;border-radius:12px;background:#fff7df;color:#74541b;font-size:11px;line-height:1.5}html[data-theme="dark"] .compare-alert{background:#2d2412;color:#f6d88b;border-color:#735f2e}
+.compare-board{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow2)}.compare-board-head,.compare-feature-row,.compare-price-row{display:grid;grid-template-columns:minmax(180px,.8fr) repeat(2,minmax(0,1fr));align-items:stretch}.compare-board-head{background:var(--surface2);border-bottom:1px solid var(--line)}.compare-col-head{padding:20px;border-left:1px solid var(--line);display:grid;gap:3px}.compare-col-head small{color:var(--muted);font-size:9px;text-transform:uppercase;font-weight:900;letter-spacing:.08em}.compare-col-head strong{font-size:20px}.compare-col-head span{font-size:10px;color:var(--muted)}.compare-col-head.primary{background:color-mix(in srgb,var(--blue) 7%,var(--surface2))}
+.compare-feature-row,.compare-price-row{border-bottom:1px solid var(--line)}.compare-feature-row:last-child{border-bottom:0}.compare-feature-name{padding:15px 18px;font-size:11px;font-weight:850;display:flex;align-items:center}.compare-value{padding:15px 18px;border-left:1px solid var(--line);font-size:11px;font-weight:850;display:flex;align-items:center;justify-content:center;text-align:center;min-height:50px}.compare-value.good{background:rgba(35,183,94,.12);color:#168342}.compare-value.bad{background:rgba(224,67,67,.10);color:#c43a3a}.compare-value.warn{background:rgba(230,163,38,.12);color:#a66e10}.compare-value.neutral{background:transparent;color:var(--text)}html[data-theme="dark"] .compare-value.good{background:rgba(44,200,106,.14);color:#75eba5}html[data-theme="dark"] .compare-value.bad{background:rgba(235,79,79,.13);color:#ff9898}html[data-theme="dark"] .compare-value.warn{background:rgba(230,163,38,.15);color:#f0c36d}
+.comparator-note{margin:16px 4px 0;color:var(--muted);font-size:9px;line-height:1.55}
+@media(max-width:800px){.comparator-hero-grid{grid-template-columns:1fr}.comparator-form-grid{grid-template-columns:1fr}.compare-board{overflow-x:auto}.compare-board-head,.compare-feature-row,.compare-price-row{min-width:720px}.comparator-picker-actions .btn{width:100%}}
