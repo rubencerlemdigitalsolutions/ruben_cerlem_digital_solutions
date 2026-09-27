@@ -248,3 +248,6 @@ V13.2 - COMPARADORES:
 
 V13.3:
 - Único cambio sobre V13.2: “Soluciones de hoy para un negocio más sencillo.” usa el mismo azul corporativo de “SOLUCIONES DIGITALES PARA EMPRESAS” en modo claro y oscuro.
+
+
+V13.4: comparadores ajustados. Solución + precio para empresas conocidas; al elegir Otros se muestran Empresa/solución + precio. La comparación muestra la solución del cliente a la izquierda y el producto propio a la derecha, con verde/rojo según igualdad o ventaja.
