@@ -287,3 +287,6 @@ V24 - Ajustes precisos:
 - Hotspots superiores centrados sobre eFirma GO, Contasimple, eJornada, tema y Contacto.
 - Selector claro/oscuro funcional sin recuadros extra.
 - Móvil de eFirma GO movido dentro del rectángulo sin franja de parche.
+
+
+Versión V25: ajuste de hotspots superiores y botones, y recolocación visual del móvil de eFirma GO dentro del bloque.

@@ -2133,3 +2133,29 @@ html[data-theme="dark"] .v15-stage::before{
 
 /* Remove the old V23 masking strip under the eFirma phone: the raster itself is now corrected. */
 .v15-stage::before{display:none!important;content:none!important;}
+
+
+/* === V25 · ajuste fino de hotspots y delimitación visual === */
+/* Navegación superior: cajas de hover centradas sobre cada etiqueta y sin invadir el selector de tema. */
+.v22-hotspots .hs-top-efirma{left:57.95%;top:1.35%;width:5.85%;height:3.35%;border-radius:10px;}
+.v22-hotspots .hs-top-conta{left:64.05%;top:1.35%;width:6.65%;height:3.35%;border-radius:10px;}
+.v22-hotspots .hs-top-jornada{left:71.18%;top:1.35%;width:5.10%;height:3.35%;border-radius:10px;}
+.v22-hotspots .hs-top-theme{left:79.22%;top:1.02%;width:4.62%;height:4.02%;border-radius:999px;}
+.v22-hotspots .hs-top-contact{left:84.92%;top:0.98%;width:7.28%;height:4.14%;border-radius:999px;}
+
+/* Botones de producto: exactos sobre los botones rasterizados, sin tocar el texto superior. */
+.v22-hotspots .hs-efirma-plans{left:9.42%;top:39.02%;width:15.45%;height:3.12%;}
+.v22-hotspots .hs-efirma-info{left:9.42%;top:42.86%;width:15.45%;height:3.12%;}
+.v22-hotspots .hs-conta-plans{left:9.42%;top:60.49%;width:15.45%;height:3.12%;}
+.v22-hotspots .hs-conta-info{left:9.42%;top:64.43%;width:15.45%;height:3.12%;}
+.v22-hotspots .hs-jornada-plans{left:9.42%;top:81.76%;width:15.45%;height:3.12%;}
+.v22-hotspots .hs-jornada-info{left:9.42%;top:85.70%;width:15.45%;height:3.12%;}
+
+/* Contactar ahora: encajado en el botón azul real de la imagen. */
+.v22-hotspots .hs-contact-bottom{left:76.55%;top:90.86%;width:13.45%;height:4.16%;border-radius:999px;}
+
+/* Centrado total del texto dentro de los botones funcionales. */
+.v22-hotspots .v23-action{display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;padding:0 10px!important;}
+.v22-hotspots .v23-action > span{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:auto;height:100%!important;line-height:1!important;}
+.v22-hotspots .v23-contact{gap:8px;white-space:nowrap;font-size:clamp(10px,.74vw,12px);}
+.v22-hotspots .v23-contact .v23-envelope{display:inline-flex;align-items:center;justify-content:center;line-height:1;}
