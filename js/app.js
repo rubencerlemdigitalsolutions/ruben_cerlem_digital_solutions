@@ -974,6 +974,3 @@ try{
     },80);
   }
 }catch(e){}
-
-
-// V15: el icono de búsqueda visible en la interfaz aprobada actúa como selector claro/oscuro.
