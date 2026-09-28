@@ -1573,3 +1573,49 @@ html[data-theme="dark"] .solution-min-price .price-prefix{
 .compare-board-head .compare-col-head.primary{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--blue) 24%,transparent)}
 .compare-value.good{font-weight:900}
 .compare-value.bad{font-weight:900}
+
+/* === V13.5 · Contratación === */
+.product-hire-section{
+  padding:28px 0 34px;
+  background:var(--surface);
+}
+.product-hire-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:24px 28px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--blue) 5%,var(--surface)),var(--surface2));
+  box-shadow:0 14px 34px rgba(14,63,118,.08);
+}
+.product-hire-card h2{
+  margin:6px 0 6px;
+  font-size:clamp(22px,2.4vw,32px);
+}
+.product-hire-card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.55;
+}
+.product-hire-button{
+  min-width:150px;
+  justify-content:center;
+  flex:0 0 auto;
+}
+html[data-theme="dark"] .product-hire-section{
+  background:var(--bg);
+}
+html[data-theme="dark"] .product-hire-card{
+  background:linear-gradient(135deg,color-mix(in srgb,var(--blue) 8%,var(--surface)),var(--surface2));
+}
+@media(max-width:760px){
+  .product-hire-card{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .product-hire-button{
+    width:100%;
+  }
+}

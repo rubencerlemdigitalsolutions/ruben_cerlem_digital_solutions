@@ -251,3 +251,5 @@ V13.3:
 
 
 V13.4: comparadores ajustados. Solución + precio para empresas conocidas; al elegir Otros se muestran Empresa/solución + precio. La comparación muestra la solución del cliente a la izquierda y el producto propio a la derecha, con verde/rojo según igualdad o ventaja.
+
+V13.5: añadido bloque Contratar debajo de la comparativa en eFirma GO, Contasimple y eJornada. El botón lleva al formulario de contacto del producto, sin alterar los formularios existentes.
