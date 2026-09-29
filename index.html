@@ -64,7 +64,6 @@
         <div class="solution-wide-bottom">
           <div class="solution-buttons-vertical">
             <a class="btn primary" href="efirma-go.html#precios-producto">Ver planes <span>→</span></a>
-            <a class="btn primary outline-white" href="efirma-go.html">Solicitar información</a>
           </div>
           <div class="solution-min-price">
             <small>Consulta el plan que más se ajusta a ti</small>
@@ -106,7 +105,6 @@
         <div class="solution-wide-bottom">
           <div class="solution-buttons-vertical">
             <a class="btn primary" href="contasimple.html#precios-producto">Ver planes <span>→</span></a>
-            <a class="btn primary outline-white" href="contasimple.html">Solicitar información</a>
           </div>
           <div class="solution-min-price">
             <small>Consulta el plan que más se ajusta a ti</small>
@@ -135,7 +133,6 @@
         <div class="solution-wide-bottom">
           <div class="solution-buttons-vertical">
             <a class="btn primary" href="ejornada.html#precios-producto">Ver planes <span>→</span></a>
-            <a class="btn primary outline-white" href="ejornada.html">Solicitar información</a>
           </div>
           <div class="solution-min-price">
             <small>Consulta el plan que más se ajusta a ti</small>
@@ -337,6 +334,65 @@
           <button class="btn primary" id="adminOpenSaleButton" type="button">Abrir parte de venta</button>
           <button class="btn secondary" id="adminResetPasswordButton" type="button">Restablecer contraseña</button>
           <button class="btn secondary" id="adminLogoutButton" type="button">Cerrar sesión</button>
+        </div>
+
+
+        <div class="admin-onboarding-manager">
+          <div class="admin-onboarding-head">
+            <div>
+              <strong>Gestión de altas y contrataciones</strong>
+              <small>eFirma GO mantiene su flujo actual. Contasimple y eJornada quedan preparados para capturar los datos internos mientras se confirma el procedimiento oficial de alta y migración de Cegid.</small>
+            </div>
+          </div>
+
+          <div class="admin-onboarding-cards">
+            <article class="admin-onboarding-card ready">
+              <span class="admin-onboarding-status">Disponible</span>
+              <h4>eFirma GO</h4>
+              <p>Parte de venta, documentación y flujo interno ya disponible.</p>
+              <button class="btn primary" type="button" data-admin-open-sale>Abrir parte de venta</button>
+            </article>
+
+            <article class="admin-onboarding-card pending">
+              <span class="admin-onboarding-status">Pendiente procedimiento Cegid</span>
+              <h4>Contasimple</h4>
+              <div class="admin-onboarding-fields">
+                <label><span>Cliente / empresa</span><input type="text" data-onboarding-field="client" data-product="Contasimple"></label>
+                <label><span>Plan previsto</span><input type="text" data-onboarding-field="plan" data-product="Contasimple" placeholder="Básico / Profesional / Ultimate"></label>
+                <label><span>Proveedor actual</span><input type="text" data-onboarding-field="provider" data-product="Contasimple" placeholder="Si existe"></label>
+                <label><span>¿Necesita migración?</span>
+                  <select data-onboarding-field="migration" data-product="Contasimple">
+                    <option value="">Pendiente de confirmar</option>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                  </select>
+                </label>
+                <label class="full"><span>Observaciones internas</span><textarea rows="3" data-onboarding-field="notes" data-product="Contasimple"></textarea></label>
+              </div>
+              <button class="btn secondary" type="button" data-save-onboarding="Contasimple">Guardar borrador</button>
+              <small class="admin-onboarding-save-status" data-onboarding-status="Contasimple"></small>
+            </article>
+
+            <article class="admin-onboarding-card pending">
+              <span class="admin-onboarding-status">Pendiente procedimiento Cegid</span>
+              <h4>eJornada</h4>
+              <div class="admin-onboarding-fields">
+                <label><span>Cliente / empresa</span><input type="text" data-onboarding-field="client" data-product="eJornada"></label>
+                <label><span>Plan previsto</span><input type="text" data-onboarding-field="plan" data-product="eJornada" placeholder="Solo fichajes / Fichajes + Ausencias"></label>
+                <label><span>Proveedor actual</span><input type="text" data-onboarding-field="provider" data-product="eJornada" placeholder="Si existe"></label>
+                <label><span>¿Necesita migración?</span>
+                  <select data-onboarding-field="migration" data-product="eJornada">
+                    <option value="">Pendiente de confirmar</option>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                  </select>
+                </label>
+                <label class="full"><span>Observaciones internas</span><textarea rows="3" data-onboarding-field="notes" data-product="eJornada"></textarea></label>
+              </div>
+              <button class="btn secondary" type="button" data-save-onboarding="eJornada">Guardar borrador</button>
+              <small class="admin-onboarding-save-status" data-onboarding-status="eJornada"></small>
+            </article>
+          </div>
         </div>
 
 

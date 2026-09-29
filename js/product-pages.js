@@ -100,6 +100,26 @@ demoRequestForm?.addEventListener("submit",async e=>{
 });
 
 document.querySelectorAll(".product-contact-form").forEach(form=>{
+  if(form.dataset.nativeSubmit==="true"){
+    const params=new URLSearchParams(window.location.search);
+    const status=form.querySelector(".contact-form-status");
+    if(params.get("consulta")==="enviada" && status){
+      status.textContent="Consulta enviada correctamente. También recibirás una confirmación automática en tu correo.";
+      status.className="contact-form-status success";
+    }
+    form.addEventListener("submit",()=>{
+      const next=form.querySelector('[name="_next"]');
+      if(next){
+        next.value=window.location.origin+window.location.pathname+"?consulta=enviada#contacto-producto";
+      }
+      const btn=form.querySelector(".contact-submit");
+      if(btn){
+        btn.disabled=true;
+        btn.textContent="Enviando…";
+      }
+    });
+    return;
+  }
   form.addEventListener("submit",async e=>{
     e.preventDefault();
     if(!form.reportValidity()) return;

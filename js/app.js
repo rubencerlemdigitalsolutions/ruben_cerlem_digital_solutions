@@ -974,3 +974,46 @@ try{
     },80);
   }
 }catch(e){}
+
+
+// === V13.6 · Preparación interna de altas Contasimple / eJornada ===
+document.querySelectorAll("[data-admin-open-sale]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    try{
+      document.querySelector("[data-close-admin]")?.click();
+      document.getElementById("adminOpenSaleButton")?.click();
+    }catch{}
+  });
+});
+
+const ADMIN_ONBOARDING_KEY="rcds_admin_onboarding_drafts_v1";
+function getOnboardingDrafts(){
+  try{return JSON.parse(localStorage.getItem(ADMIN_ONBOARDING_KEY)||"{}")}catch{return{}}
+}
+function restoreOnboardingDraft(product){
+  const drafts=getOnboardingDrafts();
+  const draft=drafts[product]||{};
+  document.querySelectorAll(`[data-onboarding-field][data-product="${product}"]`).forEach(el=>{
+    const key=el.dataset.onboardingField;
+    if(Object.prototype.hasOwnProperty.call(draft,key)) el.value=draft[key]??"";
+  });
+}
+function saveOnboardingDraft(product){
+  const drafts=getOnboardingDrafts();
+  const draft={};
+  document.querySelectorAll(`[data-onboarding-field][data-product="${product}"]`).forEach(el=>{
+    draft[el.dataset.onboardingField]=el.value;
+  });
+  draft.updatedAt=new Date().toISOString();
+  drafts[product]=draft;
+  localStorage.setItem(ADMIN_ONBOARDING_KEY,JSON.stringify(drafts));
+  const status=document.querySelector(`[data-onboarding-status="${product}"]`);
+  if(status){
+    status.textContent="Borrador guardado en este navegador.";
+    setTimeout(()=>{status.textContent=""},2800);
+  }
+}
+["Contasimple","eJornada"].forEach(restoreOnboardingDraft);
+document.querySelectorAll("[data-save-onboarding]").forEach(btn=>{
+  btn.addEventListener("click",()=>saveOnboardingDraft(btn.dataset.saveOnboarding));
+});

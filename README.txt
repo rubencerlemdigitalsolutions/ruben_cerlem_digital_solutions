@@ -250,6 +250,11 @@ V13.3:
 - Único cambio sobre V13.2: “Soluciones de hoy para un negocio más sencillo.” usa el mismo azul corporativo de “SOLUCIONES DIGITALES PARA EMPRESAS” en modo claro y oscuro.
 
 
-V13.4: comparadores ajustados. Solución + precio para empresas conocidas; al elegir Otros se muestran Empresa/solución + precio. La comparación muestra la solución del cliente a la izquierda y el producto propio a la derecha, con verde/rojo según igualdad o ventaja.
 
-V13.5: añadido bloque Contratar debajo de la comparativa en eFirma GO, Contasimple y eJornada. El botón lleva al formulario de contacto del producto, sin alterar los formularios existentes.
+V13.6 · Pendientes de la tarde implementados:
+- Retirado "Solicitar información" únicamente de la portada principal.
+- Se mantiene "Solicitar información" dentro de eFirma GO, Contasimple y eJornada.
+- Añadida respuesta automática por correo a los formularios de información.
+- Añadido bloque "Contratar" debajo de la comparativa de cada producto.
+- Admin: eFirma GO mantiene su flujo existente; Contasimple y eJornada incorporan un borrador interno de alta/migración pendiente de mapear al procedimiento oficial de Cegid.
+- No se han implementado todavía fiscalidad internacional, monedas ni traducciones: siguen en standby hasta cerrar el flujo comercial/fiscal.

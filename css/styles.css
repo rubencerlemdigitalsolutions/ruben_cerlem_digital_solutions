@@ -1567,14 +1567,7 @@ html[data-theme="dark"] .solution-min-price .price-prefix{
 @media(max-width:800px){.comparator-hero-grid{grid-template-columns:1fr}.comparator-form-grid{grid-template-columns:1fr}.compare-board{overflow-x:auto}.compare-board-head,.compare-feature-row,.compare-price-row{min-width:720px}.comparator-picker-actions .btn{width:100%}}
 
 
-/* === V13.4 · comparadores con flujo de dos campos y referencia fija === */
-.comparator-form-grid label[hidden]{display:none!important}
-.comparator-product-badge{align-self:stretch;justify-content:center}
-.compare-board-head .compare-col-head.primary{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--blue) 24%,transparent)}
-.compare-value.good{font-weight:900}
-.compare-value.bad{font-weight:900}
-
-/* === V13.5 · Contratación === */
+/* === V13.6 · Contratación y preparación de altas === */
 .product-hire-section{
   padding:28px 0 34px;
   background:var(--surface);
@@ -1590,32 +1583,76 @@ html[data-theme="dark"] .solution-min-price .price-prefix{
   background:linear-gradient(135deg,color-mix(in srgb,var(--blue) 5%,var(--surface)),var(--surface2));
   box-shadow:0 14px 34px rgba(14,63,118,.08);
 }
-.product-hire-card h2{
-  margin:6px 0 6px;
-  font-size:clamp(22px,2.4vw,32px);
-}
-.product-hire-card p{
-  margin:0;
-  color:var(--muted);
-  line-height:1.55;
-}
-.product-hire-button{
-  min-width:150px;
-  justify-content:center;
-  flex:0 0 auto;
-}
-html[data-theme="dark"] .product-hire-section{
-  background:var(--bg);
-}
+.product-hire-card h2{margin:6px 0 6px;font-size:clamp(22px,2.4vw,32px)}
+.product-hire-card p{margin:0;color:var(--muted);line-height:1.55}
+.product-hire-button{min-width:150px;justify-content:center;flex:0 0 auto}
+html[data-theme="dark"] .product-hire-section{background:var(--bg)}
 html[data-theme="dark"] .product-hire-card{
   background:linear-gradient(135deg,color-mix(in srgb,var(--blue) 8%,var(--surface)),var(--surface2));
 }
+
+.admin-onboarding-manager{
+  margin-top:22px;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--surface2);
+}
+.admin-onboarding-head strong{display:block;font-size:14px}
+.admin-onboarding-head small{display:block;color:var(--muted);line-height:1.5;margin-top:4px}
+.admin-onboarding-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
+.admin-onboarding-card{
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:var(--surface);
+}
+.admin-onboarding-card h4{margin:8px 0 6px;font-size:16px}
+.admin-onboarding-card p{margin:0 0 14px;color:var(--muted);font-size:10px;line-height:1.5}
+.admin-onboarding-status{
+  display:inline-flex;
+  padding:5px 8px;
+  border-radius:999px;
+  background:color-mix(in srgb,var(--blue) 10%,var(--surface2));
+  color:var(--blue);
+  font-size:8px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.admin-onboarding-card.pending .admin-onboarding-status{
+  background:color-mix(in srgb,#e7a418 12%,var(--surface2));
+  color:#b47700;
+}
+.admin-onboarding-fields{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin:12px 0;
+}
+.admin-onboarding-fields label{display:grid;gap:5px}
+.admin-onboarding-fields label.full{grid-column:1/-1}
+.admin-onboarding-fields label>span{font-size:8px;font-weight:800;color:var(--muted)}
+.admin-onboarding-fields input,
+.admin-onboarding-fields select,
+.admin-onboarding-fields textarea{
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:var(--surface2);
+  color:var(--text);
+  padding:9px 10px;
+  font:inherit;
+  font-size:10px;
+}
+.admin-onboarding-save-status{display:block;min-height:14px;color:var(--success);margin-top:7px}
+@media(max-width:980px){
+  .admin-onboarding-cards{grid-template-columns:1fr}
+}
 @media(max-width:760px){
-  .product-hire-card{
-    flex-direction:column;
-    align-items:stretch;
-  }
-  .product-hire-button{
-    width:100%;
-  }
+  .product-hire-card{flex-direction:column;align-items:stretch}
+  .product-hire-button{width:100%}
+  .admin-onboarding-fields{grid-template-columns:1fr}
+  .admin-onboarding-fields label.full{grid-column:auto}
 }

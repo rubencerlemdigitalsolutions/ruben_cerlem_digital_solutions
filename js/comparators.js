@@ -12,7 +12,7 @@ const DB={
   efirma:{
     product:{name:'eFirma GO',plan:'Referencia',price:9,unit:'€/mes',features:{trial:'Sí',initial:'60',annual:'108 €',from:'1,8 €',to:'0,158 €',api:'Gratuita',weight:'25 Mb',custody:'5 años',app:'Sí',editable:'Sí',inperson:'Sí'}},
     visible:['Signaturit','DocuSign'],
-    rows:[['Prueba gratis','trial','bool'],['Firmas paquete inicial','initial','higher'],['Coste anual','annual','lower'],['Precio/doc. desde','from','lower'],['Precio/doc. hasta','to','lower'],['API','api','service'],['Peso máximo de envío','weight','higher'],['Custodia','custody','higher'],['App móvil','app','bool'],['Campos editables','editable','bool'],['Firma presencial','inperson','bool']],
+    rows:[['Prueba gratis','trial','bool'],['Firmas paquete inicial','initial','text'],['Coste anual','annual','moneyText'],['Precio/doc. desde','from','moneyText'],['Precio/doc. hasta','to','moneyText'],['API','api','service'],['Peso máximo de envío','weight','size'],['Custodia','custody','text'],['App móvil','app','bool'],['Campos editables','editable','bool'],['Firma presencial','inperson','bool']],
     vendors:{
       'Signaturit':{aliases:['signaturit'],plans:[{name:'Referencia',price:33,features:{trial:'Sí',initial:'60',annual:'396 €',from:'6,6 €',to:'2,75 €',api:'Pago',weight:'15 Mb',custody:'5 años',app:'Sí',editable:'Sí',inperson:'No'}}]},
       'DocuSign':{aliases:['docusign','docu sign'],plans:[{name:'Referencia',price:9,features:{trial:'Sí',initial:'60',annual:'108 €',from:'1,8 €',to:'4,56 €',api:'Pago',weight:'23,8 Mb',custody:'No indicado',app:'Sí',editable:'Sí',inperson:'Sí'}}]},
@@ -33,7 +33,7 @@ const DB={
   contasimple:{
     product:{name:'Contasimple',plan:'Profesional',price:10.95,unit:'€/mes · pago anual',features:{invoice:'Sí',verifactu:'Sí',tax:'Sí',ocr:'Complemento',bank:'Complemento',inventory:'Complemento',pos:'Complemento',accounting:'Sí',mobile:'Sí',users:'1 usuario',docs:'500 documentos/año'}},
     visible:['Holded','Sage Active','Anfix'],
-    rows:[['Facturación','invoice','bool'],['Verifactu','verifactu','bool'],['Impuestos','tax','bool'],['OCR / captura de gastos','ocr','service'],['Conexión bancaria','bank','service'],['Inventario / stock','inventory','service'],['TPV','pos','service'],['Contabilidad','accounting','service'],['App móvil','mobile','bool'],['Usuarios incluidos','users','higher'],['Volumen documental','docs','higher']],
+    rows:[['Facturación','invoice','bool'],['Verifactu','verifactu','bool'],['Impuestos','tax','bool'],['OCR / captura de gastos','ocr','service'],['Conexión bancaria','bank','service'],['Inventario / stock','inventory','service'],['TPV','pos','service'],['Contabilidad','accounting','service'],['App móvil','mobile','bool'],['Usuarios incluidos','users','text'],['Volumen documental','docs','text']],
     vendors:{
       'Holded':{aliases:['holded'],plans:[
         {name:'Plus',price:15,features:{invoice:'Sí',verifactu:'Sí',tax:'Parcial',ocr:'Sí',bank:'Sí',inventory:'Complemento',pos:'Complemento',accounting:'Parcial',mobile:'Sí',users:'1 usuario',docs:'250 facturas/año'}},
@@ -76,80 +76,25 @@ function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\
 function findVendor(name){const n=norm(name);for(const [vendor,data] of Object.entries(cfg.vendors)){if(norm(vendor)===n || (data.aliases||[]).some(a=>norm(a)===n) || (n && (norm(vendor).includes(n)||n.includes(norm(vendor))))) return [vendor,data]} return null}
 function nearestPlan(vendor,paid){const plans=vendor.plans||[]; if(!plans.length) return null; if(!(paid>=0)) return plans[0]; let best=plans[0],dist=Infinity; for(const p of plans){const candidates=[p.price,...(p.altPrices||[])].filter(v=>typeof v==='number');const d=candidates.length?Math.min(...candidates.map(v=>Math.abs(v-paid))):Infinity;if(d<dist){best=p;dist=d}} return best}
 function money(v){return typeof v==='number'?`${String(v).replace('.',',')} €/mes`:'No indicado'}
+function cls(v){const n=norm(v);if(['si','gratuita','incluida'].includes(n))return 'good';if(n==='no')return 'bad';if(n.includes('complemento')||n.includes('parcial')||n.includes('pago'))return 'warn';if(n.includes('no indicado'))return 'neutral';return 'neutral'}
+function isNo(v){return norm(v)==='no'}; function isYes(v){return ['si','gratuita','incluida'].includes(norm(v))}
+function pairClasses(a,b,type){if(type==='bool'||type==='service'){if(isYes(a)&&isYes(b))return ['good','good'];if(isYes(a)&&isNo(b))return ['good','bad'];if(isNo(a)&&isYes(b))return ['bad','good'];return [cls(a),cls(b)]}return ['neutral','neutral']}
 function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-function isUnknown(v){return norm(v).includes('no indicado')||v===undefined||v===null||v===''}
-function serviceScore(v){
-  const n=norm(v);
-  if(isUnknown(v)) return null;
-  if(['si','gratuita','incluida'].includes(n)) return 4;
-  if(n.includes('parcial')) return 3;
-  if(n.includes('complemento')) return 2;
-  if(n.includes('pago')) return 1;
-  if(n==='no') return 0;
-  return null;
-}
-function parseMetric(v){
-  if(typeof v==='number') return v;
-  if(isUnknown(v)) return null;
-  const t=String(v).toLowerCase().replace(/\./g,'').replace(',','.');
-  const m=t.match(/-?\d+(?:\.\d+)?/);
-  return m?parseFloat(m[0]):null;
-}
-function pairClasses(compValue,baseValue,type){
-  if(isUnknown(compValue)||isUnknown(baseValue)) return ['neutral','neutral'];
-  if(type==='bool'||type==='service'){
-    const a=serviceScore(compValue), b=serviceScore(baseValue);
-    if(a===null||b===null) return norm(compValue)===norm(baseValue)?['good','good']:['neutral','neutral'];
-    if(a===b) return a===0?['bad','bad']:['good','good'];
-    return a>b?['good','bad']:['bad','good'];
-  }
-  if(type==='lower'||type==='higher'){
-    const a=parseMetric(compValue), b=parseMetric(baseValue);
-    if(a===null||b===null) return norm(compValue)===norm(baseValue)?['good','good']:['neutral','neutral'];
-    if(a===b) return ['good','good'];
-    const compWins=type==='lower'?a<b:a>b;
-    return compWins?['good','bad']:['bad','good'];
-  }
-  return norm(compValue)===norm(baseValue)?['good','good']:['neutral','neutral'];
-}
 function render(vendorName,plan,paid,customUnknown=false){
-  const base=cfg.product;
-  const comp=plan?.features||{};
-  const priceBase=base.price;
-  const priceComp=typeof paid==='number'&&!Number.isNaN(paid)?paid:plan?.price;
-  let priceClasses=['neutral','neutral'];
-  if(typeof priceComp==='number'){
-    if(priceComp===priceBase) priceClasses=['good','good'];
-    else if(priceComp<priceBase) priceClasses=['good','bad'];
-    else priceClasses=['bad','good'];
-  }
-  const rows=cfg.rows.map(([label,k,t])=>{
-    const compVal=comp[k]??UNKNOWN;
-    const baseVal=base.features[k]??UNKNOWN;
-    const [cc,bc]=pairClasses(compVal,baseVal,t);
-    return `<div class="compare-feature-row"><div class="compare-feature-name">${label}</div><div class="compare-value ${cc}">${escapeHtml(compVal)}</div><div class="compare-value ${bc}">${escapeHtml(baseVal)}</div></div>`;
-  }).join('');
+  const base=cfg.product; const comp=plan?.features||{}; let priceBase=base.price, priceComp=paid>=0?paid:plan?.price;
+  let priceClasses=['neutral','neutral'];if(typeof priceComp==='number'){if(priceBase<priceComp)priceClasses=['good','bad'];else if(priceBase>priceComp)priceClasses=['bad','good'];else priceClasses=['good','good']}
+  const rows=cfg.rows.map(([label,k,t])=>{const av=base.features[k]??UNKNOWN,bv=comp[k]??UNKNOWN;const [ca,cb]=pairClasses(av,bv,t);return `<div class="compare-feature-row"><div class="compare-feature-name">${label}</div><div class="compare-value ${ca}">${escapeHtml(av)}</div><div class="compare-value ${cb}">${escapeHtml(bv)}</div></div>`}).join('');
   const note=customUnknown?'<div class="compare-alert">No he identificado esa empresa en la base interna. Se compara el precio indicado y el resto de funciones quedan como «No indicado» para no inventar datos.</div>':'';
-  result.innerHTML=`${note}<section class="compare-board"><div class="compare-board-head"><div></div><div class="compare-col-head"><small>Tu solución</small><strong>${escapeHtml(vendorName)}</strong><span>${escapeHtml(plan?.name||'Referencia introducida')}</span></div><div class="compare-col-head primary"><small>Producto de referencia</small><strong>${base.name}</strong><span>${base.plan}</span></div></div><div class="compare-price-row"><div class="compare-feature-name">Precio actual / referencia</div><div class="compare-value ${priceClasses[0]}">${typeof priceComp==='number'?money(priceComp):'No indicado'}</div><div class="compare-value ${priceClasses[1]}">${money(priceBase)}</div></div>${rows}</section>`;
+  result.innerHTML=`${note}<section class="compare-board"><div class="compare-board-head"><div></div><div class="compare-col-head primary"><small>Producto</small><strong>${base.name}</strong><span>${base.plan}</span></div><div class="compare-col-head"><small>Tu solución</small><strong>${escapeHtml(vendorName)}</strong><span>${escapeHtml(plan?.name||'Referencia introducida')}</span></div></div><div class="compare-price-row"><div class="compare-feature-name">Precio de referencia</div><div class="compare-value ${priceClasses[0]}">${money(priceBase)}</div><div class="compare-value ${priceClasses[1]}">${typeof priceComp==='number'?money(priceComp):'No indicado'}</div></div>${rows}</section>`;
 }
 
 document.getElementById('compareButton').addEventListener('click',()=>{
-  const choice=select.value;
-  if(!choice){result.innerHTML='<div class="compare-empty error"><strong>Selecciona una solución.</strong></div>';return}
+  const choice=select.value;if(!choice){result.innerHTML='<div class="compare-empty error"><strong>Selecciona una solución.</strong></div>';return}
   if(choice==='Otros'){
-    const name=otherCompany.value.trim();
-    const paid=parseFloat(otherPrice.value);
-    if(!name||Number.isNaN(paid)){result.innerHTML='<div class="compare-empty error"><strong>Indica la empresa / solución y cuánto pagas actualmente.</strong></div>';return}
-    const found=findVendor(name);
-    if(found){const [vn,vd]=found;render(vn,nearestPlan(vd,paid),paid,false)}
-    else{render(name,{name:'Precio indicado',features:{}},paid,true)}
+    const name=otherCompany.value.trim();const paid=parseFloat(otherPrice.value);if(!name||Number.isNaN(paid)){result.innerHTML='<div class="compare-empty error"><strong>Indica la empresa y lo que pagas al mes.</strong></div>';return}
+    const found=findVendor(name);if(found){const [vn,vd]=found;render(vn,nearestPlan(vd,paid),paid,false)}else{render(name,{name:'Precio indicado',features:{}},paid,true)}
   }else{
-    const paid=parseFloat(price.value);
-    if(Number.isNaN(paid)){result.innerHTML='<div class="compare-empty error"><strong>Indica cuánto pagas actualmente.</strong></div>';return}
-    const found=findVendor(choice);
-    if(!found) return;
-    const [vn,vd]=found;
-    render(vn,nearestPlan(vd,paid),paid,false);
+    const found=findVendor(choice); if(!found) return; const paidRaw=parseFloat(price.value); const paid=Number.isNaN(paidRaw)?undefined:paidRaw; const [vn,vd]=found; render(vn,nearestPlan(vd,paid),paid,false)
   }
 });
 })();
