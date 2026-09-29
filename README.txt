@@ -258,3 +258,12 @@ V13.6 · Pendientes de la tarde implementados:
 - Añadido bloque "Contratar" debajo de la comparativa de cada producto.
 - Admin: eFirma GO mantiene su flujo existente; Contasimple y eJornada incorporan un borrador interno de alta/migración pendiente de mapear al procedimiento oficial de Cegid.
 - No se han implementado todavía fiscalidad internacional, monedas ni traducciones: siguen en standby hasta cerrar el flujo comercial/fiscal.
+
+
+
+V13.7 · Corrección de portada:
+- Restaurados los botones "Ver planes" y "Solicitar información" en las tres tarjetas principales:
+  eFirma GO, Contasimple y eJornada.
+- Eliminado únicamente el bloque general inferior "Solicitar información" de la portada.
+- Los formularios de Solicitar información dentro de cada producto se mantienen intactos.
+- El botón superior "Contactar" sigue operativo mediante correo electrónico.
