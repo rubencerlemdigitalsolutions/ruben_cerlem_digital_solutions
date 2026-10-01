@@ -277,3 +277,12 @@ V13.8 · ADMIN SEGURIDAD + GUÍA INTERNA
 - Se usan nuevas claves localStorage v5 para evitar interferencias con contraseñas de versiones anteriores.
 - Añadida guía interna exclusiva del panel Admin con características y funciones principales de eFirma GO, Contasimple y eJornada.
 - Nota: la autenticación sigue siendo local al navegador; no sustituye una autenticación real de servidor/Cloudflare Access.
+
+
+V13.9 · Corrección del acceso Admin:
+- Usuario: rubencerlem.
+- Contraseña temporal de primer acceso: RCDS-2026-84QX.
+- Tras validarla se muestran obligatoriamente Nueva contraseña y Confirmar nueva contraseña.
+- Al guardarlas, esa pasa a ser la única contraseña de acceso.
+- He olvidado mi contraseña permite Nueva contraseña + Confirmar, sin pedir la anterior.
+- Se usan claves de almacenamiento nuevas y cache-busting v13.9 para evitar cargar lógica antigua.

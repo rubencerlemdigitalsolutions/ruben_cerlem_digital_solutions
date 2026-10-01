@@ -333,14 +333,13 @@ if (efirmaContactForm) {
 }
 
 
-// === Administración local V5 ===
+// === Administración local V13.9 ===
 const ADMIN_USERNAME = "rubencerlem";
-// Contraseña temporal V13.8: RCDS-7M4K-92PX
-const ADMIN_TEMP_HASH = "6165789e562f1e0eb79503031a77589b483943218e69b190d1e6624fc6e18a0d";
-// Claves nuevas para no depender de contraseñas guardadas por versiones anteriores.
-const ADMIN_PASSWORD_HASH_KEY = "rcds_admin_password_hash_v5";
-const ADMIN_PASSWORD_CHANGED_KEY = "rcds_admin_password_changed_v5";
-const ADMIN_SESSION_KEY = "rcds_admin_session_v5";
+// Credencial temporal de primer acceso. Tras usarla, se obliga a crear la contraseña definitiva.
+const ADMIN_TEMP_PASSWORD = "RCDS-2026-84QX";
+const ADMIN_PASSWORD_HASH_KEY = "rcds_admin_password_hash_v6";
+const ADMIN_PASSWORD_CHANGED_KEY = "rcds_admin_password_changed_v6";
+const ADMIN_SESSION_KEY = "rcds_admin_session_v6";
 
 const adminModal = document.getElementById("adminModal");
 const adminLoginView = document.getElementById("adminLoginView");
@@ -372,7 +371,7 @@ function hideAllAdminViews(){
 }
 function showLoginView(message="",type=""){
   hideAllAdminViews();
-  adminLoginView.hidden=false;
+  if(adminLoginView) adminLoginView.hidden=false;
   const user=document.getElementById("adminUsername");
   const pass=document.getElementById("adminPassword");
   if(user) user.value="";
@@ -385,7 +384,7 @@ function showLoginView(message="",type=""){
 function showPasswordChangeView(mode){
   adminPasswordChangeMode=mode;
   hideAllAdminViews();
-  adminChangePasswordView.hidden=false;
+  if(adminChangePasswordView) adminChangePasswordView.hidden=false;
   const title=document.getElementById("adminPasswordChangeTitle");
   const help=document.getElementById("adminPasswordChangeHelp");
   const p1=document.getElementById("adminNewPassword");
@@ -397,31 +396,33 @@ function showPasswordChangeView(mode){
     adminPasswordStatus.className="admin-status";
   }
   if(mode==="forgot"){
-    title.textContent="He olvidado mi contraseña";
-    help.textContent="Introduce la nueva contraseña y repítela para confirmarla. No necesitas escribir la contraseña anterior.";
+    if(title) title.textContent="He olvidado mi contraseña";
+    if(help) help.textContent="Escribe una nueva contraseña y repítela para confirmarla. No se solicita la contraseña anterior.";
     if(adminPasswordCancelButton) adminPasswordCancelButton.hidden=false;
   }else if(mode==="dashboard-reset"){
-    title.textContent="Cambiar contraseña";
-    help.textContent="Introduce y confirma la nueva contraseña. Sustituirá inmediatamente a la anterior.";
+    if(title) title.textContent="Cambiar contraseña";
+    if(help) help.textContent="Escribe y confirma la nueva contraseña. Sustituirá a la contraseña actual.";
     if(adminPasswordCancelButton) adminPasswordCancelButton.hidden=false;
   }else{
-    title.textContent="Configura tu contraseña de administrador";
-    help.textContent="Primer acceso: introduce la contraseña que quieras utilizar y confírmala. Esta sustituirá a la contraseña temporal.";
+    if(title) title.textContent="Configura tu contraseña de administrador";
+    if(help) help.textContent="Primer acceso correcto. Ahora crea la contraseña definitiva y confírmala.";
     if(adminPasswordCancelButton) adminPasswordCancelButton.hidden=true;
   }
 }
 function showDashboardView(){
   sessionStorage.setItem(ADMIN_SESSION_KEY,"1");
   hideAllAdminViews();
-  adminDashboardView.hidden=false;
+  if(adminDashboardView) adminDashboardView.hidden=false;
 }
 function openAdmin(){
+  if(!adminModal) return;
   adminModal.classList.add("open");
   adminModal.setAttribute("aria-hidden","false");
   document.body.classList.add("admin-lock");
   adminSessionActive()?showDashboardView():showLoginView();
 }
 function closeAdmin(){
+  if(!adminModal) return;
   adminModal.classList.remove("open");
   adminModal.setAttribute("aria-hidden","true");
   document.body.classList.remove("admin-lock");
@@ -432,16 +433,34 @@ document.querySelectorAll("[data-close-admin]").forEach(el=>el.addEventListener(
 document.getElementById("adminLoginButton")?.addEventListener("click",async()=>{
   const u=normalizeAdminUsername(document.getElementById("adminUsername")?.value);
   const p=document.getElementById("adminPassword")?.value||"";
-  const changed=localStorage.getItem(ADMIN_PASSWORD_CHANGED_KEY)==="1";
-  const saved=localStorage.getItem(ADMIN_PASSWORD_HASH_KEY);
-  const expected=(changed&&saved)?saved:ADMIN_TEMP_HASH;
-  if(u!==ADMIN_USERNAME || await adminHash(p)!==expected){
+  if(u!==ADMIN_USERNAME){
     adminLoginStatus.textContent="Usuario o contraseña incorrectos.";
     adminLoginStatus.className="admin-status error";
     return;
   }
-  if(!changed) showPasswordChangeView("first-use");
-  else showDashboardView();
+
+  const changed=localStorage.getItem(ADMIN_PASSWORD_CHANGED_KEY)==="1";
+  const saved=localStorage.getItem(ADMIN_PASSWORD_HASH_KEY)||"";
+
+  // Primer acceso: la contraseña temporal es válida literalmente y abre SIEMPRE
+  // la pantalla Nueva contraseña + Confirmar nueva contraseña.
+  if(!changed){
+    if(p!==ADMIN_TEMP_PASSWORD){
+      adminLoginStatus.textContent="Usuario o contraseña temporal incorrectos.";
+      adminLoginStatus.className="admin-status error";
+      return;
+    }
+    showPasswordChangeView("first-use");
+    return;
+  }
+
+  // Accesos posteriores: solo la contraseña definitiva configurada por el administrador.
+  if(!saved || await adminHash(p)!==saved){
+    adminLoginStatus.textContent="Usuario o contraseña incorrectos.";
+    adminLoginStatus.className="admin-status error";
+    return;
+  }
+  showDashboardView();
 });
 ["adminUsername","adminPassword"].forEach(id=>document.getElementById(id)?.addEventListener("keydown",e=>{
   if(e.key==="Enter") document.getElementById("adminLoginButton")?.click();
