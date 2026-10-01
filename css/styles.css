@@ -1656,3 +1656,47 @@ html[data-theme="dark"] .product-hire-card{
   .admin-onboarding-fields{grid-template-columns:1fr}
   .admin-onboarding-fields label.full{grid-column:auto}
 }
+
+
+/* === V13.8 · Guía interna de productos y recuperación Admin === */
+.admin-product-guide{
+  margin-top:4px;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--surface2);
+}
+.admin-product-guide-head h3{margin:6px 0 5px;font-size:18px}
+.admin-product-guide-head p{margin:0;color:var(--muted);font-size:10px;line-height:1.55}
+.admin-product-guide-list{display:grid;gap:10px;margin-top:14px}
+.admin-product-guide-card{
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--surface);
+  overflow:hidden;
+}
+.admin-product-guide-card summary{
+  cursor:pointer;
+  list-style:none;
+  padding:14px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-weight:900;
+}
+.admin-product-guide-card summary::-webkit-details-marker{display:none}
+.admin-product-guide-card summary span{font-size:13px;color:var(--text)}
+.admin-product-guide-card summary small{font-size:9px;color:var(--muted);font-weight:750;text-align:right}
+.admin-product-guide-card[open] summary{border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--blue) 5%,var(--surface))}
+.admin-product-guide-content{padding:14px 15px;display:grid;gap:12px}
+.admin-product-guide-content b{display:block;font-size:10px;margin-bottom:5px;color:var(--blue)}
+.admin-product-guide-content p{margin:0;color:var(--muted);font-size:10px;line-height:1.55}
+.admin-product-guide-content ul{margin:0;padding-left:18px;color:var(--muted);font-size:10px;line-height:1.6}
+.admin-product-guide-content li+li{margin-top:3px}
+
+#adminPasswordCancelButton{justify-content:center}
+@media(max-width:640px){
+  .admin-product-guide-card summary{align-items:flex-start;flex-direction:column}
+  .admin-product-guide-card summary small{text-align:left}
+}

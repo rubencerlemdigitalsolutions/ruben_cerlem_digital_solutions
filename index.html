@@ -250,18 +250,8 @@
           <input id="adminPassword" type="password" autocomplete="current-password">
         </label>
         <button class="btn primary" id="adminLoginButton" type="button">Entrar <span>→</span></button>
-<button class="admin-reset-link" id="adminResetLink" type="button">Restablecer contraseña</button>
+<button class="admin-reset-link" id="adminResetLink" type="button">He olvidado mi contraseña</button>
         <div class="admin-status" id="adminLoginStatus" role="status" aria-live="polite"></div>
-      </div>
-
-      <div class="admin-auth" id="adminResetAuthView" hidden>
-        <h3>Restablecer contraseña</h3>
-        <p>Confirma primero tu usuario y contraseña actual.</p>
-        <label><span>Usuario</span><input id="adminResetUsername" type="text" autocomplete="username"></label>
-        <label><span>Contraseña actual</span><input id="adminResetCurrentPassword" type="password" autocomplete="current-password"></label>
-        <button class="btn primary" id="adminResetVerifyButton" type="button">Continuar</button>
-        <button class="btn secondary" id="adminResetCancelButton" type="button">Cancelar</button>
-        <div class="admin-status" id="adminResetStatus"></div>
       </div>
 
       <div class="admin-auth" id="adminChangePasswordView" hidden>
@@ -276,6 +266,7 @@
           <input id="adminConfirmPassword" type="password" autocomplete="new-password">
         </label>
         <button class="btn primary" id="adminSavePasswordButton" type="button">Guardar nueva contraseña</button>
+        <button class="btn secondary" id="adminPasswordCancelButton" type="button" hidden>Volver</button>
         <div class="admin-status" id="adminPasswordStatus" role="status" aria-live="polite"></div>
       </div>
 
@@ -292,6 +283,103 @@
           <button class="btn secondary" id="adminResetPasswordButton" type="button">Restablecer contraseña</button>
           <button class="btn secondary" id="adminLogoutButton" type="button">Cerrar sesión</button>
         </div>
+
+
+        <section class="admin-product-guide" aria-labelledby="adminProductGuideTitle">
+          <div class="admin-product-guide-head">
+            <div>
+              <span class="eyebrow">GUÍA INTERNA</span>
+              <h3 id="adminProductGuideTitle">Características y función de cada producto</h3>
+              <p>Resumen operativo pensado para consulta rápida del administrador. Esta información no se muestra al cliente.</p>
+            </div>
+          </div>
+
+          <div class="admin-product-guide-list">
+            <details class="admin-product-guide-card" open>
+              <summary>
+                <span>eFirma GO</span>
+                <small>Firma electrónica y gestión documental</small>
+              </summary>
+              <div class="admin-product-guide-content">
+                <div>
+                  <b>Función principal</b>
+                  <p>Permite enviar, firmar, controlar y custodiar documentación electrónicamente desde ordenador o móvil.</p>
+                </div>
+                <div>
+                  <b>Características clave</b>
+                  <ul>
+                    <li>Firma simple, avanzada y cualificada según el proceso contratado.</li>
+                    <li>Envíos individuales o masivos y seguimiento del estado de cada documento.</li>
+                    <li>Plantillas de firmantes, campos editables, recordatorios y flujos de trabajo.</li>
+                    <li>Firma presencial y móvil para procesos realizados delante del cliente.</li>
+                    <li>API REST/JSON para integrar la firma con aplicaciones y procesos propios.</li>
+                    <li>Custodia documental y trazabilidad del proceso de firma.</li>
+                  </ul>
+                </div>
+                <div>
+                  <b>Uso habitual</b>
+                  <p>Contratos laborales y comerciales, presupuestos, mandatos, autorizaciones, NDAs, actas, documentación de proveedores y otros documentos que requieren aceptación o firma.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="admin-product-guide-card">
+              <summary>
+                <span>Contasimple</span>
+                <small>Facturación, impuestos y gestión del negocio</small>
+              </summary>
+              <div class="admin-product-guide-content">
+                <div>
+                  <b>Función principal</b>
+                  <p>Centraliza la facturación y las tareas económicas habituales de autónomos, profesionales y pequeñas empresas.</p>
+                </div>
+                <div>
+                  <b>Características clave</b>
+                  <ul>
+                    <li>Creación y envío de facturas, rectificativas, presupuestos y albaranes.</li>
+                    <li>Preparación para factura electrónica y Verifactu según las funciones del plan.</li>
+                    <li>Gestión de gastos y digitalización mediante OCR.</li>
+                    <li>Impuestos y modelos fiscales con información de la actividad.</li>
+                    <li>Tesorería, cobros, pagos, remesas y conexión/conciliación bancaria según plan o complemento.</li>
+                    <li>Inventario, productos, clientes, proveedores, TPV y seguimiento básico del negocio.</li>
+                  </ul>
+                </div>
+                <div>
+                  <b>Uso habitual</b>
+                  <p>Negocios que quieren concentrar facturación, control de gastos, impuestos, clientes y operaciones diarias en una única aplicación.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="admin-product-guide-card">
+              <summary>
+                <span>eJornada</span>
+                <small>Registro horario, presencia y ausencias</small>
+              </summary>
+              <div class="admin-product-guide-content">
+                <div>
+                  <b>Función principal</b>
+                  <p>Registra la jornada laboral y facilita el control de presencia, horarios y ausencias de los trabajadores.</p>
+                </div>
+                <div>
+                  <b>Características clave</b>
+                  <ul>
+                    <li>Fichaje de entrada y salida desde móvil, tablet u ordenador.</li>
+                    <li>Geolocalización opcional asociada al fichaje.</li>
+                    <li>Calendarios, horarios, jornadas, centros de trabajo y departamentos.</li>
+                    <li>Avisos por fichajes olvidados o incidencias relacionadas con el registro.</li>
+                    <li>Gestión de vacaciones, enfermedad, permisos, citas médicas y otras ausencias.</li>
+                    <li>Dashboard, informes y exportación de registros para control y apoyo a nóminas.</li>
+                  </ul>
+                </div>
+                <div>
+                  <b>Uso habitual</b>
+                  <p>Empresas con trabajadores presenciales, en remoto o desplazados que necesitan registrar y consultar la jornada desde la nube.</p>
+                </div>
+              </div>
+            </details>
+          </div>
+        </section>
 
 
         <div class="admin-onboarding-manager">

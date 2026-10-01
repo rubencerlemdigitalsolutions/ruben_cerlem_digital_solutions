@@ -333,21 +333,22 @@ if (efirmaContactForm) {
 }
 
 
-// === Administración local V4 ===
+// === Administración local V5 ===
 const ADMIN_USERNAME = "rubencerlem";
-const ADMIN_TEMP_HASH = "0e137a13d0061b9353e85e78228414cd75466b4bd09fbf8fa0e6005f9a35009f";
-const ADMIN_PASSWORD_HASH_KEY = "rcds_admin_password_hash_v4";
-const ADMIN_PASSWORD_CHANGED_KEY = "rcds_admin_password_changed_v4";
-const ADMIN_SESSION_KEY = "rcds_admin_session_v4";
+// Contraseña temporal V13.8: RCDS-7M4K-92PX
+const ADMIN_TEMP_HASH = "6165789e562f1e0eb79503031a77589b483943218e69b190d1e6624fc6e18a0d";
+// Claves nuevas para no depender de contraseñas guardadas por versiones anteriores.
+const ADMIN_PASSWORD_HASH_KEY = "rcds_admin_password_hash_v5";
+const ADMIN_PASSWORD_CHANGED_KEY = "rcds_admin_password_changed_v5";
+const ADMIN_SESSION_KEY = "rcds_admin_session_v5";
 
 const adminModal = document.getElementById("adminModal");
 const adminLoginView = document.getElementById("adminLoginView");
-const adminResetAuthView = document.getElementById("adminResetAuthView");
 const adminChangePasswordView = document.getElementById("adminChangePasswordView");
 const adminDashboardView = document.getElementById("adminDashboardView");
 const adminLoginStatus = document.getElementById("adminLoginStatus");
-const adminResetStatus = document.getElementById("adminResetStatus");
 const adminPasswordStatus = document.getElementById("adminPasswordStatus");
+const adminPasswordCancelButton = document.getElementById("adminPasswordCancelButton");
 let adminPasswordChangeMode = "first-use";
 
 async function adminHash(text){
@@ -355,20 +356,31 @@ async function adminHash(text){
   const digest = await crypto.subtle.digest("SHA-256", data);
   return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("");
 }
+function normalizeAdminUsername(value){
+  return String(value||"")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .replace(/\s+/g,"");
+}
 function adminSessionActive(){ return sessionStorage.getItem(ADMIN_SESSION_KEY)==="1"; }
 function hideAllAdminViews(){
   if(adminLoginView) adminLoginView.hidden=true;
-  if(adminResetAuthView) adminResetAuthView.hidden=true;
   if(adminChangePasswordView) adminChangePasswordView.hidden=true;
   if(adminDashboardView) adminDashboardView.hidden=true;
 }
 function showLoginView(message="",type=""){
   hideAllAdminViews();
   adminLoginView.hidden=false;
-  document.getElementById("adminUsername").value="";
-  document.getElementById("adminPassword").value="";
-  adminLoginStatus.textContent=message;
-  adminLoginStatus.className="admin-status"+(type?" "+type:"");
+  const user=document.getElementById("adminUsername");
+  const pass=document.getElementById("adminPassword");
+  if(user) user.value="";
+  if(pass) pass.value="";
+  if(adminLoginStatus){
+    adminLoginStatus.textContent=message;
+    adminLoginStatus.className="admin-status"+(type?" "+type:"");
+  }
 }
 function showPasswordChangeView(mode){
   adminPasswordChangeMode=mode;
@@ -376,16 +388,26 @@ function showPasswordChangeView(mode){
   adminChangePasswordView.hidden=false;
   const title=document.getElementById("adminPasswordChangeTitle");
   const help=document.getElementById("adminPasswordChangeHelp");
-  document.getElementById("adminNewPassword").value="";
-  document.getElementById("adminConfirmPassword").value="";
-  adminPasswordStatus.textContent="";
-  adminPasswordStatus.className="admin-status";
-  if(mode==="reset"){
-    title.textContent="Restablecer contraseña";
-    help.textContent="Introduce y confirma la nueva contraseña.";
-  } else {
-    title.textContent="Cambia la contraseña temporal";
-    help.textContent="Este paso aparece únicamente en el primer acceso.";
+  const p1=document.getElementById("adminNewPassword");
+  const p2=document.getElementById("adminConfirmPassword");
+  if(p1) p1.value="";
+  if(p2) p2.value="";
+  if(adminPasswordStatus){
+    adminPasswordStatus.textContent="";
+    adminPasswordStatus.className="admin-status";
+  }
+  if(mode==="forgot"){
+    title.textContent="He olvidado mi contraseña";
+    help.textContent="Introduce la nueva contraseña y repítela para confirmarla. No necesitas escribir la contraseña anterior.";
+    if(adminPasswordCancelButton) adminPasswordCancelButton.hidden=false;
+  }else if(mode==="dashboard-reset"){
+    title.textContent="Cambiar contraseña";
+    help.textContent="Introduce y confirma la nueva contraseña. Sustituirá inmediatamente a la anterior.";
+    if(adminPasswordCancelButton) adminPasswordCancelButton.hidden=false;
+  }else{
+    title.textContent="Configura tu contraseña de administrador";
+    help.textContent="Primer acceso: introduce la contraseña que quieras utilizar y confírmala. Esta sustituirá a la contraseña temporal.";
+    if(adminPasswordCancelButton) adminPasswordCancelButton.hidden=true;
   }
 }
 function showDashboardView(){
@@ -407,9 +429,9 @@ function closeAdmin(){
 document.querySelectorAll("[data-open-admin]").forEach(el=>el.addEventListener("click",openAdmin));
 document.querySelectorAll("[data-close-admin]").forEach(el=>el.addEventListener("click",closeAdmin));
 
-document.getElementById("adminLoginButton").addEventListener("click",async()=>{
-  const u=document.getElementById("adminUsername").value.trim().toLowerCase().replace(/\s+/g,"");
-  const p=document.getElementById("adminPassword").value;
+document.getElementById("adminLoginButton")?.addEventListener("click",async()=>{
+  const u=normalizeAdminUsername(document.getElementById("adminUsername")?.value);
+  const p=document.getElementById("adminPassword")?.value||"";
   const changed=localStorage.getItem(ADMIN_PASSWORD_CHANGED_KEY)==="1";
   const saved=localStorage.getItem(ADMIN_PASSWORD_HASH_KEY);
   const expected=(changed&&saved)?saved:ADMIN_TEMP_HASH;
@@ -421,37 +443,41 @@ document.getElementById("adminLoginButton").addEventListener("click",async()=>{
   if(!changed) showPasswordChangeView("first-use");
   else showDashboardView();
 });
-["adminUsername","adminPassword"].forEach(id=>document.getElementById(id).addEventListener("keydown",e=>{
-  if(e.key==="Enter") document.getElementById("adminLoginButton").click();
+["adminUsername","adminPassword"].forEach(id=>document.getElementById(id)?.addEventListener("keydown",e=>{
+  if(e.key==="Enter") document.getElementById("adminLoginButton")?.click();
 }));
 
-document.getElementById("adminSavePasswordButton").addEventListener("click",async()=>{
-  const p1=document.getElementById("adminNewPassword").value;
-  const p2=document.getElementById("adminConfirmPassword").value;
-  if(p1.length<8){ adminPasswordStatus.textContent="La nueva contraseña debe tener al menos 8 caracteres.";adminPasswordStatus.className="admin-status error";return; }
-  if(p1!==p2){ adminPasswordStatus.textContent="Las contraseñas no coinciden.";adminPasswordStatus.className="admin-status error";return; }
+document.getElementById("adminSavePasswordButton")?.addEventListener("click",async()=>{
+  const p1=document.getElementById("adminNewPassword")?.value||"";
+  const p2=document.getElementById("adminConfirmPassword")?.value||"";
+  if(p1.length<8){
+    adminPasswordStatus.textContent="La nueva contraseña debe tener al menos 8 caracteres.";
+    adminPasswordStatus.className="admin-status error";
+    return;
+  }
+  if(p1!==p2){
+    adminPasswordStatus.textContent="Las contraseñas no coinciden.";
+    adminPasswordStatus.className="admin-status error";
+    return;
+  }
   localStorage.setItem(ADMIN_PASSWORD_HASH_KEY,await adminHash(p1));
   localStorage.setItem(ADMIN_PASSWORD_CHANGED_KEY,"1");
-  showDashboardView();
+
+  if(adminPasswordChangeMode==="forgot"){
+    sessionStorage.removeItem(ADMIN_SESSION_KEY);
+    showLoginView("Contraseña actualizada. Ya puedes entrar con la nueva contraseña.","success");
+  }else{
+    showDashboardView();
+  }
 });
 
-document.getElementById("adminResetLink").addEventListener("click",()=>{
-  hideAllAdminViews();adminResetAuthView.hidden=false;
+document.getElementById("adminResetLink")?.addEventListener("click",()=>showPasswordChangeView("forgot"));
+document.getElementById("adminResetPasswordButton")?.addEventListener("click",()=>showPasswordChangeView("dashboard-reset"));
+adminPasswordCancelButton?.addEventListener("click",()=>{
+  adminSessionActive()?showDashboardView():showLoginView();
 });
-document.getElementById("adminResetCancelButton").addEventListener("click",()=>showLoginView());
-document.getElementById("adminResetVerifyButton").addEventListener("click",async()=>{
-  const u=document.getElementById("adminResetUsername").value.trim().toLowerCase().replace(/\s+/g,"");
-  const p=document.getElementById("adminResetCurrentPassword").value;
-  const changed=localStorage.getItem(ADMIN_PASSWORD_CHANGED_KEY)==="1";
-  const saved=localStorage.getItem(ADMIN_PASSWORD_HASH_KEY);
-  if(!changed||!saved||u!==ADMIN_USERNAME||await adminHash(p)!==saved){
-    adminResetStatus.textContent="Usuario o contraseña actual incorrectos.";
-    adminResetStatus.className="admin-status error";return;
-  }
-  sessionStorage.setItem(ADMIN_SESSION_KEY,"1");
-  showPasswordChangeView("reset");
-});
-document.getElementById("adminLogoutButton").addEventListener("click",()=>{
+
+document.getElementById("adminLogoutButton")?.addEventListener("click",()=>{
   sessionStorage.removeItem(ADMIN_SESSION_KEY);
   closeSale();
   showLoginView("Sesión cerrada.","success");

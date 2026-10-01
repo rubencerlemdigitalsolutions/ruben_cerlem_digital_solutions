@@ -267,3 +267,13 @@ V13.7 · Corrección de portada:
 - Eliminado únicamente el bloque general inferior "Solicitar información" de la portada.
 - Los formularios de Solicitar información dentro de cada producto se mantienen intactos.
 - El botón superior "Contactar" sigue operativo mediante correo electrónico.
+
+
+V13.8 · ADMIN SEGURIDAD + GUÍA INTERNA
+- Usuario Admin: rubencerlem (también admite RubénCerlem al normalizar acentos y espacios).
+- Contraseña temporal de primer acceso: RCDS-7M4K-92PX
+- Primer acceso obliga a definir Nueva contraseña + Confirmar nueva contraseña.
+- "He olvidado mi contraseña" no solicita la contraseña anterior: permite definir una nueva y confirmarla.
+- Se usan nuevas claves localStorage v5 para evitar interferencias con contraseñas de versiones anteriores.
+- Añadida guía interna exclusiva del panel Admin con características y funciones principales de eFirma GO, Contasimple y eJornada.
+- Nota: la autenticación sigue siendo local al navegador; no sustituye una autenticación real de servidor/Cloudflare Access.
