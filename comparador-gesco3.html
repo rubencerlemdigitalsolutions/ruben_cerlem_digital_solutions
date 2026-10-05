@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-comparator="gesco3">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f8fc">
+  <title>Comparador Gesco3 | Rubén Cerlem Digital Solutions</title>
+  <meta name="description" content="Comparador de Gesco3 con soluciones similares de gestión comercial.">
+  <link rel="stylesheet" href="css/styles.css?v=14.1">
+  <style>
+    .compare-local-grid{display:grid;gap:14px;margin-top:18px;}
+    .compare-local-row{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.72);border:1px solid rgba(148,163,184,.28);}
+    .compare-local-row strong{font-size:.95rem;}
+    .compare-local-badge{padding:8px 10px;border-radius:12px;font-weight:700;text-align:center;}
+    .compare-local-badge.good{background:rgba(16,185,129,.16);color:#047857;}
+    .compare-local-badge.bad{background:rgba(239,68,68,.14);color:#b91c1c;}
+    .compare-local-badge.neutral{background:rgba(59,130,246,.12);color:#1d4ed8;}
+    .compare-summary{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+    .compare-summary article{padding:16px;border-radius:18px;background:rgba(255,255,255,.72);border:1px solid rgba(148,163,184,.28);}
+    .compare-summary small{display:block;opacity:.75;margin-top:2px;}
+    .compare-summary ul{margin:12px 0 0 18px;padding:0;}
+    .compare-result-panel{padding:18px;border-radius:22px;background:rgba(255,255,255,.66);border:1px solid rgba(148,163,184,.28);backdrop-filter:blur(10px);}
+    .compare-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:.95rem;opacity:.82;}
+    .product-fixed-card{padding:14px 16px;border-radius:16px;background:rgba(37,99,235,.08);border:1px solid rgba(59,130,246,.18);}
+    @media (max-width: 860px){.compare-summary,.compare-local-row{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<header class="site-header comparator-header">
+  <div class="container nav-shell">
+    <a class="brand-link" href="index.html" aria-label="Rubén Cerlem Digital Solutions">
+      <img class="brand-logo brand-logo-light" src="assets/logo-light.png" alt="Rubén Cerlem Digital Solutions">
+      <img class="brand-logo brand-logo-dark" src="assets/logo-dark.png" alt="Rubén Cerlem Digital Solutions">
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a><a href="efirma-go.html">eFirma GO</a><a href="contasimple.html">Contasimple</a><a href="ejornada.html">eJornada</a><a href="informatica3.html">Informática 3</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar tema" title="Claro / oscuro"><span class="sun">☀</span><span class="moon">☾</span><i class="thumb"></i></button>
+      <a class="btn primary compact" href="informatica3.html">Volver</a>
+    </div>
+  </div>
+</header>
+<main class="comparator-main">
+  <section class="comparator-hero">
+    <div class="container comparator-hero-grid">
+      <div>
+        <span class="eyebrow-pill">COMPARADOR</span>
+        <h1>Compara Gesco3</h1>
+        <p>Compara Gesco3 con soluciones de gestión comercial, almacén y facturación para valorar el ajuste real del cliente.</p>
+      </div>
+      <div class="comparator-product-badge"><span>Producto de referencia</span><strong>Gesco3</strong><small>Cegid · Informática 3</small></div>
+    </div>
+  </section>
+
+  <section class="comparator-workspace">
+    <div class="container">
+      <div class="comparator-picker-card">
+        <div class="comparator-picker-head"><div><span class="eyebrow">TU SOLUCIÓN ACTUAL</span><h2>Selecciona solución</h2><p>Elige una alternativa del mercado. Si seleccionas «Otros», podrás escribir manualmente el nombre de la solución.</p></div></div>
+        <div class="comparator-form-grid">
+          <label><span>Solución</span><select id="compareSolution"><option value="">Seleccionar solución</option></select></label>
+          <label id="knownPriceField"><span>¿Cuánto pagas actualmente? <small>(opcional)</small></span><div class="money-field"><input id="comparePrice" type="number" min="0" step="0.01" placeholder="Ej.: 24.90"><span>€/mes</span></div></label>
+          <label id="otherCompanyField" hidden><span>Empresa / solución</span><input id="otherCompany" type="text" placeholder="Escribe el nombre de la empresa"></label>
+          <label id="otherPriceField" hidden><span>¿Cuánto pagas?</span><div class="money-field"><input id="otherPrice" type="number" min="0" step="0.01" placeholder="Ej.: 24.90"><span>€/mes</span></div></label>
+        </div>
+        <div class="comparator-picker-actions"><button id="compareButton" class="btn primary" type="button">Comparar ahora <span>→</span></button></div>
+      </div>
+      <div id="compareResult" class="compare-result" aria-live="polite">
+        <div class="compare-empty"><strong>Selecciona una solución para comenzar.</strong><span>La comparativa aparecerá aquí en formato vertical.</span></div>
+      </div>
+      <p class="comparator-note">Los precios y funciones mostrados son orientativos y sirven como comparativa comercial. Para una propuesta final, conviene validar la necesidad exacta del cliente.</p>
+    </div>
+  </section>
+</main>
+<footer><div class="container footer-grid"><div class="footer-brand">Rubén Cerlem Digital Solutions<small>Comparativa informativa de soluciones.</small></div><div><a href="informatica3.html">Volver a Informática 3</a></div></div></footer>
+<script>
+(function(){
+  var data = {"options": [{"key": "holded", "label": "Holded"}, {"key": "sage50", "label": "Sage 50 Gestión"}, {"key": "odoo", "label": "Odoo"}, {"key": "otros", "label": "Otros"}], "fixed": {"name": "Gesco3", "price": "18,66", "bullets": ["Gestión comercial y compras/ventas según plan", "Control de almacén", "Factura electrónica"], "features": {"precio": "18.66", "ventas": "Sí", "compras": "Sí", "almacen": "Sí", "fabricacion": "Opcional según plan", "facturae": "Sí", "usuarios": "4"}}, "competitors": {"holded": {"name": "Holded", "price": "14.50", "bullets": ["Facturación y CRM", "Inventario según plan", "Automatizaciones"], "features": {"precio": "14.50", "ventas": "Sí", "compras": "Sí", "almacen": "Sí", "fabricacion": "No", "facturae": "Sí", "usuarios": "1"}}, "sage50": {"name": "Sage 50 Gestión", "price": "39.00", "bullets": ["Facturación, compras y stock", "Integración contable", "Informes"], "features": {"precio": "39.00", "ventas": "Sí", "compras": "Sí", "almacen": "Sí", "fabricacion": "No", "facturae": "Sí", "usuarios": "1-3"}}, "odoo": {"name": "Odoo", "price": "19.90", "bullets": ["ERP modular", "Ventas, compras y stock", "Escalable por módulos"], "features": {"precio": "19.90", "ventas": "Sí", "compras": "Sí", "almacen": "Sí", "fabricacion": "Sí", "facturae": "No", "usuarios": "1"}}, "otros": {"name": "Otra solución", "price": "", "bullets": ["Comparativa personalizada según el proveedor indicado."], "features": {}}}, "features": [{"key": "precio", "label": "Precio orientativo"}, {"key": "ventas", "label": "Gestión de ventas"}, {"key": "compras", "label": "Gestión de compras"}, {"key": "almacen", "label": "Gestión de almacén"}, {"key": "fabricacion", "label": "Fabricación"}, {"key": "facturae", "label": "Factura electrónica"}, {"key": "usuarios", "label": "Usuarios incluidos"}]};
+  var sel = document.getElementById('compareSolution');
+  var knownPriceField = document.getElementById('knownPriceField');
+  var otherCompanyField = document.getElementById('otherCompanyField');
+  var otherPriceField = document.getElementById('otherPriceField');
+  var result = document.getElementById('compareResult');
+  data.options.forEach(function(item){
+    var option = document.createElement('option');
+    option.value = item.key;
+    option.textContent = item.label;
+    sel.appendChild(option);
+  });
+  sel.addEventListener('change', function(){
+    var isOther = sel.value === 'otros';
+    otherCompanyField.hidden = !isOther;
+    otherPriceField.hidden = !isOther;
+    knownPriceField.hidden = isOther;
+  });
+  function money(v){ if(v===undefined||v===null||v==='') return 'No indicado'; return (String(v).includes('€')?v:(v+' €/mes')); }
+  function pickBadge(left,right){
+    if(left===right) return ['neutral','neutral'];
+    var yn = ['sí','no'];
+    if(yn.includes(String(left).toLowerCase()) && yn.includes(String(right).toLowerCase())){
+      return String(left).toLowerCase()==='sí' ? ['good','bad'] : ['bad','good'];
+    }
+    var ln = parseFloat(String(left).replace(',','.')); var rn = parseFloat(String(right).replace(',','.'));
+    if(!isNaN(ln) && !isNaN(rn)){
+      return ln>rn ? ['good','bad'] : ['bad','good'];
+    }
+    return ['neutral','neutral'];
+  }
+  function renderComparison(chosenKey){
+    var current = data.competitors[chosenKey];
+    if(!current) return;
+    var isOther = chosenKey==='otros';
+    var currentName = isOther ? (document.getElementById('otherCompany').value.trim() || 'Otra solución') : current.name;
+    var currentPrice = isOther ? (document.getElementById('otherPrice').value || 'No indicado') : (document.getElementById('comparePrice').value || current.price || 'No indicado');
+    var compareRows = [];
+    data.features.forEach(function(ft){
+      var leftVal = isOther ? 'Pendiente de validar' : current.features[ft.key];
+      var rightVal = data.fixed.features[ft.key];
+      var badges = pickBadge(leftVal,rightVal);
+      compareRows.push('<div class="compare-local-row"><strong>'+ft.label+'</strong><div class="compare-local-badge '+badges[0]+'">'+leftVal+'</div><div class="compare-local-badge '+badges[1]+'">'+rightVal+'</div></div>');
+    });
+    result.innerHTML = '<div class="compare-result-panel">'
+      + '<div class="compare-summary">'
+      +   '<article><span class="eyebrow">TU SOLUCIÓN</span><h3>'+currentName+'</h3><small>Precio orientativo: '+money(currentPrice)+'</small><ul>'+(isOther?'<li>Comparativa estimada a validar.</li><li>Se requiere revisar funciones reales de la solución indicada.</li>': current.bullets.map(function(b){return '<li>'+b+'</li>';}).join(''))+'</ul></article>'
+      +   '<article class="product-fixed-card"><span class="eyebrow">PRODUCTO DE REFERENCIA</span><h3>'+data.fixed.name+'</h3><small>Precio orientativo: '+money(data.fixed.price)+'</small><ul>'+data.fixed.bullets.map(function(b){return '<li>'+b+'</li>';}).join('')+'</ul></article>'
+      + '</div>'
+      + '<div class="compare-meta"><span><strong>Solución comparada:</strong> '+currentName+'</span><span><strong>Referencia:</strong> '+data.fixed.name+'</span></div>'
+      + '<div class="compare-local-grid">'
+      +   '<div class="compare-local-row"><strong>Característica</strong><div class="compare-local-badge neutral">'+currentName+'</div><div class="compare-local-badge neutral">'+data.fixed.name+'</div></div>'
+      +   compareRows.join('')
+      + '</div></div>';
+  }
+  document.getElementById('compareButton').addEventListener('click', function(){
+    if(!sel.value){ result.innerHTML='<div class="compare-empty"><strong>Selecciona una solución.</strong><span>Necesitamos saber con qué quieres comparar '+data.fixed.name+'.</span></div>'; return; }
+    renderComparison(sel.value);
+  });
+})();
+</script>
+</body></html>

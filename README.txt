@@ -295,3 +295,9 @@ V14.0:
 - Nuevo usuario Admin: pbravo. Cinco credenciales temporales válidas de primer acceso.
 - Multiusuario Admin con contraseñas definitivas separadas por usuario.
 - Migración automática de la contraseña existente de rubencerlem desde V13.9.
+
+
+V14.1 CORREGIDO:
+- Paquete completo para GitHub.
+- Incluye assets/, css/, js/, source/, README.txt y todos los HTML.
+- Mantiene las modificaciones de V14.1: consolas Admin, visuales Informática 3 y comparadores.
