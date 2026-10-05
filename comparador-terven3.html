@@ -22,6 +22,34 @@
     .compare-result-panel{padding:18px;border-radius:22px;background:rgba(255,255,255,.66);border:1px solid rgba(148,163,184,.28);backdrop-filter:blur(10px);}
     .compare-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:.95rem;opacity:.82;}
     .product-fixed-card{padding:14px 16px;border-radius:16px;background:rgba(37,99,235,.08);border:1px solid rgba(59,130,246,.18);}
+
+    html[data-theme="dark"] .compare-local-row{
+      background:rgba(16,34,54,.82);
+      border-color:rgba(148,163,184,.22);
+    }
+    html[data-theme="dark"] .compare-summary article,
+    html[data-theme="dark"] .compare-result-panel{
+      background:rgba(16,34,54,.82);
+      border-color:rgba(148,163,184,.22);
+      color:var(--text);
+    }
+    html[data-theme="dark"] .product-fixed-card{
+      background:rgba(59,130,246,.12);
+      border-color:rgba(96,165,250,.24);
+    }
+    html[data-theme="dark"] .compare-local-badge.good{
+      background:rgba(16,185,129,.18);
+      color:#75eba5;
+    }
+    html[data-theme="dark"] .compare-local-badge.bad{
+      background:rgba(239,68,68,.16);
+      color:#ff9898;
+    }
+    html[data-theme="dark"] .compare-local-badge.neutral{
+      background:rgba(59,130,246,.16);
+      color:#9fc7ff;
+    }
+
     @media (max-width: 860px){.compare-summary,.compare-local-row{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -73,6 +101,26 @@
   </section>
 </main>
 <footer><div class="container footer-grid"><div class="footer-brand">Rubén Cerlem Digital Solutions<small>Comparativa informativa de soluciones.</small></div><div><a href="informatica3.html">Volver a Informática 3</a></div></div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var toggle=document.getElementById('themeToggle');
+  var saved=localStorage.getItem('rc-theme') || localStorage.getItem('rcds-theme');
+  if(saved==='dark' || saved==='light'){
+    root.dataset.theme=saved;
+  }
+  if(toggle){
+    toggle.addEventListener('click',function(){
+      var next=root.dataset.theme==='dark'?'light':'dark';
+      root.dataset.theme=next;
+      localStorage.setItem('rc-theme',next);
+      localStorage.setItem('rcds-theme',next);
+    });
+  }
+})();
+</script>
+
 <script>
 (function(){
   var data = {"options": [{"key": "glop", "label": "Glop"}, {"key": "agorapos", "label": "Ágora POS"}, {"key": "loyverse", "label": "Loyverse POS"}, {"key": "otros", "label": "Otros"}], "fixed": {"name": "Terven3", "price": "21,33", "bullets": ["TPV para mostrador", "Caja, tickets y arqueo", "Almacén e inventario según plan"], "features": {"precio": "21.33", "tpv": "Sí", "caja": "Sí", "inventario": "Sí", "facturas": "Sí", "movilidad": "No", "usuarios": "4"}}, "competitors": {"glop": {"name": "Glop", "price": "29.00", "bullets": ["TPV para comercio y hostelería", "Gestión de stock", "Informes de venta"], "features": {"precio": "29.00", "tpv": "Sí", "caja": "Sí", "inventario": "Sí", "facturas": "Sí", "movilidad": "Sí", "usuarios": "1"}}, "agorapos": {"name": "Ágora POS", "price": "24.00", "bullets": ["TPV con tickets y control de caja", "Gestión comercial", "Control de ventas"], "features": {"precio": "24.00", "tpv": "Sí", "caja": "Sí", "inventario": "Sí", "facturas": "Sí", "movilidad": "No", "usuarios": "1-2"}}, "loyverse": {"name": "Loyverse POS", "price": "0.00", "bullets": ["TPV base gratuito", "Add-ons de inventario y empleados", "Enfoque retail/cafetería"], "features": {"precio": "0.00", "tpv": "Sí", "caja": "Sí", "inventario": "Sí", "facturas": "No", "movilidad": "Sí", "usuarios": "1"}}, "otros": {"name": "Otra solución", "price": "", "bullets": ["Comparativa personalizada según el proveedor indicado."], "features": {}}}, "features": [{"key": "precio", "label": "Precio orientativo"}, {"key": "tpv", "label": "TPV / mostrador"}, {"key": "caja", "label": "Caja y arqueo"}, {"key": "inventario", "label": "Inventario / stock"}, {"key": "facturas", "label": "Facturas y albaranes"}, {"key": "movilidad", "label": "Uso en movilidad"}, {"key": "usuarios", "label": "Usuarios incluidos"}]};

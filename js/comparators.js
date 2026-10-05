@@ -1,9 +1,9 @@
 (() => {
 const root=document.documentElement;
 const toggle=document.getElementById('themeToggle');
-const stored=localStorage.getItem('rcds-theme');
+const stored=localStorage.getItem('rc-theme')||localStorage.getItem('rcds-theme');
 if(stored) root.dataset.theme=stored;
-if(toggle) toggle.addEventListener('click',()=>{const next=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=next;localStorage.setItem('rcds-theme',next)});
+if(toggle) toggle.addEventListener('click',()=>{const next=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=next;localStorage.setItem('rc-theme',next);localStorage.setItem('rcds-theme',next)});
 
 const YES='Sí', NO='No', PARTIAL='Parcial', ADDON='Complemento', UNKNOWN='No indicado';
 

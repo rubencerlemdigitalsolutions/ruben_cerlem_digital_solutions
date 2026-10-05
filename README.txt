@@ -314,3 +314,9 @@ V14.1 CORREGIDO · MENÚ ACTUALIZADO + DESCRIPCIONES:
 - Añadidas descripciones compactas de Conta3, Gesco3 y Terven3 en la tarjeta principal de Informática 3.
 - Las descripciones explican de forma resumida para quién está pensado cada producto y qué aporta.
 - Se mantienen intactos Ver planes y Solicitar información.
+
+
+V14.1 DARK FIX:
+- Los comparadores de Conta3, Gesco3 y Terven3 funcionan en modo claro y oscuro.
+- El modo elegido se conserva al entrar en las páginas de comparación.
+- Se unifican las claves de tema para todos los comparadores.
