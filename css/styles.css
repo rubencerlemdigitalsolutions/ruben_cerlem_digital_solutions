@@ -1700,3 +1700,31 @@ html[data-theme="dark"] .product-hire-card{
   .admin-product-guide-card summary{align-items:flex-start;flex-direction:column}
   .admin-product-guide-card summary small{text-align:left}
 }
+
+
+/* === V14.0 · Informática 3 === */
+.informatica3-product-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 8px}
+.informatica3-product-summary>div{padding:10px 11px;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--surface) 88%,transparent)}
+.informatica3-product-summary b,.informatica3-product-summary span,.informatica3-product-summary strong{display:block}
+.informatica3-product-summary b{font-size:10px;color:var(--text)}
+.informatica3-product-summary span{font-size:8px;color:var(--muted);margin:3px 0 5px}
+.informatica3-product-summary strong{font-size:10px;color:var(--blue)}
+.informatica3-card-visual{display:grid;place-items:center}
+.i3-stack{width:min(330px,88%);display:grid;gap:12px;transform:rotate(-2deg)}
+.i3-module{padding:17px 18px;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:0 14px 30px rgba(0,0,0,.11)}
+.i3-module:nth-child(2){transform:translateX(26px)}
+.i3-module span,.i3-module b,.i3-module small{display:block}
+.i3-module span{font-size:9px;color:var(--blue);font-weight:900}
+.i3-module b{font-size:17px;margin:3px 0 5px}
+.i3-module small{font-size:9px;color:var(--muted)}
+.i3-hero-panel{display:grid;gap:14px}
+.i3-hero-tile{padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--surface);box-shadow:var(--shadow2)}
+.i3-hero-tile span,.i3-hero-tile b,.i3-hero-tile small{display:block}
+.i3-hero-tile span{color:var(--blue);font-weight:900;font-size:10px}
+.i3-hero-tile b{font-size:20px;margin:4px 0}
+.i3-hero-tile small{color:var(--muted)}
+.i3-product-section{margin-top:34px}
+.i3-five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.product-contact-form select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;background:var(--surface);color:var(--text);font:inherit}
+@media(max-width:1100px){.i3-five{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.informatica3-product-summary{grid-template-columns:1fr}.i3-five{grid-template-columns:1fr}}

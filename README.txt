@@ -286,3 +286,12 @@ V13.9 · Corrección del acceso Admin:
 - Al guardarlas, esa pasa a ser la única contraseña de acceso.
 - He olvidado mi contraseña permite Nueva contraseña + Confirmar, sin pedir la anterior.
 - Se usan claves de almacenamiento nuevas y cache-busting v13.9 para evitar cargar lógica antigua.
+
+
+V14.0:
+- Rehabilitado Informática 3 en portada, debajo de eJornada.
+- Nueva página informatica3.html con Conta3, Gesco3 y Terven3 y tarifas verificadas en Cegid.
+- Precios desde: Conta3 18,66 €/mes, Gesco3 18,66 €/mes, Terven3 21,33 €/mes.
+- Nuevo usuario Admin: pbravo. Cinco credenciales temporales válidas de primer acceso.
+- Multiusuario Admin con contraseñas definitivas separadas por usuario.
+- Migración automática de la contraseña existente de rubencerlem desde V13.9.
