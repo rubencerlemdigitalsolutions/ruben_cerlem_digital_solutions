@@ -301,3 +301,16 @@ V14.1 CORREGIDO:
 - Paquete completo para GitHub.
 - Incluye assets/, css/, js/, source/, README.txt y todos los HTML.
 - Mantiene las modificaciones de V14.1: consolas Admin, visuales Informática 3 y comparadores.
+
+
+V14.1 CORREGIDO MENU:
+- Añadido Informática 3 al menú superior, antes del selector claro/oscuro.
+- Se mantienen intactos enlaces y funcionalidades existentes.
+- Paquete completo con assets, CSS, JS, source y HTML.
+
+
+V14.1 CORREGIDO · MENÚ ACTUALIZADO + DESCRIPCIONES:
+- Se mantiene Informática 3 en el menú superior.
+- Añadidas descripciones compactas de Conta3, Gesco3 y Terven3 en la tarjeta principal de Informática 3.
+- Las descripciones explican de forma resumida para quién está pensado cada producto y qué aporta.
+- Se mantienen intactos Ver planes y Solicitar información.
